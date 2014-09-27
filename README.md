@@ -23,6 +23,8 @@ Reviewer is alerted when donation offer is received. Reviewer reviews the item a
 
 
 User Stories:
+------------
+
 1.	Donor should be able to login using login screen
 2.	Donor should be able to register and provide contact information like phone number etc
 3.	Donor should be able to post a new item for donation
@@ -37,13 +39,18 @@ User Stories:
 12.	Reviewer action should notify donor
 
 Optional:
+--------
+
 13.	Optional: Donor can do "quick" donation with only phone number
 
 
 Potential Screens:
+------------------
+
 1.	Login screen
 2.	Donor screen1 – view list of items 
 3.	Donor screen2 - to post new item
 4.	Reviewer screen1 – see list of items for review (stream like instagram assignment)
 5.	Reviewer screen2 – For a selected item, see the details
 6.	Reviewer Dialog Fragment – feedback screen - Action to accept/reject or send message to donor for clarification or logistics
+
