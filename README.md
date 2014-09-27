@@ -8,11 +8,9 @@ Crossroads is a non-profit organization that brings together those in need and t
 
 App Audience:
 ------------
-1.	Donors
--	need to signup and use notification mechanisms (like SMS# )to be directly contacted
+1.	Donors: need to signup and use notification mechanisms (like SMS# )to be directly contacted
 
-2.	Volunteer Reviewers
--	need to signup and using email/password and accounts created administratively
+2.	Volunteer Reviewers: need to signup and using email/password and accounts created administratively
 	
 	
 App Description:
