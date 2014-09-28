@@ -35,6 +35,8 @@ User Stories:
 10.	Reviewer should be able to get the details of the item (photos, comments etc..)
 11.	Reviewer should be able to make decision accept/reject and/or message donor for additional information
 12.	Reviewer action should notify donor
+13.	Donor and Reviewer data should be stored in the backend using Parse
+14.	Donor and Reviewer data should be retrieved using Parse
 
 Optional:
 --------
