@@ -73,21 +73,21 @@ Screens:
 5. Donor - After picture 
 ![alt tag](https://github.com/CodepathSnyTeam7/crossroads/blob/master/afterCamera.png)
 
-5.5 Donor - When the Donate button on screen 5 is clicked donor goes back to Screen 3 with the new items inserted into the list
+6. Donor - When the Donate button on screen 5 is clicked donor goes back to Screen 3 (Home page) with the new items inserted into the list
 
 
 ***** Reviewer App *****
 
-6. Reviewer - home
+1. Reviewer - home
 ![alt tag](https://github.com/CodepathSnyTeam7/crossroads/blob/master/reviewer-screen-2.png)
 
-7. Reviewer - List View item
+2. Reviewer - List View item
 ![alt tag](https://github.com/CodepathSnyTeam7/crossroads/blob/master/Reviewer List View.png)
 
-8. Reviewer - Review item
+3. Reviewer - Review item
 ![alt tag](https://github.com/CodepathSnyTeam7/crossroads/blob/master/reviewItem.png)
 
-9. Reviewer - Accept item form (select category based on photo and write additional notes)
+4. Reviewer - Accept item form (select category based on photo and write additional notes)
 ![alt tag](https://github.com/CodepathSnyTeam7/crossroads/blob/master/acceptDialog.png)
 
-9.5  Reviewer goes back to Screen 8 after reject/accept
+5.  Reviewer goes back to Screen 3 after reject/accept
