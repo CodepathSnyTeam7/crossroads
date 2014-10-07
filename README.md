@@ -55,4 +55,25 @@ Potential Screens:
 6.	Reviewer Dialog Fragment – feedback screen - Action to accept/reject or send message to donor for clarification or logistics
 
 Screens:
-![alt tag](https://github.com/)
+
+1. Login
+![alt tag](https://github.com/CodepathSnyTeam7/crossroads/blob/master/login-screen.png)
+
+2. Register
+![alt tag](https://github.com/CodepathSnyTeam7/crossroads/blob/master/Register-screen.png)
+
+3. Camera
+![alt tag](https://github.com/CodepathSnyTeam7/crossroads/blob/master/camera.png)
+
+4. After picture
+![alt tag](https://github.com/CodepathSnyTeam7/crossroads/blob/master/afterCamera.png)
+
+5. Accept for donation
+![alt tag](https://github.com/CodepathSnyTeam7/crossroads/blob/master/acceptDialog.png)
+
+6. Reviewer home
+![alt tag](https://github.com/CodepathSnyTeam7/crossroads/blob/master/reviewer-screen-2.png)
+
+7. Review item
+![alt tag](https://github.com/CodepathSnyTeam7/crossroads/blob/master/reviewItem.png)
+
