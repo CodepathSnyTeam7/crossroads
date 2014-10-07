@@ -62,24 +62,32 @@ Screens:
 2. Register
 ![alt tag](https://github.com/CodepathSnyTeam7/crossroads/blob/master/Register-screen.png)
 
+***** Donor App ******
+
 3. Donor - Home Page
 ![alt tag](https://github.com/CodepathSnyTeam7/crossroads/blob/master/Donor Home Page.png)
 
 4. Donor - Donote/Camera
 ![alt tag](https://github.com/CodepathSnyTeam7/crossroads/blob/master/camera.png)
 
-5. Donor - After picture
+5. Donor - After picture 
 ![alt tag](https://github.com/CodepathSnyTeam7/crossroads/blob/master/afterCamera.png)
 
-6. Donor - Accept for donation
-![alt tag](https://github.com/CodepathSnyTeam7/crossroads/blob/master/acceptDialog.png)
+5.5 Donor - When the Donate button on screen 5 is clicked donor goes back to Screen 3 with the new items inserted into the list
 
-7. Reviewer - home
+
+***** Reviewer App *****
+
+6. Reviewer - home
 ![alt tag](https://github.com/CodepathSnyTeam7/crossroads/blob/master/reviewer-screen-2.png)
 
-8. Reviewer - List View item
+7. Reviewer - List View item
 ![alt tag](https://github.com/CodepathSnyTeam7/crossroads/blob/master/Reviewer List View.png)
 
-9. Reviewer - Review item
+8. Reviewer - Review item
 ![alt tag](https://github.com/CodepathSnyTeam7/crossroads/blob/master/reviewItem.png)
 
+9. Reviewer - Accept item form (select category based on photo and write additional notes)
+![alt tag](https://github.com/CodepathSnyTeam7/crossroads/blob/master/acceptDialog.png)
+
+9.5  Reviewer goes back to Screen 8 after reject/accept
