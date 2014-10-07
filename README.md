@@ -62,18 +62,18 @@ Screens:
 2. Register
 ![alt tag](https://github.com/CodepathSnyTeam7/crossroads/blob/master/Register-screen.png)
 
-3. Camera
+3. Donor - Camera
 ![alt tag](https://github.com/CodepathSnyTeam7/crossroads/blob/master/camera.png)
 
-4. After picture
+4. Donor - After picture
 ![alt tag](https://github.com/CodepathSnyTeam7/crossroads/blob/master/afterCamera.png)
 
-5. Accept for donation
+5. Donor - Accept for donation
 ![alt tag](https://github.com/CodepathSnyTeam7/crossroads/blob/master/acceptDialog.png)
 
-6. Reviewer home
+6. Reviewer - home
 ![alt tag](https://github.com/CodepathSnyTeam7/crossroads/blob/master/reviewer-screen-2.png)
 
-7. Review item
+7. Reviewer - Review item
 ![alt tag](https://github.com/CodepathSnyTeam7/crossroads/blob/master/reviewItem.png)
 
