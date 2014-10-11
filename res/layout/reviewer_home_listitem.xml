@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+      <com.pkmmte.circularimageview.CircularImageView
+        android:id="@+id/ivRHomeUserImg"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_margin="1dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" />
+
+    <TextView
+        android:id="@+id/tvRHomeUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/ivRHomeUserImg"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="8dp"
+        android:text="TextView" 
+        android:textSize="10sp" />
+    
+      <TextView
+        android:id="@+id/tvRHomeUserTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_gravity="right"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="TextView" 
+        android:textSize="10sp" />
+        
+     <ImageView
+        android:id="@+id/ivRHomeUserPhoto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="33dp"
+        android:scaleType="fitStart"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_launcher" />
+    
+    <TextView
+        android:id="@+id/tvRHomeUserDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/ivRHomeUserPhoto"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="8dp"
+        android:ellipsize="end"
+        android:maxLines="3"
+        android:text="default_description" 
+        android:textSize="10sp" />
+    
+
+    
+</RelativeLayout>
+

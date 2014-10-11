@@ -3,5 +3,8 @@
 
     <string name="app_name">Crossroads</string>
     <string name="hello_world">Hello world!</string>
+    <string name="login_button_lbl">Login</string>
+    <string name="title_activity_reviewer_home">ReviewerHomeActivity</string>
+    <string name="action_settings">Settings</string>
 
 </resources>
