@@ -91,3 +91,5 @@ Screens:
 ![alt tag](https://github.com/CodepathSnyTeam7/crossroads/blob/master/acceptDialog.png)
 
 5.  Reviewer goes back to Screen 3 after reject/accept
+
+------------------------------------------------x
