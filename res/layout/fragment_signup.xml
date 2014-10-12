@@ -18,16 +18,41 @@
         android:background="@color/LightGray"
         android:alpha="10"
          >
+         
+        <EditText
+            android:id="@+id/etSignupFirstname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:hint="first name"
+            android:textColor="@color/black"
+            android:inputType="textPersonName" />
 
+        <EditText
+            android:id="@+id/etSignupLastname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/etSignupFirstname"
+            android:layout_alignRight="@+id/etSignupFirstname"
+            android:layout_below="@+id/etSignupFirstname"
+            android:ems="10"
+            android:hint="family name"
+            android:textColor="@color/black"
+            android:inputType="textPersonName" />
+        
         <EditText
             android:id="@+id/etSignupUsername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
+            android:layout_alignLeft="@+id/etSignupLastname"
+            android:layout_alignRight="@+id/etSignupLastname"
+            android:layout_below="@+id/etSignupLastname"
             android:ems="10"
             android:hint="username"
-            android:textColor="@color/LightGray"
-            android:inputType="phone" />
+            android:textColor="@color/black"
+            android:inputType="text" />
 
         <EditText
             android:id="@+id/etSignupPassword"
@@ -38,19 +63,46 @@
             android:layout_below="@+id/etSignupUsername"
             android:ems="10"
             android:hint="password"
-            android:textColor="@color/LightGray"
+            android:textColor="@color/black"
             android:inputType="textPassword" />
+        
+        <EditText
+            android:id="@+id/etSignupPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignLeft="@+id/etSignupPassword"
+            android:layout_alignRight="@+id/etSignupPassword"
+            android:layout_below="@+id/etSignupPassword"
+            android:ems="10"
+            android:hint="Phone 408-111-2222"
+            android:textColor="@color/black"
+            android:inputType="phone" />
+        
+         <EditText
+            android:id="@+id/etSignupDistrict"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignLeft="@+id/etSignupPhone"
+            android:layout_alignRight="@+id/etSignupPhone"
+            android:layout_below="@+id/etSignupPhone"
+            android:ems="10"
+            android:hint="District"
+            android:textColor="@color/black"
+            android:inputType="text" />
 
         <Button
             android:id="@+id/btSignup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/etSignupUsername"
-            android:layout_alignRight="@+id/etSignupUsername"
-            android:layout_below="@+id/etSignupPassword"
+            android:layout_alignLeft="@+id/etSignupDistrict"
+            android:layout_alignRight="@+id/etSignupDistrict"
+            android:layout_below="@+id/etSignupDistrict"
             android:layout_marginTop="16dp"
-            android:textColor="@color/LightGray"
-            android:text="@string/login_button_lbl" />
+            android:text="@string/lbl_singup"
+            android:textColor="@color/LightGray" />
+
     </RelativeLayout>
     
 

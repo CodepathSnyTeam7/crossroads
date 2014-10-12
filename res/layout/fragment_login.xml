@@ -25,7 +25,8 @@
             android:layout_centerHorizontal="true"
             android:ems="10"
             android:hint="username"
-            android:inputType="phone" />
+            android:textColor="@color/black"
+            android:inputType="text" />
 
         <EditText
             android:id="@+id/etLoginPassword"
@@ -36,6 +37,7 @@
             android:layout_below="@+id/etLoginUsername"
             android:ems="10"
             android:hint="password"
+            android:textColor="@color/black"
             android:inputType="textPassword" />
 
         <Button
