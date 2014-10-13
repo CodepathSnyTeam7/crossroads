@@ -13,19 +13,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.codepath.snyteam7.crossroads.R;
-import com.codepath.snyteam7.crossroads.R.id;
-import com.codepath.snyteam7.crossroads.R.layout;
-import com.codepath.snyteam7.crossroads.R.menu;
 import com.codepath.snyteam7.crossroads.model.Item;
 import com.parse.FindCallback;
 import com.parse.GetDataCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
+import com.parse.ParseImageView;
 import com.parse.ParseQuery;
 
 public class ReceiverItemDetailsActivity extends Activity {
 	
-	private ImageView ivPhoto;
+	private ParseImageView ivPhoto;
 	private TextView tvDonorName;
 	private TextView tvDescription;
 
@@ -33,7 +31,7 @@ public class ReceiverItemDetailsActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_receiver_item_details);
-		ivPhoto = (ImageView)findViewById(R.id.ivItemPhoto);
+		ivPhoto = (ParseImageView)findViewById(R.id.ivItemPhoto);
 		tvDonorName = (TextView)findViewById(R.id.tvDonorName);
 		tvDescription = (TextView)findViewById(R.id.tvDescription);
 		ParseQuery<Item> query = ParseQuery.getQuery(Item.class);
@@ -46,20 +44,22 @@ public class ReceiverItemDetailsActivity extends Activity {
 						Item item0 = arg0.get(0);
 						tvDescription.setText(item0.getDescription());
 						ParseFile photoFile = item0.getPhotoFile();
-						photoFile.getDataInBackground(new GetDataCallback() {
-							
-							@Override
-							public void done(byte[] arg0, ParseException e) {
-								if(e == null) {
-									Bitmap fetchedBm = BitmapFactory.decodeByteArray(arg0, 0, arg0.length);
-									ivPhoto.setImageBitmap(fetchedBm);
-								}else{
-									e.printStackTrace();
-									Toast.makeText(ReceiverItemDetailsActivity.this, "error fetching photo", Toast.LENGTH_LONG).show();
-								}
+						if(photoFile != null) {
+							ivPhoto.setParseFile(photoFile);
+							ivPhoto.loadInBackground(new GetDataCallback() {
 								
-							}
-						});
+								@Override
+								public void done(byte[] arg0, ParseException e) {
+									if(e == null) {
+										
+									}else{
+										e.printStackTrace();
+										Toast.makeText(ReceiverItemDetailsActivity.this, "error fetching photo", Toast.LENGTH_LONG).show();
+									}
+									
+								}
+							});
+						}
 					}
 				}else{
 					e.printStackTrace();
