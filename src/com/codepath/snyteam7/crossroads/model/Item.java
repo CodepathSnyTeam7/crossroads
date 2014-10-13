@@ -1,6 +1,7 @@
 package com.codepath.snyteam7.crossroads.model;
 
 import com.parse.ParseClassName;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
@@ -28,5 +29,13 @@ public class Item extends ParseObject {
 	  // Associate each item with a user
 	  public void setDonateUserId(ParseUser user) {
 	    put("donateuserid", user);
+	  }
+	  
+	  public ParseFile getPhotoFile() {
+		  return getParseFile("photo");
+	  }
+	  
+	  public void setPhotoFile(ParseFile file) {
+		  put("photo", file);
 	  }
 }

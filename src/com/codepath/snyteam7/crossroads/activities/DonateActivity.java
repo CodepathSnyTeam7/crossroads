@@ -1,5 +1,6 @@
 package com.codepath.snyteam7.crossroads.activities;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -15,16 +16,24 @@ import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.codepath.snyteam7.crossroads.R;
+import com.codepath.snyteam7.crossroads.model.Item;
+import com.parse.ParseException;
+import com.parse.ParseFile;
+import com.parse.SaveCallback;
 
 public class DonateActivity extends Activity {
 	
 	private Uri photoUri;
 	private Bitmap photoBitmap;
+	ParseFile parsePhotoFile;
 	private ImageView ivItemPhoto;
+	private EditText etItemDescription;
 	
 	public static String APP_TAG = "crossroadssny";
 	
@@ -38,6 +47,7 @@ public class DonateActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_donate);
 		ivItemPhoto = (ImageView)findViewById(R.id.ivItemPicture);
+		etItemDescription = (EditText)findViewById(R.id.etItemDescription);
 	}
 
 	public void onCameraClicked(View v) {
@@ -90,10 +100,30 @@ public class DonateActivity extends Activity {
 				photoBitmap = data.getParcelableExtra("data");
 				startPreviewPhotoActivity();
 			} else if (requestCode == POST_PHOTO_CODE) {
-				//display in the imageview of the items detail
+				
 				photoBitmap = data.getParcelableExtra("processedPhoto");
-				ivItemPhoto.setImageBitmap(photoBitmap);
-				ivItemPhoto.setVisibility(View.VISIBLE);
+				//Todo: possibley rotate and resize 
+				
+				ByteArrayOutputStream bos = new ByteArrayOutputStream();
+				photoBitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
+				byte[] photoData = bos.toByteArray();
+				String fileName = photoUri.getLastPathSegment();
+				parsePhotoFile = new ParseFile(fileName, photoData);
+				parsePhotoFile.saveInBackground(new SaveCallback() {
+					
+					@Override
+					public void done(ParseException e) {
+						if (e != null) {
+							Toast.makeText(DonateActivity.this,
+									"Error saving: " + e.getMessage(),
+									Toast.LENGTH_LONG).show();
+						} else {
+							//display in the imageview of the items detail
+							ivItemPhoto.setImageBitmap(photoBitmap);
+							ivItemPhoto.setVisibility(View.VISIBLE);
+						}
+					}
+				});
 			}
 		}
 	}
@@ -107,11 +137,22 @@ public class DonateActivity extends Activity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		if(id == R.id.action_done) {
+			Item donateItem = new Item();
+			donateItem.setDescription(etItemDescription.getText().toString());
+			donateItem.setPhotoFile(parsePhotoFile);
+			donateItem.saveInBackground(new SaveCallback() {
+				
+				@Override
+				public void done(ParseException e) {
+					if(e != null) {
+						Toast.makeText(DonateActivity.this, "error saving: " + e.getMessage(), Toast.LENGTH_LONG).show();
+					}else{
+						Toast.makeText(DonateActivity.this, "item saved!", Toast.LENGTH_LONG).show();
+					}
+				}
+			});
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
@@ -139,6 +180,7 @@ public class DonateActivity extends Activity {
 	private void startPreviewPhotoActivity() {
 		Intent i = new Intent(this, PreviewPhotoActivity.class);
         i.putExtra("photo_bitmap", photoBitmap);
+        i.putExtra("photo_uri", photoUri);
         startActivityForResult(i, POST_PHOTO_CODE);
 	}
 }

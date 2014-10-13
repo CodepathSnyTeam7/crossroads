@@ -9,5 +9,6 @@
     <string name="lbl_singup">Sign Up</string>
     <string name="title_activity_donate">Donate</string>
     <string name="item_description">Enter item description...</string>
+    <string name="action_done">Done</string>
 
 </resources>

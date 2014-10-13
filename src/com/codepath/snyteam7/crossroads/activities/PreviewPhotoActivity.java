@@ -1,20 +1,29 @@
 package com.codepath.snyteam7.crossroads.activities;
 
+import java.io.ByteArrayOutputStream;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.codepath.libraries.androidviewhelpers.SimpleProgressDialog;
 import com.codepath.snyteam7.crossroads.ImageFilterProcessor;
 import com.codepath.snyteam7.crossroads.R;
+import com.parse.ParseException;
+import com.parse.ParseFile;
+import com.parse.SaveCallback;
 
 public class PreviewPhotoActivity extends Activity {
 	private Bitmap photoBitmap;
 	private Bitmap processedBitmap;
+	private Uri photoUri;
+	private ParseFile photoFile;
 	private SimpleProgressDialog dialog;
 	private ImageView ivPreview;
 	private ImageFilterProcessor filterProcessor;
@@ -25,6 +34,7 @@ public class PreviewPhotoActivity extends Activity {
 		setContentView(R.layout.activity_preview_photo);
 		ivPreview = (ImageView) findViewById(R.id.ivPreview);
 		photoBitmap = getIntent().getParcelableExtra("photo_bitmap");
+		photoUri = getIntent().getParcelableExtra("photo_uri");
 		filterProcessor = new ImageFilterProcessor(photoBitmap);
 		redisplayPreview(ImageFilterProcessor.NONE);
 	}

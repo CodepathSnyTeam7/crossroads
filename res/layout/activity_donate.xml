@@ -18,17 +18,6 @@
     </EditText>
 
     <ImageView
-        android:id="@+id/ivCamera"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginBottom="37dp"
-        android:layout_marginLeft="43dp"
-        android:onClick="onCameraClicked"
-        android:src="@drawable/ic_camera" />
-
-    <ImageView
         android:id="@+id/ivMedia"
         android:layout_width="60dp"
         android:layout_height="60dp"
@@ -39,14 +28,24 @@
         android:src="@drawable/ic_media" />
 
     <ImageView
+        android:id="@+id/ivCamera"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/etItemDescription"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:onClick="onCameraClicked"
+        android:src="@drawable/ic_camera" />
+
+    <ImageView
         android:id="@+id/ivItemPicture"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:visibility="gone"
-        android:layout_above="@+id/ivCamera"
-        android:layout_alignParentLeft="true"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="20dp"
+         android:visibility="gone"
+        android:layout_alignLeft="@+id/ivCamera"
+        android:layout_below="@+id/ivMedia"
+        android:layout_marginTop="24dp"
         android:src="@drawable/ic_launcher" />
 
 </RelativeLayout>
