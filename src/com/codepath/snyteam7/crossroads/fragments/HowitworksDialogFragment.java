@@ -8,7 +8,8 @@ import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import com.example.crossroads.R;
+import com.codepath.snyteam7.crossroads.R;
+
 
 public class HowitworksDialogFragment extends DialogFragment {
  	private View customView;

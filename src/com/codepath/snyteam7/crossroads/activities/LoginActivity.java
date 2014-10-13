@@ -1,10 +1,7 @@
 package com.codepath.snyteam7.crossroads.activities;
 
 import android.app.ActionBar;
-import com.parse.Parse;
-import com.parse.ParseAnalytics;
-import com.parse.ParseInstallation;
-import com.parse.PushService;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -12,11 +9,11 @@ import android.support.v4.app.FragmentManager;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.codepath.snyteam7.crossroads.R;
 import com.codepath.snyteam7.crossroads.fragments.HowitworksDialogFragment;
 import com.codepath.snyteam7.crossroads.fragments.LoginFragment;
 import com.codepath.snyteam7.crossroads.fragments.SignupFragment;
 import com.codepath.snyteam7.crossroads.listeners.FragmentTabListener;
-import com.example.crossroads.R;
 
 public class LoginActivity extends FragmentActivity {
 
@@ -75,10 +72,18 @@ public class LoginActivity extends FragmentActivity {
         
             case R.id.miHowitworks:
             	onHowitworksAction();
-                return true;   
+                return true; 
+            case R.id.miDonateTest:
+            	onDonateTest();
+            	return true;
         }
         return false;
     }
+
+	private void onDonateTest() {
+		Intent i = new Intent(this, DonateActivity.class);
+		startActivity(i);		
+	}
 
 	// OnCLick HowitWorks action
 	public void onHowitworksAction() {

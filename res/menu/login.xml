@@ -7,5 +7,10 @@
         android:showAsAction="always"
         android:title="Howitworks">
     </item>
+     <item
+        android:id="@+id/miDonateTest"
+        android:showAsAction="ifRoom"
+        android:title="Donate">
+    </item>
 
 </menu>

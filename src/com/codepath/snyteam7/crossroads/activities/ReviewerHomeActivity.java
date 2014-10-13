@@ -13,10 +13,10 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
+import com.codepath.snyteam7.crossroads.R;
 import com.codepath.snyteam7.crossroads.adapters.ReviewListItem;
 import com.codepath.snyteam7.crossroads.adapters.ReviewerHomeListAdapter;
 import com.codepath.snyteam7.crossroads.listeners.EndlessScrollListener;
-import com.example.crossroads.R;
 
 public class ReviewerHomeActivity extends Activity {
     private SwipeRefreshLayout reviewerSwipeContainer;

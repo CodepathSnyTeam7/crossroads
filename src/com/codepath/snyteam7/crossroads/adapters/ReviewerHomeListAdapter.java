@@ -16,7 +16,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.crossroads.R;
+import com.codepath.snyteam7.crossroads.R;
+
 
 public class ReviewerHomeListAdapter extends ArrayAdapter<ReviewListItem> {
 	
