@@ -1,0 +1,74 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.codepath.snyteam7.crossroads.activities.ReceiverItemDetailsActivity" >
+
+    <ImageView
+        android:id="@+id/ivItemPhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/tvDonorLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/ivItemPhoto"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="47dp"
+        android:text="@string/donor_name"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/tvDescLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvDonatedLabel"
+        android:layout_below="@+id/tvDonatedLabel"
+        android:layout_marginTop="26dp"
+        android:text="@string/description"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvDescLabel"
+        android:layout_below="@+id/tvDescLabel"
+        android:layout_marginTop="24dp"
+        android:text="@string/description"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/tvDonorName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvDonatedLabel"
+        android:layout_below="@+id/tvDonorLabel"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/tvDonatedLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvDonorLabel"
+        android:layout_below="@+id/tvDonorName"
+        android:layout_marginTop="19dp"
+        android:text="@string/donate_date" />
+
+    <TextView
+        android:id="@+id/tvDonateDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvDonatedLabel"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@+id/tvDonatedLabel"
+        android:text="@string/donate_date" />
+
+</RelativeLayout>
