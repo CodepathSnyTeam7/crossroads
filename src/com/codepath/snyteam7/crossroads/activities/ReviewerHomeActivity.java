@@ -14,13 +14,13 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.codepath.snyteam7.crossroads.R;
-import com.codepath.snyteam7.crossroads.adapters.ReviewListItem;
 import com.codepath.snyteam7.crossroads.adapters.ReviewerHomeListAdapter;
 import com.codepath.snyteam7.crossroads.listeners.EndlessScrollListener;
+import com.codepath.snyteam7.crossroads.model.Item;
 
 public class ReviewerHomeActivity extends Activity {
     private SwipeRefreshLayout reviewerSwipeContainer;
-	private ArrayList<ReviewListItem> items;
+	private ArrayList<Item> items;
 	public ReviewerHomeListAdapter aItems;
 	private ListView lvItems;
 	private int itemsTotalCount = 0;

@@ -16,6 +16,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="122dp"
         android:alpha="10"
+        android:background="@color/black"
          >
 
         <EditText
@@ -25,7 +26,7 @@
             android:layout_centerHorizontal="true"
             android:ems="10"
             android:hint="username"
-            android:textColor="@color/black"
+            android:textColor="@color/LightGray"
             android:inputType="text" />
 
         <EditText
@@ -37,7 +38,7 @@
             android:layout_below="@+id/etLoginUsername"
             android:ems="10"
             android:hint="password"
-            android:textColor="@color/black"
+            android:textColor="@color/LightGray"
             android:inputType="textPassword" />
 
         <Button

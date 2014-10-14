@@ -1,27 +1,24 @@
 package com.codepath.snyteam7.crossroads.adapters;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import android.content.Context;
-import android.graphics.Point;
 import android.text.Html;
-import android.text.format.DateUtils;
-import android.util.Log;
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.codepath.snyteam7.crossroads.R;
+import com.codepath.snyteam7.crossroads.model.Item;
 
 
-public class ReviewerHomeListAdapter extends ArrayAdapter<ReviewListItem> {
+public class ReviewerHomeListAdapter extends ArrayAdapter<Item> {
 	
-	public ReviewerHomeListAdapter(Context context, List<ReviewListItem> photos) {
+	public ReviewerHomeListAdapter(Context context, List<Item> photos) {
 		super(context, R.layout.reviewer_home_listitem, photos);
 	}
 
@@ -29,7 +26,7 @@ public class ReviewerHomeListAdapter extends ArrayAdapter<ReviewListItem> {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		// get the item from the position
-		ReviewListItem photo = getItem(position);
+		Item item = getItem(position);
 		CharSequence postdate;
 		
 		// check if view is recycled
@@ -45,59 +42,38 @@ public class ReviewerHomeListAdapter extends ArrayAdapter<ReviewListItem> {
 // TBD		CircularImageView imgUserPic = (CircularImageView) convertView.findViewById(R.id.ivRHomeUserImg);
 	
 		// Set the values
-		// Get the username
-		imgUser.setText(photo.username);
+		// TBD: Get the username
+		imgUser.setText("dummy");
 		
 		// Get the create time
-		//postdate = DateUtils.getRelativeTimeSpanString(photo.createtime * 1000, System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS, DateUtils.FORMAT_ABBREV_ALL);
-		postdate = DateUtils.getRelativeTimeSpanString(photo.createtime * 1000, System.currentTimeMillis(), DateUtils.MINUTE_IN_MILLIS);
-		//postdate = DateUtils.getRelativeTimeSpanString(getContext(), photo.createtime * 1000, false);
+		
+		//postdate = DateUtils.getRelativeTimeSpanString(item.getCreatedAt(), System.currentTimeMillis(), DateUtils.MINUTE_IN_MILLIS);
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		postdate= df.format(item.getCreatedAt());
 		imgTime.setText(postdate);
 		//imgTime.setBackgroundColor(0xFF00FF00);
 		
 		// Get the caption
-		if (photo.description == null) {
+		if (item.getDescription() == null) {
 			imgDesciption.setVisibility(convertView.GONE);
 		} else {
-			imgDesciption.setText(Html.fromHtml("<font color=\"#206199\"><b>" + photo.username
-                    + "  " + "</b></font>" + "<font color=\"#000000\">" + photo.description + "</font>"));
+			imgDesciption.setText(Html.fromHtml("<font color=\"#206199\"><b>" + "dummy user"
+                    + "  " + "</b></font>" + "<font color=\"#000000\">" + item.getDescription() + "</font>"));
 		}
 		
 		// Load profile picture
-		if (photo.profimgurl != null) {
-// TBD			Picasso.with(getContext()).load(photo.profimgurl).placeholder(R.drawable.default_avatar).into(imgUserPic);
+		/* TBD
+		if (item.profimgurl != null) {
+			Picasso.with(getContext()).load(item.profimgurl).placeholder(R.drawable.default_avatar).into(imgUserPic);
 		}
+		*/
 		
-		// Instagram photo to fit Screen size
-		WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
-		Display display = wm.getDefaultDisplay();
-		Point size = new Point();
-		display.getSize(size);
-		int screenwidth = size.x;
-		int screenheight = size.y;
-		Log.d("DEBUG", "Instagram photo H:" + photo.imgheight + " W:" + photo.imgWidth + 
-				"Screeen H:" + screenheight  + " W:" + screenwidth);
-
-		/* Set the imageview layout params to the screen size width and aspect ratio */
-		float fittedimgheight;
-		float fittedimgwidth;
-		fittedimgwidth = (float) screenwidth;
-		fittedimgheight = fittedimgwidth * ((float) photo.imgheight / (float) photo.imgWidth);
-		
-		// Set the layout params to the newly calculated dimensions
-		ViewGroup.LayoutParams iv_lparams = imgPhoto.getLayoutParams();
-		iv_lparams.height = (int) fittedimgheight;
-		iv_lparams.width = (int) fittedimgwidth;
-		imgPhoto.setLayoutParams(iv_lparams);
-		
-		// cleanup subview if recycled to clear the previous image content
-		imgPhoto.getLayoutParams().height = (int) fittedimgheight;
 		imgPhoto.setImageResource(0);
 
 		// fetch the photo from the url using Picassa asynchronously in background not in main thread
 		// It downloads the imagebytes, converts to bitmap and loads the image
 		//imgPhoto.setBackgroundColor(0xFF00FF00);
-// TBD		Picasso.with(getContext()).load(photo.imgurl).fit().centerInside().into(imgPhoto);
+		//Picasso.with(getContext()).load(item.imgurl).fit().centerInside().into(imgPhoto);
 		
 		return convertView;
 	}

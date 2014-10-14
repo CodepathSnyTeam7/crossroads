@@ -2,6 +2,7 @@ package com.codepath.snyteam7.crossroads.fragments;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.codepath.snyteam7.crossroads.R;
+import com.codepath.snyteam7.crossroads.activities.LoginActivity;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
@@ -39,10 +41,15 @@ public class SignupFragment extends Fragment {
 		signupUsername = (EditText) v.findViewById(R.id.etSignupUsername);
 		signupPassword = (EditText) v.findViewById(R.id.etSignupPassword);
 		signupPhone = (EditText) v.findViewById(R.id.etSignupPhone);
-
 		
 		//Set up view listeners
-		//setupViewListeners(v);
+		setupViewListeners(v);
+		
+		// Return layout view
+		return v;
+	}
+	
+	public void setupViewListeners(View v) {
 		final Button button = 
                 (Button) v.findViewById(R.id.btSignup);
 	        button.setOnClickListener(new View.OnClickListener() {
@@ -50,9 +57,6 @@ public class SignupFragment extends Fragment {
 	                signupButtonClicked(v);
 	            }
 	        });
-		
-		// Return layout view
-		return v;
 	}
 	
 	@Override
@@ -92,12 +96,15 @@ public class SignupFragment extends Fragment {
 		    if (e == null) {
 		    	// Hooray! Let them use the app now.
 		    	Log.d("debug", "Sign up Successful");
-		    	// TBD: Call the Donor Home Activity
+
 		    } else {
 		      // Sign up didn't succeed. Look at the ParseException
 		      // to figure out what went wrong
 		    	Log.d("debug", "Sign up didn't succeed");
 		    }
+	    	// TBD: VV Call the Donor Home Activity if successful
+	    	Intent intent = new Intent().setClass(getActivity(), LoginActivity.class);
+			startActivity(intent);
 		  }
 		});
 	}

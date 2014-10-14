@@ -2,6 +2,7 @@ package com.codepath.snyteam7.crossroads.fragments;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.codepath.snyteam7.crossroads.R;
+import com.codepath.snyteam7.crossroads.activities.ReviewerHomeActivity;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -39,8 +41,13 @@ public class LoginFragment extends Fragment {
 		loginPassword = (EditText) v.findViewById(R.id.etLoginPassword);
 		
 		//Set up view listeners
-		//setupViewListeners(v);
+		setupViewListeners(v);
 		
+		// Return layout view
+		return v;
+	}
+	
+	public void setupViewListeners(View v) {
 		final Button button = 
                 (Button) v.findViewById(R.id.btLogin);
 	        button.setOnClickListener(new View.OnClickListener() {
@@ -48,9 +55,6 @@ public class LoginFragment extends Fragment {
 	                loginButtonClicked(v);
 	            }
 	        });
-		
-		// Return layout view
-		return v;
 	}
 	
 	@Override
@@ -80,9 +84,10 @@ public class LoginFragment extends Fragment {
 			  public void done(ParseUser user, ParseException e) {
 			    if (user != null) {
 			    	// Hooray! The user is logged in.
-			    	// Check for the User type and call the corresponding Activity
+			    	// TBD: Check for the User type and call the corresponding Activity
 			    	// Donor - call Donor Home activity
 			    	// Reviewer - call Reviewer Home activity
+			    	onLoginSuccessCallActivity(user);
 			    	Log.d("debug", "Login Successful!!!!");
 			    } else {
 			      // Signup failed. Look at the ParseException to see what happened.
@@ -90,5 +95,12 @@ public class LoginFragment extends Fragment {
 			    }
 			  }
 			});
+	}
+	
+	public void onLoginSuccessCallActivity(ParseUser user) {
+    	// TBD: VV Call the Donor Home Activity if successful
+    	Intent intent = new Intent().setClass(getActivity(), ReviewerHomeActivity.class);
+		startActivity(intent);
+		return;
 	}
 }
