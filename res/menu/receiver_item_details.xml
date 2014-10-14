@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.codepath.snyteam7.crossroads.ReceiverItemDetailsActivity" >
+
+    <item
+        android:id="@+id/action_accept"
+        android:orderInCategory="3"
+        android:showAsAction="always"
+        android:title="@string/accept"/>
+    <item
+        android:id="@+id/action_reject"
+        android:orderInCategory="3"
+        android:showAsAction="always"
+        android:title="@string/reject"/>
+</menu>

@@ -9,5 +9,38 @@
     <string name="lbl_singup">Sign Up</string>
     <string name="title_activity_donate">Donate</string>
     <string name="item_description">Enter item description...</string>
-
+    <string name="action_done">Done</string>
+    <string name="title_activity_receiver_item_details">ReceiverItemDetailsActivity</string>
+    <string name="donor_name">Donor Name</string>
+    <string name="donate_date">Donated Date:</string>
+    <string name="description">Description</string>
+    <string name="accept">Accept</string>
+    <string name="reject">Reject</string>
+    <string name="title_activity_donor">DonorActivity</string>
+    <string-array name="item_category">
+        <item>Books</item>
+        <item>Clothing</item>
+        <item>Computer</item>
+        <item>Pharmaceuticals</item>
+        <item>Electronics</item>
+        <item>Food or Beverage</item>
+        <item>Furniture</item>
+        <item>Household Goods</item>
+        <item>Medical</item>
+        <item>Office</item>
+        <item>Sports</item>
+        <item>Tents</item>
+        <item>Tools and Machinery</item>
+        <item>Toys</item>
+        <item>Transportation</item>
+        <item>Other</item>
+    </string-array>
+    <string-array name="item_condition">
+        <item>New</item>
+        <item>Lightly Used</item>
+        <item>Heavily Used</item>
+        <item>Broken</item>
+    </string-array>
+        <string name="cancel">Cancel</string>
+        <string name="accept_label">Accept</string>
 </resources>

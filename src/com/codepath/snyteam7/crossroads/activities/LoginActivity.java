@@ -76,9 +76,17 @@ public class LoginActivity extends FragmentActivity {
             case R.id.miDonateTest:
             	onDonateTest();
             	return true;
+            case R.id.miViewDetailsTest:
+            	onViewDetailsTest();
+            	return true;
         }
         return false;
     }
+
+	private void onViewDetailsTest() {
+		Intent i = new Intent(this, ReceiverItemDetailsActivity.class);
+		startActivity(i);
+	}
 
 	private void onDonateTest() {
 		Intent i = new Intent(this, DonateActivity.class);

@@ -11,9 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.codepath.snyteam7.crossroads.R;
 import com.codepath.snyteam7.crossroads.activities.LoginActivity;
+import com.codepath.snyteam7.crossroads.activities.DonorActivity;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
@@ -23,6 +25,7 @@ public class SignupFragment extends Fragment {
     private static EditText signupUsername;
     private static EditText signupPassword;
     private static EditText signupPhone;
+    private static EditText signupEmail;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,7 @@ public class SignupFragment extends Fragment {
 		signupUsername = (EditText) v.findViewById(R.id.etSignupUsername);
 		signupPassword = (EditText) v.findViewById(R.id.etSignupPassword);
 		signupPhone = (EditText) v.findViewById(R.id.etSignupPhone);
+		signupEmail = (EditText) v.findViewById(R.id.etSignupEmail);
 		
 		//Set up view listeners
 		setupViewListeners(v);
@@ -75,6 +79,7 @@ public class SignupFragment extends Fragment {
 		String uname = signupUsername.getText().toString();
 		String upasswd = signupPassword.getText().toString();
 		String uphone = signupPhone.getText().toString();
+		String uemail = signupEmail.getText().toString();
 		
 		// Check for boundary conditions
 		if (uname.isEmpty() || upasswd.isEmpty()) {
@@ -87,7 +92,7 @@ public class SignupFragment extends Fragment {
 		// Set core properties
 		user.setUsername(uname);
 		user.setPassword(upasswd);
-		user.setEmail("email@example.com");
+		user.setEmail(uemail);
 		// Set custom properties
 		user.put("phonenumber", uphone);
 		// Invoke signUpInBackground
@@ -96,11 +101,14 @@ public class SignupFragment extends Fragment {
 		    if (e == null) {
 		    	// Hooray! Let them use the app now.
 		    	Log.d("debug", "Sign up Successful");
-
+		    	Intent i = new Intent(getActivity(), DonorActivity.class);
+		    	startActivity(i);
 		    } else {
 		      // Sign up didn't succeed. Look at the ParseException
 		      // to figure out what went wrong
+		    	e.printStackTrace();
 		    	Log.d("debug", "Sign up didn't succeed");
+		    	Toast.makeText(getActivity(), "signup didn't work", Toast.LENGTH_LONG).show();
 		    }
 	    	// TBD: VV Call the Donor Home Activity if successful
 	    	Intent intent = new Intent().setClass(getActivity(), LoginActivity.class);

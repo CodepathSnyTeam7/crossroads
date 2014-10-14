@@ -79,14 +79,27 @@
             android:textColor="@color/black"
             android:inputType="phone" />
         
-         <EditText
-            android:id="@+id/etSignupDistrict"
+        <EditText
+            android:id="@+id/etSignupEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_alignLeft="@+id/etSignupPhone"
             android:layout_alignRight="@+id/etSignupPhone"
             android:layout_below="@+id/etSignupPhone"
+            android:ems="10"
+            android:hint="email"
+            android:textColor="@color/black"
+            android:inputType="textWebEmailAddress" />
+        
+         <EditText
+            android:id="@+id/etSignupDistrict"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignLeft="@+id/etSignupEmail"
+            android:layout_alignRight="@+id/etSignupEmail"
+            android:layout_below="@+id/etSignupEmail"
             android:ems="10"
             android:hint="District"
             android:textColor="@color/black"
