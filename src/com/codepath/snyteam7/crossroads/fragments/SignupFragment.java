@@ -2,6 +2,7 @@ package com.codepath.snyteam7.crossroads.fragments;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -10,8 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.codepath.snyteam7.crossroads.R;
+import com.codepath.snyteam7.crossroads.activities.DonorActivity;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
@@ -92,11 +95,14 @@ public class SignupFragment extends Fragment {
 		    if (e == null) {
 		    	// Hooray! Let them use the app now.
 		    	Log.d("debug", "Sign up Successful");
-		    	// TBD: Call the Donor Home Activity
+		    	Intent i = new Intent(getActivity(), DonorActivity.class);
+		    	startActivity(i);
 		    } else {
 		      // Sign up didn't succeed. Look at the ParseException
 		      // to figure out what went wrong
+		    	e.printStackTrace();
 		    	Log.d("debug", "Sign up didn't succeed");
+		    	Toast.makeText(getActivity(), "signup didn't work", Toast.LENGTH_LONG).show();
 		    }
 		  }
 		});
