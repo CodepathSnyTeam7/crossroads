@@ -99,10 +99,13 @@ public class LoginFragment extends Fragment {
 	
 	public void onLoginSuccessCallActivity(ParseUser user) {
     	// TBD: VV Call the Donor Home Activity if successful
-		if (user.getString("usertype").equalsIgnoreCase("reviewer")) {
+		testReviewerhome(user);
+		return;
+	}
+	public void testReviewerhome(ParseUser user) {
+		//if (user.getString("usertype").equalsIgnoreCase("reviewer")) {
 			Intent intent = new Intent().setClass(getActivity(), ReviewerHomeActivity.class);
 			startActivity(intent);
-		}
-		return;
+		//}
 	}
 }
