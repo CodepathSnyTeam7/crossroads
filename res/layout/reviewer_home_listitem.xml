@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
     
-      <com.pkmmte.circularimageview.CircularImageView
+      <ImageView
         android:id="@+id/ivRHomeUserImg"
         android:layout_width="32dp"
         android:layout_height="32dp"
@@ -11,7 +11,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true" />
 
-    <TextView
+      <TextView
         android:id="@+id/tvRHomeUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
         android:text="TextView" 
         android:textSize="10sp" />
         
-     <ImageView
+     <com.parse.ParseImageView
         android:id="@+id/ivRHomeUserPhoto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

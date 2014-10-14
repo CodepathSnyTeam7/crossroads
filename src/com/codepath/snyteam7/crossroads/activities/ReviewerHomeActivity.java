@@ -33,6 +33,7 @@ public class ReviewerHomeActivity extends Activity {
 		// Assign view references
 		lvItems = (ListView) findViewById(R.id.lvReviewerHome);
 		lvItems.setClickable(true);
+		aItems = new ReviewerHomeListAdapter(this);
 		lvItems.setAdapter(aItems);
 		
 		// Setup swipe for refresh
@@ -89,7 +90,8 @@ public class ReviewerHomeActivity extends Activity {
 	
 	// TBD: Fetch the list items from Parse
     private void fetchReviewerList() {
-    	// TBD: Fetch the list items from Parse
+    	// TBD: Fetch the list items from Parse with pagination
+    	aItems.loadObjects();
     }
     
 	@Override
