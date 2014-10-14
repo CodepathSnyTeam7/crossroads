@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+      <ImageView
+        android:id="@+id/ivDonorHomeUserImg"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_margin="1dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" />
+
+      <TextView
+        android:id="@+id/tvDonorHomeUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/ivDonorHomeUserImg"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="8dp"
+        android:text="TextView" 
+        android:textSize="10sp" />
+    
+      <TextView
+        android:id="@+id/tvDonorHomeUserTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_gravity="right"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="TextView" 
+        android:textSize="10sp" />
+        
+     <com.parse.ParseImageView
+        android:id="@+id/ivDonorHomeUserPhoto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="33dp"
+        android:scaleType="fitStart"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_launcher" />
+    
+    <TextView
+        android:id="@+id/tvDonorHomeUserDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/ivDonorHomeUserPhoto"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="8dp"
+        android:ellipsize="end"
+        android:maxLines="3"
+        android:text="default_description" 
+        android:textSize="10sp" />
+    
+
+    
+</RelativeLayout>

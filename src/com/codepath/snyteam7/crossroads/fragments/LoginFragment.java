@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.codepath.snyteam7.crossroads.R;
+import com.codepath.snyteam7.crossroads.activities.DonorActivity;
 import com.codepath.snyteam7.crossroads.activities.ReviewerHomeActivity;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
@@ -104,7 +105,8 @@ public class LoginFragment extends Fragment {
 	}
 	public void testReviewerhome(ParseUser user) {
 		//if (user.getString("usertype").equalsIgnoreCase("reviewer")) {
-			Intent intent = new Intent().setClass(getActivity(), ReviewerHomeActivity.class);
+			//Intent intent = new Intent().setClass(getActivity(), ReviewerHomeActivity.class);
+			Intent intent = new Intent().setClass(getActivity(), DonorActivity.class);
 			startActivity(intent);
 		//}
 	}

@@ -8,11 +8,12 @@ import android.widget.ListView;
 
 import com.codepath.snyteam7.crossroads.R;
 import com.codepath.snyteam7.crossroads.adapters.DonorHomeListAdapter;
+import com.codepath.snyteam7.crossroads.adapters.ReviewerHomeListAdapter;
 
 public class DonorActivity extends Activity {
 	
 	private ListView lvItems;
-	public  ArrayAdapter<DonorHomeListAdapter> aItems;
+	public  DonorHomeListAdapter aItems;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -20,10 +21,20 @@ public class DonorActivity extends Activity {
 		setContentView(R.layout.activity_donor);
 		
 		// Assign view references
-		lvItems = (ListView) findViewById(R.id.lvReviewerHome);
+		lvItems = (ListView) findViewById(R.id.lvDonorList);
 		lvItems.setClickable(true);
+		aItems = new DonorHomeListAdapter(this);
 		lvItems.setAdapter(aItems);
+		
+		fetchDonorList();
 	}
+	
+	// TBD: Fetch the list items from Parse
+    private void fetchDonorList() {
+    	// TBD: Fetch the list items from Parse with pagination
+    	aItems.loadObjects();
+    }
+    
 	
 	public void onDonate() {
 		Intent i = new Intent(this, DonateActivity.class);
