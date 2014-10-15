@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.codepath.snyteam7.crossroads.R;
 import com.codepath.snyteam7.crossroads.activities.DonorActivity;
@@ -99,8 +100,23 @@ public class LoginFragment extends Fragment {
 	}
 	
 	public void onLoginSuccessCallActivity(ParseUser user) {
-    	// TBD: VV Call the Donor Home Activity if successful
-		testReviewerhome(user);
+		Intent intent;
+		String usertype = user.getString("usertype");
+		
+		if (usertype == null) {
+			Toast.makeText(getActivity(), "Login usertype unknown", Toast.LENGTH_LONG).show();
+			return;
+		}
+		if (usertype.equalsIgnoreCase("reviewer")) {
+			intent = new Intent().setClass(getActivity(), ReviewerHomeActivity.class);
+		} else if (usertype.equalsIgnoreCase("donor")) {
+			intent = new Intent().setClass(getActivity(), DonorActivity.class);
+		} else {
+			Toast.makeText(getActivity(), "Login usertype invalid", Toast.LENGTH_LONG).show();
+			return;
+		}
+		
+		startActivity(intent);
 		return;
 	}
 	public void testReviewerhome(ParseUser user) {

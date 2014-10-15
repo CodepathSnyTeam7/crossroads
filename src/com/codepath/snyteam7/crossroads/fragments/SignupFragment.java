@@ -95,6 +95,8 @@ public class SignupFragment extends Fragment {
 		user.setEmail(uemail);
 		// Set custom properties
 		user.put("phonenumber", uphone);
+		user.put("usertype", "donor");
+		
 		// Invoke signUpInBackground
 		user.signUpInBackground(new SignUpCallback() {
 		  public void done(ParseException e) {
