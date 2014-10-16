@@ -1,10 +1,13 @@
 package com.codepath.snyteam7.crossroads.adapters;
 
-import java.util.Arrays;
-
 import android.content.Context;
+import android.content.Intent;
+import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,7 +21,8 @@ import com.parse.ParseImageView;
 import com.parse.ParseQuery;
 import com.parse.ParseQueryAdapter;
 
-public class ReviewerHomeListAdapter extends ParseQueryAdapter<Item> {
+public class ReviewerHomeListAdapter extends ParseQueryAdapter<Item>  {
+	
 
 	public ReviewerHomeListAdapter(Context context) {
 		super(context, new ParseQueryAdapter.QueryFactory<Item>() {
@@ -26,9 +30,11 @@ public class ReviewerHomeListAdapter extends ParseQueryAdapter<Item> {
 				// Here we can configure a ParseQuery to display
 				// items for review.
 				ParseQuery query = new ParseQuery("Item");
-				//TBD filter to get items not reviewed
 				//query.whereContainedIn("rating", Arrays.asList("5", "4"));
 				//query.orderByDescending("rating");
+				// filter to get items not reviewed
+				query.whereDoesNotExist("accepteddate");
+				query.whereDoesNotExist("rejecteddate");
 				return query;
 			}
 		});
@@ -68,9 +74,10 @@ public class ReviewerHomeListAdapter extends ParseQueryAdapter<Item> {
 		// TBD: Get the username
 		tvDonor.setText("donor");
 		TextView tvItemDescription = (TextView) v.findViewById(R.id.tvRHomeUserDesc);
-		tvItemDescription.setText(item.getDescription());
+		String description = "<font color=\"#206199\"><b>" + "Description" + "<br>" + "</b></font>" +
+				"<font color=\"#206199\">" + item.getDescription() + "  " + "</font>";
+		tvItemDescription.setText(Html.fromHtml(description));
 		return v;
-	}
-
+	} 
 }
 

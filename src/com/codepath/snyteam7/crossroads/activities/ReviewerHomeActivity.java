@@ -3,6 +3,7 @@ package com.codepath.snyteam7.crossroads.activities;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
@@ -76,16 +77,15 @@ public class ReviewerHomeActivity extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				/*
-				// TBD Launch the item display activity
-				Intent i = new Intent(getActivity(), ItemDisplayActivity.class);
-				Tweet displaytweet = tweets.get(position);
-				i.putExtra("tweet", displaytweet);
-				// Start the new activity
+				// Launch the item display activity
+				Intent i = new Intent(ReviewerHomeActivity.this, ReceiverItemDetailsActivity.class);
+				Item item = aItems.getItem(position);
+				i.putExtra("item_objid", item.getObjectId());
 				startActivity(i);
-				*/			
+				
 			}		
 		});
+
 	}
 	
 	// TBD: Fetch the list items from Parse

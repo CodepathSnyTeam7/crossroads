@@ -1,7 +1,5 @@
 package com.codepath.snyteam7.crossroads.activities;
 
-import java.util.List;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -17,7 +15,7 @@ import android.widget.Toast;
 
 import com.codepath.snyteam7.crossroads.R;
 import com.codepath.snyteam7.crossroads.model.Item;
-import com.parse.FindCallback;
+import com.parse.GetCallback;
 import com.parse.GetDataCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -37,6 +35,47 @@ public class ReceiverItemDetailsActivity extends Activity {
 		ivPhoto = (ParseImageView) findViewById(R.id.ivItemPhoto);
 		tvDonorName = (TextView) findViewById(R.id.tvDonorName);
 		tvDescription = (TextView) findViewById(R.id.tvDescription);
+		
+		// VV New code
+		String itemObjIdStr = getIntent().getStringExtra("item_objid");
+		ParseQuery<Item> query = ParseQuery.getQuery(Item.class);
+		// First try to find from the cache and only then go to network
+		query.setCachePolicy(ParseQuery.CachePolicy.CACHE_ELSE_NETWORK); // or CACHE_ONLY
+		// Execute the query to find the object with ID
+		query.getInBackground(itemObjIdStr, new GetCallback<Item>() {
+		  public void done(Item item0, ParseException e) {
+		    if (e == null) {
+		       // item was found 
+		    	tvDescription.setText(item0.getDescription());
+				ParseFile photoFile = item0.getPhotoFile();
+				if (photoFile != null) {
+					ivPhoto.setParseFile(photoFile);
+					ivPhoto.loadInBackground(new GetDataCallback() {
+
+						@Override
+						public void done(byte[] arg0, ParseException e) {
+							if (e == null) {
+
+							} else {
+								e.printStackTrace();
+								Toast.makeText(
+										ReceiverItemDetailsActivity.this,
+										"error fetching photo",
+										Toast.LENGTH_LONG).show();
+							}
+
+						}
+					});
+				}
+		    } else {
+				e.printStackTrace();
+				Toast.makeText(ReceiverItemDetailsActivity.this,
+						"error finding items", Toast.LENGTH_LONG).show();
+			}
+		  }
+		});
+		
+		/* Jean original code
 		ParseQuery<Item> query = ParseQuery.getQuery(Item.class);
 		query.findInBackground(new FindCallback<Item>() {
 
@@ -75,6 +114,7 @@ public class ReceiverItemDetailsActivity extends Activity {
 
 			}
 		});
+		*/
 	}
 
 	@Override

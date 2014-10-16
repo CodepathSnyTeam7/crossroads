@@ -56,7 +56,5 @@
         android:text="default_description" 
         android:textSize="10sp" />
     
-
-    
 </RelativeLayout>
 
