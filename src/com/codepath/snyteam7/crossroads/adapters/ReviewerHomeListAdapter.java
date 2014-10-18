@@ -1,18 +1,16 @@
 package com.codepath.snyteam7.crossroads.adapters;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import android.content.Context;
-import android.content.Intent;
 import android.text.Html;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.codepath.snyteam7.crossroads.R;
-import com.codepath.snyteam7.crossroads.activities.ReceiverItemDetailsActivity;
 import com.codepath.snyteam7.crossroads.model.Item;
 import com.parse.GetDataCallback;
 import com.parse.ParseException;
@@ -20,6 +18,7 @@ import com.parse.ParseFile;
 import com.parse.ParseImageView;
 import com.parse.ParseQuery;
 import com.parse.ParseQueryAdapter;
+import com.parse.ParseUser;
 
 public class ReviewerHomeListAdapter extends ParseQueryAdapter<Item>  {
 	
@@ -70,12 +69,29 @@ public class ReviewerHomeListAdapter extends ParseQueryAdapter<Item>  {
 			});
 		}
 
+		// Get the username
 		TextView tvDonor = (TextView) v.findViewById(R.id.tvRHomeUser);
-		// TBD: Get the username
-		tvDonor.setText("donor");
+    	ParseUser donor = item.getDonor();
+    	if (donor != null) {
+    		tvDonor.setText(item.getString("donorusername"));
+    		//tvDonor.setText("DonorTBD");
+    	} else {
+    		tvDonor.setText("Donor");
+    	}
+		
+		// Get the donation date
+		TextView tvDonateDate = (TextView) v.findViewById(R.id.tvRHomeUserDonateDate);
+		Date donateDate = item.getDate("donationdate");
+		if (donateDate != null) {
+	    	SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+	    	String donateDateStr = formatter.format(donateDate);
+	    	tvDonateDate.setText(donateDateStr);
+		} else {
+			tvDonateDate.setText("Date");
+		}
+    	
 		TextView tvItemDescription = (TextView) v.findViewById(R.id.tvRHomeUserDesc);
-		String description = "<font color=\"#206199\"><b>" + "Description" + "<br>" + "</b></font>" +
-				"<font color=\"#206199\">" + item.getDescription() + "  " + "</font>";
+		String description = "<font color=\"#206199\">" + item.getDescription() + "  " + "</font>";
 		tvItemDescription.setText(Html.fromHtml(description));
 		return v;
 	} 

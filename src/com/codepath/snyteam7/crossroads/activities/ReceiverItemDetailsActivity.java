@@ -86,7 +86,7 @@ public class ReceiverItemDetailsActivity extends FragmentActivity {
 						public void done(ParseException arg0) {
 							stopProgressBar();
 							if(arg0 == null) {
-								// Send accept push
+								// Send reject push
 								pushItemReviewResult("Item not accepted");
 								Toast.makeText(ReceiverItemDetailsActivity.this, "Item Saved!", Toast.LENGTH_LONG).show();
 								startReviewerHomeActivity();
