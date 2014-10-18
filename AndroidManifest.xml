@@ -90,8 +90,12 @@
             android:label="@string/title_activity_receiver_item_details" >
         </activity>
         <activity
-            android:name="com.codepath.snyteam7.crossroads.activities.DonorActivity"
+            android:name=".activities.DonorActivity"
             android:label="@string/title_activity_donor" >
+        </activity>
+        <activity
+            android:name=".DonorItemDetailsActivity"
+            android:label="@string/title_activity_donor_item_details" >
         </activity>
     </application>
 

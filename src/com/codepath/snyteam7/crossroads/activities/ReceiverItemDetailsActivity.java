@@ -1,120 +1,39 @@
 package com.codepath.snyteam7.crossroads.activities;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.codepath.snyteam7.crossroads.R;
-import com.codepath.snyteam7.crossroads.model.Item;
-import com.parse.GetCallback;
-import com.parse.GetDataCallback;
-import com.parse.ParseException;
-import com.parse.ParseFile;
-import com.parse.ParseImageView;
-import com.parse.ParseQuery;
+import com.codepath.snyteam7.crossroads.fragments.ItemDetailFragment;
 
-public class ReceiverItemDetailsActivity extends Activity {
-
-	private ParseImageView ivPhoto;
-	private TextView tvDonorName;
-	private TextView tvDescription;
+public class ReceiverItemDetailsActivity extends FragmentActivity {
+	
+	ItemDetailFragment detailsFragment;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_receiver_item_details);
-		ivPhoto = (ParseImageView) findViewById(R.id.ivItemPhoto);
-		tvDonorName = (TextView) findViewById(R.id.tvDonorName);
-		tvDescription = (TextView) findViewById(R.id.tvDescription);
-		
-		// VV New code
+		getActionBar().setTitle("");
+		setupDetailsFragment();
+
+	}
+
+	private void setupDetailsFragment() {
 		String itemObjIdStr = getIntent().getStringExtra("item_objid");
-		ParseQuery<Item> query = ParseQuery.getQuery(Item.class);
-		// First try to find from the cache and only then go to network
-		query.setCachePolicy(ParseQuery.CachePolicy.CACHE_ELSE_NETWORK); // or CACHE_ONLY
-		// Execute the query to find the object with ID
-		query.getInBackground(itemObjIdStr, new GetCallback<Item>() {
-		  public void done(Item item0, ParseException e) {
-		    if (e == null) {
-		       // item was found 
-		    	tvDescription.setText(item0.getDescription());
-				ParseFile photoFile = item0.getPhotoFile();
-				if (photoFile != null) {
-					ivPhoto.setParseFile(photoFile);
-					ivPhoto.loadInBackground(new GetDataCallback() {
-
-						@Override
-						public void done(byte[] arg0, ParseException e) {
-							if (e == null) {
-
-							} else {
-								e.printStackTrace();
-								Toast.makeText(
-										ReceiverItemDetailsActivity.this,
-										"error fetching photo",
-										Toast.LENGTH_LONG).show();
-							}
-
-						}
-					});
-				}
-		    } else {
-				e.printStackTrace();
-				Toast.makeText(ReceiverItemDetailsActivity.this,
-						"error finding items", Toast.LENGTH_LONG).show();
-			}
-		  }
-		});
-		
-		/* Jean original code
-		ParseQuery<Item> query = ParseQuery.getQuery(Item.class);
-		query.findInBackground(new FindCallback<Item>() {
-
-			@Override
-			public void done(List<Item> arg0, ParseException e) {
-				if (e == null) {
-					if (arg0 != null && arg0.size() > 0) {
-						Item item0 = arg0.get(0);
-						tvDescription.setText(item0.getDescription());
-						ParseFile photoFile = item0.getPhotoFile();
-						if (photoFile != null) {
-							ivPhoto.setParseFile(photoFile);
-							ivPhoto.loadInBackground(new GetDataCallback() {
-
-								@Override
-								public void done(byte[] arg0, ParseException e) {
-									if (e == null) {
-
-									} else {
-										e.printStackTrace();
-										Toast.makeText(
-												ReceiverItemDetailsActivity.this,
-												"error fetching photo",
-												Toast.LENGTH_LONG).show();
-									}
-
-								}
-							});
-						}
-					}
-				} else {
-					e.printStackTrace();
-					Toast.makeText(ReceiverItemDetailsActivity.this,
-							"error finding items", Toast.LENGTH_LONG).show();
-				}
-
-			}
-		});
-		*/
+		detailsFragment = ItemDetailFragment.newInstance(itemObjIdStr);
+		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+		ft.replace(R.id.detail_fragment_placeholder, detailsFragment);
+		ft.commit();
 	}
 
 	@Override
@@ -136,6 +55,8 @@ public class ReceiverItemDetailsActivity extends Activity {
 			return true;
 		} else if (id == R.id.action_reject) {
 
+		} else if (id == R.id.action_viewmessages) {
+			
 		}
 		return super.onOptionsItemSelected(item);
 	}

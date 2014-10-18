@@ -9,7 +9,12 @@
         android:title="@string/accept"/>
     <item
         android:id="@+id/action_reject"
-        android:orderInCategory="3"
+        android:orderInCategory="4"
         android:showAsAction="always"
         android:title="@string/reject"/>
+    <item
+        android:id="@+id/action_viewmessages"
+        android:orderInCategory="5"
+        android:showAsAction="always"
+        android:title="@string/view_messages"/>
 </menu>

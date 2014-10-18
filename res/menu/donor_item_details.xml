@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.codepath.snyteam7.crossroads.DonorItemDetailsActivity" >
+
+    <item
+        android:id="@+id/action_viewmessages"
+        android:orderInCategory="5"
+        android:showAsAction="always"
+        android:title="@string/view_messages"/>
+
+</menu>
