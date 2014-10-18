@@ -1,5 +1,9 @@
 package com.codepath.snyteam7.crossroads.fragments;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -9,13 +13,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.codepath.snyteam7.crossroads.R;
-import com.codepath.snyteam7.crossroads.activities.LoginActivity;
 import com.codepath.snyteam7.crossroads.activities.DonorActivity;
+import com.codepath.snyteam7.crossroads.activities.LoginActivity;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
@@ -26,11 +34,20 @@ public class SignupFragment extends Fragment {
     private static EditText signupPassword;
     private static EditText signupPhone;
     private static EditText signupEmail;
+    private Spinner spinState;
+    private Spinner spinDistrict;
+    List<String> allDistlist;
+    List<String> HKDistlist;
+    List<String> KowloonDistlist;
+    List<String> NTDistlist;
+    ArrayAdapter<String> spinStatedataAdapter;
+    ArrayAdapter<String> spinDistdataAdapter;
+    
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		setupDistlists();
 	}
 	
 	@Override
@@ -44,7 +61,9 @@ public class SignupFragment extends Fragment {
 		signupUsername = (EditText) v.findViewById(R.id.etSignupUsername);
 		signupPassword = (EditText) v.findViewById(R.id.etSignupPassword);
 		signupPhone = (EditText) v.findViewById(R.id.etSignupPhone);
-		signupEmail = (EditText) v.findViewById(R.id.etSignupEmail);
+		signupEmail = (EditText) v.findViewById(R.id.etSignupEmail);	
+		addItemsOnSpinnerState(v);
+		addItemsOnSpinnerDistrict(v);
 		
 		//Set up view listeners
 		setupViewListeners(v);
@@ -53,14 +72,50 @@ public class SignupFragment extends Fragment {
 		return v;
 	}
 	
+	private OnItemSelectedListener spinStateitemSelectedListener = new OnItemSelectedListener() {
+
+	    @Override
+	    public void onItemSelected(AdapterView<?> arg0, View v, int position,
+	            long arg3) {
+
+	        String statename = String.valueOf(spinState.getSelectedItem());
+	        if (statename.equalsIgnoreCase("HK Island")) {
+	        	spinDistdataAdapter.clear();
+	        	spinDistdataAdapter.addAll(HKDistlist);
+	        	spinDistdataAdapter.notifyDataSetChanged();
+	        } else if (statename.equalsIgnoreCase("Kowloon")) {
+	        	spinDistdataAdapter.clear();
+	        	spinDistdataAdapter.addAll(KowloonDistlist);
+	        	spinDistdataAdapter.notifyDataSetChanged();
+	        } else if (statename.equalsIgnoreCase("NT")) {
+	        	spinDistdataAdapter.clear();
+	        	spinDistdataAdapter.addAll(NTDistlist);
+	        	spinDistdataAdapter.notifyDataSetChanged();
+	        } else {
+	        	spinDistdataAdapter.clear();
+	        	spinDistdataAdapter.addAll(allDistlist);
+	        	spinDistdataAdapter.notifyDataSetChanged();
+	        } 
+	    }
+
+	    @Override
+	    public void onNothingSelected(AdapterView<?> arg0) {
+	        // TODO Auto-generated method stub
+
+	    }
+	};
+	
 	public void setupViewListeners(View v) {
+		// Signup button listener
 		final Button button = 
                 (Button) v.findViewById(R.id.btSignup);
 	        button.setOnClickListener(new View.OnClickListener() {
 	            public void onClick(View v) {
 	                signupButtonClicked(v);
 	            }
-	        });
+	    }); 
+	    // Setup District listener
+	    spinState.setOnItemSelectedListener(spinStateitemSelectedListener);
 	}
 	
 	@Override
@@ -96,6 +151,10 @@ public class SignupFragment extends Fragment {
 		// Set custom properties
 		user.put("phonenumber", uphone);
 		user.put("usertype", "donor");
+		String dist = String.valueOf(spinDistrict.getSelectedItem());
+		if (!dist.isEmpty()) {
+			user.put("district", dist);
+		}
 		
 		// Invoke signUpInBackground
 		user.signUpInBackground(new SignUpCallback() {
@@ -118,4 +177,50 @@ public class SignupFragment extends Fragment {
 		  }
 		});
 	}
+	
+	  // add items into spinner dynamically
+	  public void addItemsOnSpinnerState(View v) {
+		spinState = (Spinner) v.findViewById(R.id.spinnerSignupState);
+		List<String> list = new ArrayList<String>();
+		list.add("All");
+		list.add("HK Island");
+		list.add("Kowloon");
+		list.add("NT");
+		spinStatedataAdapter = new ArrayAdapter<String>(getActivity(),
+			android.R.layout.simple_spinner_item, list);
+		spinStatedataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		spinState.setAdapter(spinStatedataAdapter);
+	  }
+	  
+	  // add items into spinner dynamically
+	  public void addItemsOnSpinnerDistrict(View v) {
+		spinDistrict = (Spinner) v.findViewById(R.id.spinnerSignupDistrict);
+		spinDistdataAdapter = new ArrayAdapter<String>(getActivity(),
+			android.R.layout.simple_spinner_item, allDistlist);
+		spinDistdataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		spinDistrict.setAdapter(spinDistdataAdapter);
+	  }
+	  
+	  private void setupDistlists() {
+		  // Set up all dists
+		  allDistlist = new ArrayList<String>();
+		  allDistlist.add("HKDist1");
+		  allDistlist.add("HKDist2");
+		  allDistlist.add("HKDist3");
+		  allDistlist.add("KLDist1");
+		  allDistlist.add("KLDist2");
+		  allDistlist.add("NTDist1");
+		  // Set up HK districts
+		  HKDistlist = new ArrayList<String>();
+		  HKDistlist.add("HKDist1");
+		  HKDistlist.add("HKDist2");
+		  HKDistlist.add("HKDist3");
+		  //Set up Kowloon districts
+		  KowloonDistlist = new ArrayList<String>();
+		  KowloonDistlist.add("KLDist1");
+		  KowloonDistlist.add("KLDist2");
+		  //Set up NT districts
+		  NTDistlist = new ArrayList<String>();
+		  NTDistlist.add("NTDist1");
+	  }
 }

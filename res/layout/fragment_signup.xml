@@ -19,11 +19,17 @@
         android:alpha="10"
          >
          
+     <LinearLayout 
+       android:id="@+id/llSignupNames"
+       android:layout_width="match_parent"
+   	   android:layout_height="wrap_content"
+   	   android:orientation="horizontal" >
+         
         <EditText
             android:id="@+id/etSignupFirstname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
+            android:layout_weight="1"
             android:ems="10"
             android:hint="first name"
             android:textColor="@color/black"
@@ -33,22 +39,25 @@
             android:id="@+id/etSignupLastname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/etSignupFirstname"
-            android:layout_alignRight="@+id/etSignupFirstname"
-            android:layout_below="@+id/etSignupFirstname"
+            android:layout_weight="1"
             android:ems="10"
             android:hint="family name"
             android:textColor="@color/black"
             android:inputType="textPersonName" />
+     </LinearLayout>
+        
+     <LinearLayout 
+       android:id="@+id/llSignupUserpasswd"
+       android:layout_width="match_parent"
+   	   android:layout_height="wrap_content"
+   	   android:orientation="horizontal" 
+   	   android:layout_below="@+id/llSignupNames" >
         
         <EditText
             android:id="@+id/etSignupUsername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_alignLeft="@+id/etSignupLastname"
-            android:layout_alignRight="@+id/etSignupLastname"
-            android:layout_below="@+id/etSignupLastname"
+			android:layout_weight="1"
             android:ems="10"
             android:hint="username"
             android:textColor="@color/black"
@@ -58,22 +67,24 @@
             android:id="@+id/etSignupPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/etSignupUsername"
-            android:layout_alignRight="@+id/etSignupUsername"
-            android:layout_below="@+id/etSignupUsername"
+            android:layout_weight="1"
             android:ems="10"
             android:hint="password"
             android:textColor="@color/black"
             android:inputType="textPassword" />
-        
+     </LinearLayout>
+     
+     <LinearLayout 
+       android:id="@+id/llSignupPhoneEmail"
+       android:layout_width="match_parent"
+   	   android:layout_height="wrap_content"
+   	   android:orientation="horizontal" 
+   	   android:layout_below="@+id/llSignupUserpasswd" >
         <EditText
             android:id="@+id/etSignupPhone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_alignLeft="@+id/etSignupPassword"
-            android:layout_alignRight="@+id/etSignupPassword"
-            android:layout_below="@+id/etSignupPassword"
+			android:layout_weight="1"
             android:ems="10"
             android:hint="Phone 408-111-2222"
             android:textColor="@color/black"
@@ -83,35 +94,43 @@
             android:id="@+id/etSignupEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_alignLeft="@+id/etSignupPhone"
-            android:layout_alignRight="@+id/etSignupPhone"
-            android:layout_below="@+id/etSignupPhone"
+			android:layout_weight="1"
             android:ems="10"
             android:hint="email"
             android:textColor="@color/black"
             android:inputType="textWebEmailAddress" />
+      </LinearLayout>
         
-         <EditText
-            android:id="@+id/etSignupDistrict"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_alignLeft="@+id/etSignupEmail"
-            android:layout_alignRight="@+id/etSignupEmail"
-            android:layout_below="@+id/etSignupEmail"
-            android:ems="10"
-            android:hint="District"
-            android:textColor="@color/black"
-            android:inputType="text" />
+     <LinearLayout 
+       android:id="@+id/llSignupDistrict"
+       android:layout_width="match_parent"
+   	   android:layout_height="wrap_content"
+   	   android:orientation="horizontal" 
+   	   android:layout_below="@+id/llSignupPhoneEmail" >
 
+         <Spinner
+             android:id="@+id/spinnerSignupState"
+             android:layout_height="wrap_content"
+             android:layout_width="wrap_content"
+             android:layout_centerHorizontal="true"
+             android:layout_weight="1"
+              />
+         
+         <Spinner
+             android:id="@+id/spinnerSignupDistrict"
+             android:layout_height="wrap_content"
+             android:layout_width="wrap_content"
+             android:layout_centerHorizontal="true"
+             android:layout_weight="1"
+              />
+      </LinearLayout>
+      
         <Button
             android:id="@+id/btSignup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/etSignupDistrict"
-            android:layout_alignRight="@+id/etSignupDistrict"
-            android:layout_below="@+id/etSignupDistrict"
+			android:layout_centerHorizontal="true"
+            android:layout_below="@+id/llSignupDistrict"
             android:layout_marginTop="16dp"
             android:text="@string/lbl_singup"
             android:textColor="@color/LightGray" />
