@@ -32,7 +32,6 @@ public class DonorActivity extends FragmentActivity {
 		/*lvItems = (ListView) findViewById(R.id.lvDonorList);
 		lvItems.setClickable(true);
 		aItems = new DonorHomeListAdapter(this);
-<<<<<<< HEAD
 		lvItems.setAdapter(aItems);
         // Set up on click listener for detail view
 	    lvItems.setOnItemClickListener(new OnItemClickListener() {
@@ -47,7 +46,6 @@ public class DonorActivity extends FragmentActivity {
 			}		
 		});		
 		fetchDonorList();
-=======
 		lvItems.setAdapter(aItems);*/
 		
 		//fetchDonorList();
