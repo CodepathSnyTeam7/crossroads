@@ -161,7 +161,10 @@ public class DonateActivity extends Activity {
 			if(pickupDate != null) {
 			donateItem.setDescription(etItemDescription.getText().toString());
 			donateItem.setPhotoFile(parsePhotoFile);
-			donateItem.setDonor(ParseUser.getCurrentUser());
+			ParseUser donor = ParseUser.getCurrentUser();
+			String donorUsername = donor.getUsername();
+			donateItem.setDonor(donor);
+			donateItem.put("donorusername", donorUsername);
 			donateItem.put("donationdate", new Date());
 			donateItem.put("condition", spCondition.getSelectedItem().toString());
 			donateItem.put("pickupdate", pickupDate);
