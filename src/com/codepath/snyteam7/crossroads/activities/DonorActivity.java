@@ -6,16 +6,11 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.AdapterView.OnItemClickListener;
 
-import com.codepath.snyteam7.crossroads.DonorItemDetailsActivity;
 import com.codepath.snyteam7.crossroads.R;
 import com.codepath.snyteam7.crossroads.adapters.DonorHomeListAdapter;
 import com.codepath.snyteam7.crossroads.fragments.DonorHomeFragment;
-import com.codepath.snyteam7.crossroads.model.Item;
 import com.codepath.snyteam7.crossroads.listeners.FragmentTabListener;
 
 public class DonorActivity extends FragmentActivity {
@@ -23,11 +18,19 @@ public class DonorActivity extends FragmentActivity {
 	private ListView lvItems;
 	public  DonorHomeListAdapter aItems;
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.donate_button, menu);
+        return true;
+    }
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_donor);
-		
+	    
 		// Assign view references
 		/*lvItems = (ListView) findViewById(R.id.lvDonorList);
 		lvItems.setClickable(true);
@@ -50,8 +53,8 @@ public class DonorActivity extends FragmentActivity {
 		
 		//fetchDonorList();
 		setupReviewerTabs();
+
 	}
-	
 	 
 	// Setting Donor Home and Lists
 		private void setupReviewerTabs() {
@@ -61,7 +64,7 @@ public class DonorActivity extends FragmentActivity {
 
 			ActionBar.Tab tab1 = actionBar
 				.newTab()
-				.setText("Accepted")
+				.setText("Home")
 				//.setIcon(R.drawable.ic_login)
 				.setTag("DonorHomeFragment")
 				.setTabListener(
@@ -82,16 +85,6 @@ public class DonorActivity extends FragmentActivity {
 
 			actionBar.addTab(tab2);
 			
-			ActionBar.Tab tab3 = actionBar
-					.newTab()
-					.setText("Rejected")
-					//.setIcon(R.drawable.ic_signup)
-					.setTag("DonorRejectedFragment")
-					.setTabListener(
-					    new FragmentTabListener<DonorHomeFragment>(R.id.flDonorContainer, this, "DonorRejectedTab",
-					    		DonorHomeFragment.class));
-
-				actionBar.addTab(tab3);
 		}
 	
 	// TBD: Fetch the list items from Parse
@@ -100,8 +93,19 @@ public class DonorActivity extends FragmentActivity {
     	aItems.loadObjects();
     }
     
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle presses on the action bar items
+        switch (item.getItemId()) {
+            case R.id.miDonate:
+            	onDonate();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 	
-	public void onDonate(View v) {
+	public void onDonate() {
 		Intent i = new Intent(this, DonateActivity.class);
 		startActivity(i);
 	}

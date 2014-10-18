@@ -55,5 +55,7 @@
         android:layout_marginRight="24dp"
         android:text="Info"
         android:textSize="10sp" />
+
+   
     
 </RelativeLayout>
