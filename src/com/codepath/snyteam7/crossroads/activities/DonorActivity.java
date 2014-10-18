@@ -81,6 +81,17 @@ public class DonorActivity extends FragmentActivity {
 				    		DonorHomeFragment.class));
 
 			actionBar.addTab(tab2);
+			
+			ActionBar.Tab tab3 = actionBar
+					.newTab()
+					.setText("Rejected")
+					//.setIcon(R.drawable.ic_signup)
+					.setTag("DonorRejectedFragment")
+					.setTabListener(
+					    new FragmentTabListener<DonorHomeFragment>(R.id.flDonorContainer, this, "DonorRejectedTab",
+					    		DonorHomeFragment.class));
+
+				actionBar.addTab(tab3);
 		}
 	
 	// TBD: Fetch the list items from Parse

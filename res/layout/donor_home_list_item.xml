@@ -8,31 +8,42 @@
         android:layout_height="32dp"
         android:layout_margin="1dp"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" />       
-    
-      <TextView
-        android:id="@+id/tvDonorHomeUserTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_gravity="right"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:text="Time" 
-        android:textSize="16sp" />
-        
+        android:layout_alignParentTop="true" />
 
     <com.parse.ParseImageView
         android:id="@+id/ivDonorHomeUserPhoto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignBottom="@+id/tvDonorHomeUserDesc"
+        android:layout_alignBottom="@+id/tvDonorHomeUserTime"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/tvDonorHomeUserDesc"
+        android:layout_toLeftOf="@+id/tvDonorHomeUserTime"
         android:adjustViewBounds="true"
         android:scaleType="fitStart"
         android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/tvDonorHomeUserDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/ivDonorHomeUserImg"
+        android:layout_marginLeft="18dp"
+        style="@style/DescriptionFormat"
+        android:layout_toRightOf="@+id/ivDonorHomeUserImg"
+        android:ellipsize="end"
+        android:maxLines="3"
+        android:text="default_description"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tvDonorHomeUserTime"
+        style="@style/DateFormat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvDonorHomeUserDesc"
+        android:layout_below="@+id/tvDonorHomeUserDesc"
+        android:text="Time"
+        android:textSize="10sp" />
 
     <TextView
         android:id="@+id/tvDonorHomeUser"
@@ -40,21 +51,9 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/tvDonorHomeUserTime"
         android:layout_alignBottom="@+id/tvDonorHomeUserTime"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="56dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="24dp"
         android:text="Info"
         android:textSize="10sp" />
-
-    <TextView
-        android:id="@+id/tvDonorHomeUserDesc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvDonorHomeUser"
-        android:layout_below="@+id/ivDonorHomeUserImg"
-        android:ellipsize="end"
-        android:maxLines="3"
-        android:text="default_description" 
-        android:textSize="16sp" />
-
     
 </RelativeLayout>

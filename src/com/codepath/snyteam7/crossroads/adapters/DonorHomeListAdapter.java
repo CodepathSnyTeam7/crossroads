@@ -3,6 +3,7 @@ package com.codepath.snyteam7.crossroads.adapters;
 import com.codepath.snyteam7.crossroads.R;
 
 import android.content.Context;
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -100,6 +101,9 @@ public class DonorHomeListAdapter extends ParseQueryAdapter<Item> {
 		//TextView tvDonor = (TextView) v.findViewById(R.id.tvDonorHomeUser);
 		// TBD: Get the username
 		//tvDonor.setText("donor");
+		TextView tvDonorHomeUserTime = (TextView) v.findViewById(R.id.tvDonorHomeUserTime);
+		DateFormat df = new DateFormat();
+		tvDonorHomeUserTime.setText(df.format("MM/dd/yyyy", item.getCreationDate()));
 		TextView tvItemDescription = (TextView) v.findViewById(R.id.tvDonorHomeUserDesc);
 		tvItemDescription.setText(item.getDescription());
 		return v;
