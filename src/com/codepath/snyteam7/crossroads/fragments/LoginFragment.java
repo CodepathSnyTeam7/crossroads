@@ -18,6 +18,7 @@ import com.codepath.snyteam7.crossroads.activities.DonorActivity;
 import com.codepath.snyteam7.crossroads.activities.ReviewerHomeActivity;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
+import com.parse.ParseInstallation;
 import com.parse.ParseUser;
 
 public class LoginFragment extends Fragment {
@@ -86,9 +87,7 @@ public class LoginFragment extends Fragment {
 			  public void done(ParseUser user, ParseException e) {
 			    if (user != null) {
 			    	// Hooray! The user is logged in.
-			    	// TBD: Check for the User type and call the corresponding Activity
-			    	// Donor - call Donor Home activity
-			    	// Reviewer - call Reviewer Home activity
+			    	// Check for the User type and call the corresponding Activity
 			    	onLoginSuccessCallActivity(user);
 			    	Log.d("debug", "Login Successful!!!!");
 			    } else {
@@ -107,6 +106,13 @@ public class LoginFragment extends Fragment {
 			Toast.makeText(getActivity(), "Login usertype unknown", Toast.LENGTH_LONG).show();
 			return;
 		}
+		
+		// Store the username in the installation object for receiving push notifications
+		ParseInstallation installation = ParseInstallation.getCurrentInstallation();
+		ParseUser currentUser = ParseUser.getCurrentUser();
+		installation.put("username", currentUser.getUsername());
+		installation.saveInBackground();
+		
 		if (usertype.equalsIgnoreCase("reviewer")) {
 			intent = new Intent().setClass(getActivity(), ReviewerHomeActivity.class);
 		} else if (usertype.equalsIgnoreCase("donor")) {
@@ -119,11 +125,5 @@ public class LoginFragment extends Fragment {
 		startActivity(intent);
 		return;
 	}
-	public void testReviewerhome(ParseUser user) {
-		//if (user.getString("usertype").equalsIgnoreCase("reviewer")) {
-			//Intent intent = new Intent().setClass(getActivity(), ReviewerHomeActivity.class);
-			Intent intent = new Intent().setClass(getActivity(), DonorActivity.class);
-			startActivity(intent);
-		//}
-	}
+
 }

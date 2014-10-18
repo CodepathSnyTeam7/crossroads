@@ -25,6 +25,10 @@ import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+import com.parse.ParseFile;
+import com.parse.ParseImageView;
+import com.parse.ParseInstallation;
+import com.parse.ParsePush;
 
 public class ReceiverItemDetailsActivity extends FragmentActivity {
 	
@@ -65,6 +69,7 @@ public class ReceiverItemDetailsActivity extends FragmentActivity {
 		if (id == R.id.action_accept) {
 			// open the dialog fragment
 			openAcceptFormDialog();
+
 			return true;
 		} else if (id == R.id.action_reject) {
 			ParseQuery<Item> query = ParseQuery.getQuery(Item.class);
@@ -82,6 +87,8 @@ public class ReceiverItemDetailsActivity extends FragmentActivity {
 						public void done(ParseException arg0) {
 							stopProgressBar();
 							if(arg0 == null) {
+								// Send accept push
+								pushItemReviewResult("Item not accepted");
 								Toast.makeText(ReceiverItemDetailsActivity.this, "Item Saved!", Toast.LENGTH_LONG).show();
 								startReviewerHomeActivity();
 							}
@@ -137,6 +144,8 @@ public class ReceiverItemDetailsActivity extends FragmentActivity {
 								public void done(ParseException arg0) {
 									stopProgressBar();
 									if(arg0 == null) {
+										// Send accept push
+										pushItemReviewResult("Item accepted");
 										Toast.makeText(ReceiverItemDetailsActivity.this, "Item Saved!", Toast.LENGTH_LONG).show();
 										startReviewerHomeActivity();
 									}
@@ -174,4 +183,16 @@ public class ReceiverItemDetailsActivity extends FragmentActivity {
 		startActivity(i);
 	}
 
+	private void pushItemReviewResult(String result) {
+		Toast.makeText(ReceiverItemDetailsActivity.this,
+				"Sending Push notification", Toast.LENGTH_LONG).show();
+		ParsePush push = new ParsePush();
+		ParseQuery pQuery = ParseInstallation.getQuery(); 
+	    pQuery.whereEqualTo("username", detailsFragment.getDonorName());
+		//pQuery.whereEqualTo("username", "v1");
+		push.setQuery(pQuery);
+		push.setMessage(result);
+		push.sendInBackground();
+		
+	}
 }

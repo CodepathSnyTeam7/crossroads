@@ -23,8 +23,9 @@
   to match your app's package name + ".permission.C2D_MESSAGE".
     -->
     <permission
+        android:protectionLevel="signature" 
         android:name="com.codepath.snyteam7.crossroads.permission.C2D_MESSAGE"
-        android:protectionLevel="signature" />
+        />
 
     <uses-permission android:name="com.codepath.snyteam7.crossroads.permission.C2D_MESSAGE" />
 
@@ -57,7 +58,7 @@
             </intent-filter>
         </receiver>
         <receiver
-            android:name="com.parse.ParsePushBroadcastReceiver"
+            android:name="com.codepath.snyteam7.crossroads.utils.Receiver"
             android:exported="false" >
             <intent-filter>
                 <action android:name="com.parse.push.intent.RECEIVE" />
@@ -97,6 +98,11 @@
             android:name=".DonorItemDetailsActivity"
             android:label="@string/title_activity_donor_item_details" >
         </activity>
+        <meta-data android:name="com.parse.push.notification_icon"
+         android:resource="@drawable/push_icon"/>
+
     </application>
+    
+    
 
 </manifest>

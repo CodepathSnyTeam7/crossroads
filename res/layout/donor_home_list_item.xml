@@ -19,7 +19,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="8dp"
         android:text="TextView" 
-        android:textSize="10sp" />
+        android:textSize="16sp" />
     
       <TextView
         android:id="@+id/tvDonorHomeUserTime"
@@ -30,7 +30,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:text="TextView" 
-        android:textSize="10sp" />
+        android:textSize="16sp" />
         
      <com.parse.ParseImageView
         android:id="@+id/ivDonorHomeUserPhoto"
@@ -54,7 +54,7 @@
         android:ellipsize="end"
         android:maxLines="3"
         android:text="default_description" 
-        android:textSize="10sp" />
+        android:textSize="16sp" />
     
 
     

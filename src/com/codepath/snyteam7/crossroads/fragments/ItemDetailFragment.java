@@ -136,4 +136,8 @@ public class ItemDetailFragment extends Fragment {
 	private void stopProgressBar() {
 		pbItemDetails.setVisibility(View.GONE);
 	}
+	
+	public String getDonorName() {
+		return ((String)tvDonorName.getText());
+	}
 }

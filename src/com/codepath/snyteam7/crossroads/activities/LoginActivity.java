@@ -1,22 +1,38 @@
 package com.codepath.snyteam7.crossroads.activities;
 
 import android.app.ActionBar;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.LocalBroadcastManager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.codepath.snyteam7.crossroads.R;
 import com.codepath.snyteam7.crossroads.fragments.HowitworksDialogFragment;
 import com.codepath.snyteam7.crossroads.fragments.LoginFragment;
 import com.codepath.snyteam7.crossroads.fragments.SignupFragment;
 import com.codepath.snyteam7.crossroads.listeners.FragmentTabListener;
+import com.parse.PushService;
 
 public class LoginActivity extends FragmentActivity {
-
+	
+	/*
+	// Setup Push Notification receiver
+	private BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
+		
+        @Override
+        public void onReceive(Context context, Intent intent) {        	
+        	Toast.makeText(getApplicationContext(), "onReceive invoked!", Toast.LENGTH_LONG).show();
+        }
+	};
+*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,4 +109,17 @@ public class LoginActivity extends FragmentActivity {
         HowitworksDialogFragment filterItem = new HowitworksDialogFragment();
         filterItem.show(fm, "fragment_howitworks");
 	}
+	/*
+	@Override
+    public void onPause() {
+        super.onPause();
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(mBroadcastReceiver);
+    }
+    
+	@Override
+    public void onResume() {
+        super.onResume(); 
+        LocalBroadcastManager.getInstance(this).registerReceiver(mBroadcastReceiver, new IntentFilter(""));
+    }
+    */
 }
