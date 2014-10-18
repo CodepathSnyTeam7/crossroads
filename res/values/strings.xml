@@ -17,6 +17,9 @@
     <string name="accept">Accept</string>
     <string name="reject">Reject</string>
     <string name="title_activity_donor">DonorActivity</string>
+    <string name="pickup_address">Enter pickup address</string>
+    <string name="item_condition">Item Condition</string>
+    <string name="pickup_date">10/30/2014 (enter pickup date)</string>
     <string-array name="item_category">
         <item>Books</item>
         <item>Clothing</item>

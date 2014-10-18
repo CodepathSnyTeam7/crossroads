@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -15,6 +16,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.text.InputType;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,6 +24,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.codepath.snyteam7.crossroads.R;
@@ -29,6 +32,7 @@ import com.codepath.snyteam7.crossroads.helper.PhotoScalerHelper;
 import com.codepath.snyteam7.crossroads.model.Item;
 import com.parse.ParseException;
 import com.parse.ParseFile;
+import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 public class DonateActivity extends Activity {
@@ -39,6 +43,9 @@ public class DonateActivity extends Activity {
 	private ImageView ivItemPhoto;
 	private EditText etItemDescription;
 	private ProgressBar pbPhoto;
+	private Spinner spCondition;
+	private EditText etPickupDate;
+	private EditText etPickupAddress;
 	
 	public static String APP_TAG = "crossroadssny";
 	
@@ -54,6 +61,11 @@ public class DonateActivity extends Activity {
 		ivItemPhoto = (ImageView)findViewById(R.id.ivItemPicture);
 		etItemDescription = (EditText)findViewById(R.id.etItemDescription);
 		pbPhoto = (ProgressBar)findViewById(R.id.pbItemDetails);
+		spCondition = (Spinner)findViewById(R.id.spCondition);
+		etPickupDate = (EditText)findViewById(R.id.etPickupDate);
+		etPickupDate.setInputType( InputType.TYPE_CLASS_DATETIME | InputType.TYPE_DATETIME_VARIATION_NORMAL);
+		etPickupAddress = (EditText)findViewById(R.id.etPickupAddress);
+		etPickupAddress.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_POSTAL_ADDRESS | InputType.TYPE_TEXT_FLAG_MULTI_LINE);
 	}
 
 	public void onCameraClicked(View v) {
@@ -145,8 +157,15 @@ public class DonateActivity extends Activity {
 		if(id == R.id.action_done) {
 			startProgressBar();
 			Item donateItem = new Item();
+			Date pickupDate = validate();
+			if(pickupDate != null) {
 			donateItem.setDescription(etItemDescription.getText().toString());
 			donateItem.setPhotoFile(parsePhotoFile);
+			donateItem.setDonor(ParseUser.getCurrentUser());
+			donateItem.put("donationdate", new Date());
+			donateItem.put("condition", spCondition.getSelectedItem().toString());
+			donateItem.put("pickupdate", pickupDate);
+			donateItem.put("pickupaddress", etPickupAddress.getText().toString());
 			donateItem.saveInBackground(new SaveCallback() {
 				
 				@Override
@@ -161,11 +180,42 @@ public class DonateActivity extends Activity {
 					}
 				}
 			});
+			}else{
+				stopProgressBar();
+				Toast.makeText(this, "Please fill out all fields and one photo of the item.", Toast.LENGTH_LONG).show();
+			}
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}
 	
+	private Date validate() {
+		Date result;
+		if(etItemDescription.getText() == null || etItemDescription.getText().length() <1) {
+			return null;
+		}
+		if(parsePhotoFile == null || ivItemPhoto.getVisibility() != View.VISIBLE) {
+			return null;
+		}
+		if(etPickupDate.getText() == null || etPickupDate.getText().length() < 1) {
+			return null;
+		}
+		if(etPickupAddress.getText() == null || etPickupAddress.getText().length() < 1) {
+			return null;
+		}
+		
+		SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+		try {
+			result = formatter.parse(etPickupDate.getText().toString());
+		} catch (java.text.ParseException e) {
+			e.printStackTrace();
+			Toast.makeText(this, "Please enter pickup date in format MM/dd/yyyy", Toast.LENGTH_LONG).show();
+			return null;
+		}
+
+		return result;
+	}
+
 	private void startPreviewPhotoActivity() {
 		Intent i = new Intent(this, PreviewPhotoActivity.class);
         i.putExtra("photo_bitmap", photoBitmap);

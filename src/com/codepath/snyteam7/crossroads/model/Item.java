@@ -8,34 +8,41 @@ import com.parse.ParseUser;
 @ParseClassName("Item")
 public class Item extends ParseObject {
 	public Item() {
-	    super();
-	  }
+		super();
+	}
 
-	  // Use getString and others to access fields
-	  public String getDescription() {
-	    return getString("description");
-	  }
+	// Use getString and others to access fields
+	public String getDescription() {
+		return getString("description");
+	}
 
-	  // Use put to modify field values
-	  public void setDescription(String value) {
-	    put("description", value);
-	  }
+	// Use put to modify field values
+	public void setDescription(String value) {
+		put("description", value);
+	}
 
-	  // Get the user for this item
-	  public ParseUser getDonateUserId()  {
-	    return getParseUser("donateuserid");
-	  }
+	// Get the donor
+	public ParseUser getDonor() {
+		return getParseUser("donor");
+	}
 
-	  // Associate each item with a user
-	  public void setDonateUserId(ParseUser user) {
-	    put("donateuserid", user);
-	  }
-	  
-	  public ParseFile getPhotoFile() {
-		  return getParseFile("photo");
-	  }
-	  
-	  public void setPhotoFile(ParseFile file) {
-		  put("photo", file);
-	  }
+	public void setDonor(ParseUser user) {
+		put("donor", user);
+	}
+
+	public ParseUser getReviewer() {
+		return getParseUser("reviewer");
+	}
+
+	public void setReviewer(ParseUser user) {
+		put("reviewer", user);
+	}
+
+	public ParseFile getPhotoFile() {
+		return getParseFile("photo");
+	}
+
+	public void setPhotoFile(ParseFile file) {
+		put("photo", file);
+	}
 }

@@ -1,62 +1,94 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.codepath.snyteam7.crossroads.activities.DonateActivity" >
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
 
-    <EditText
-        android:id="@+id/etItemDescription"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:ems="10"
-        android:hint="@string/item_description"
-        android:inputType="textMultiLine" >
+        android:layout_height="match_parent"
+        tools:context="com.codepath.snyteam7.crossroads.activities.DonateActivity" >
 
-        <requestFocus />
-    </EditText>
+        <EditText
+            android:id="@+id/etItemDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:ems="10"
+            android:hint="@string/item_description"
+            android:inputType="textMultiLine" >
 
-    <ImageView
-        android:id="@+id/ivMedia"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_alignTop="@+id/ivCamera"
-        android:layout_marginLeft="30dp"
-        android:layout_toRightOf="@+id/ivCamera"
-        android:onClick="onMediaClicked"
-        android:src="@drawable/ic_media" />
+            <requestFocus />
+        </EditText>
 
-    <ImageView
-        android:id="@+id/ivCamera"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/etItemDescription"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:onClick="onCameraClicked"
-        android:src="@drawable/ic_camera" />
+        <ImageView
+            android:id="@+id/ivMedia"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignTop="@+id/ivCamera"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@+id/ivCamera"
+            android:onClick="onMediaClicked"
+            android:src="@drawable/ic_media" />
 
-    <ImageView
-        android:id="@+id/ivItemPicture"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="invisible"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/ivMedia"
-        android:layout_marginTop="30dp"
-        android:src="@drawable/ic_launcher" />
+        <ImageView
+            android:id="@+id/ivCamera"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/etItemDescription"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:onClick="onCameraClicked"
+            android:src="@drawable/ic_camera" />
 
-    <ProgressBar
-        android:id="@+id/pbItemDetails"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/ivItemPicture"
-        android:layout_alignTop="@+id/ivItemPicture"
-        android:layout_marginLeft="50dp"
-        android:visibility="gone"
-        android:layout_marginTop="20dp" />
+        <Spinner
+            android:id="@+id/spCondition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ivMedia"
+            android:entries="@array/item_condition"
+            android:prompt="@string/item_condition"
+            android:layout_alignLeft="@+id/ivCamera" />
 
-</RelativeLayout>
+        <EditText
+            android:id="@+id/etPickupDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/spCondition"
+            android:layout_below="@+id/spCondition"
+            android:hint = "@string/pickup_date"
+            android:ems="10" />
+
+        <EditText
+            android:id="@+id/etPickupAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/etPickupDate"
+            android:layout_alignLeft="@+id/spCondition"
+            android:hint="@string/pickup_address"
+            android:ems="10"
+            android:inputType="textPostalAddress" />
+        <ImageView
+            android:id="@+id/ivItemPicture"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/etPickupAddress"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/ic_launcher"
+            android:visibility="invisible" />
+
+        <ProgressBar
+            android:id="@+id/pbItemDetails"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/ivItemPicture"
+            android:layout_alignTop="@+id/ivItemPicture"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="20dp"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+</ScrollView>
