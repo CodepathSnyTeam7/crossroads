@@ -23,16 +23,6 @@ import com.parse.PushService;
 
 public class LoginActivity extends FragmentActivity {
 	
-	/*
-	// Setup Push Notification receiver
-	private BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
-		
-        @Override
-        public void onReceive(Context context, Intent intent) {        	
-        	Toast.makeText(getApplicationContext(), "onReceive invoked!", Toast.LENGTH_LONG).show();
-        }
-	};
-*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,17 +99,5 @@ public class LoginActivity extends FragmentActivity {
         HowitworksDialogFragment filterItem = new HowitworksDialogFragment();
         filterItem.show(fm, "fragment_howitworks");
 	}
-	/*
-	@Override
-    public void onPause() {
-        super.onPause();
-        LocalBroadcastManager.getInstance(this).unregisterReceiver(mBroadcastReceiver);
-    }
-    
-	@Override
-    public void onResume() {
-        super.onResume(); 
-        LocalBroadcastManager.getInstance(this).registerReceiver(mBroadcastReceiver, new IntentFilter(""));
-    }
-    */
+
 }

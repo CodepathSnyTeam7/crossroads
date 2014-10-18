@@ -29,17 +29,12 @@ public class HowitworksDialogFragment extends DialogFragment {
         // Pass null as the parent view because its going in the dialog layout
         builder.setView(customView)
         // Add action buttons
-               .setPositiveButton("save", new DialogInterface.OnClickListener() {
+               .setPositiveButton("Done", new DialogInterface.OnClickListener() {
                    @Override
                    public void onClick(DialogInterface dialog, int id) {
                        // save
                        // Return input text to activity
                    		dismiss();
-                   }
-               })
-               .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
-                   public void onClick(DialogInterface dialog, int id) {
-                       // Cancel
                    }
                }); 
 

@@ -69,7 +69,6 @@ public class ReceiverItemDetailsActivity extends FragmentActivity {
 		if (id == R.id.action_accept) {
 			// open the dialog fragment
 			openAcceptFormDialog();
-
 			return true;
 		} else if (id == R.id.action_reject) {
 			ParseQuery<Item> query = ParseQuery.getQuery(Item.class);
@@ -188,8 +187,7 @@ public class ReceiverItemDetailsActivity extends FragmentActivity {
 				"Sending Push notification", Toast.LENGTH_LONG).show();
 		ParsePush push = new ParsePush();
 		ParseQuery pQuery = ParseInstallation.getQuery(); 
-	    pQuery.whereEqualTo("username", detailsFragment.getDonorName());
-		//pQuery.whereEqualTo("username", "v1");
+		pQuery.whereEqualTo("username", detailsFragment.getDonorName());
 		push.setQuery(pQuery);
 		push.setMessage(result);
 		push.sendInBackground();
