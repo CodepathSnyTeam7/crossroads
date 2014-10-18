@@ -7,15 +7,5 @@
         android:showAsAction="always"
         android:title="Howitworks">
     </item>
-     <item
-        android:id="@+id/miDonateTest"
-        android:showAsAction="ifRoom"
-        android:title="Donate">
-    </item>
-    <item
-        android:id="@+id/miViewDetailsTest"
-        android:showAsAction="never"
-        android:title="View Item">
-    </item>
 
 </menu>

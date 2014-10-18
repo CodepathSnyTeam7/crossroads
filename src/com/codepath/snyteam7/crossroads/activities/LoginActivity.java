@@ -72,13 +72,7 @@ public class LoginActivity extends FragmentActivity {
         
             case R.id.miHowitworks:
             	onHowitworksAction();
-                return true; 
-            case R.id.miDonateTest:
-            	onDonateTest();
-            	return true;
-            case R.id.miViewDetailsTest:
-            	onViewDetailsTest();
-            	return true;
+                return true;
         }
         return false;
     }
