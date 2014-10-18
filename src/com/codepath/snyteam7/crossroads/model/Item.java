@@ -1,5 +1,7 @@
 package com.codepath.snyteam7.crossroads.model;
 
+import java.util.Date;
+
 import com.parse.ParseClassName;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
@@ -44,5 +46,8 @@ public class Item extends ParseObject {
 
 	public void setPhotoFile(ParseFile file) {
 		put("photo", file);
+	}
+	  public Date getCreationDate() {
+		  return getCreatedAt();
 	}
 }

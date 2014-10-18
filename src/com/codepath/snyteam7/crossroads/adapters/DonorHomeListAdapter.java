@@ -97,9 +97,9 @@ public class DonorHomeListAdapter extends ParseQueryAdapter<Item> {
 			});
 		}
 
-		TextView tvDonor = (TextView) v.findViewById(R.id.tvDonorHomeUser);
+		//TextView tvDonor = (TextView) v.findViewById(R.id.tvDonorHomeUser);
 		// TBD: Get the username
-		tvDonor.setText("donor");
+		//tvDonor.setText("donor");
 		TextView tvItemDescription = (TextView) v.findViewById(R.id.tvDonorHomeUserDesc);
 		tvItemDescription.setText(item.getDescription());
 		return v;
