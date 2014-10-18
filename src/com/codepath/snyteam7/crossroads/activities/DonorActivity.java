@@ -3,12 +3,11 @@ package com.codepath.snyteam7.crossroads.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
+import android.view.View;
 import android.widget.ListView;
 
 import com.codepath.snyteam7.crossroads.R;
 import com.codepath.snyteam7.crossroads.adapters.DonorHomeListAdapter;
-import com.codepath.snyteam7.crossroads.adapters.ReviewerHomeListAdapter;
 
 public class DonorActivity extends Activity {
 	
@@ -36,7 +35,7 @@ public class DonorActivity extends Activity {
     }
     
 	
-	public void onDonate() {
+	public void onDonate(View v) {
 		Intent i = new Intent(this, DonateActivity.class);
 		startActivity(i);
 	}

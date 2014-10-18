@@ -2,6 +2,8 @@ package com.codepath.snyteam7.crossroads.activities;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -13,15 +15,17 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.codepath.snyteam7.crossroads.R;
+import com.codepath.snyteam7.crossroads.helper.PhotoScalerHelper;
 import com.codepath.snyteam7.crossroads.model.Item;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -34,6 +38,7 @@ public class DonateActivity extends Activity {
 	ParseFile parsePhotoFile;
 	private ImageView ivItemPhoto;
 	private EditText etItemDescription;
+	private ProgressBar pbPhoto;
 	
 	public static String APP_TAG = "crossroadssny";
 	
@@ -48,6 +53,7 @@ public class DonateActivity extends Activity {
 		setContentView(R.layout.activity_donate);
 		ivItemPhoto = (ImageView)findViewById(R.id.ivItemPicture);
 		etItemDescription = (EditText)findViewById(R.id.etItemDescription);
+		pbPhoto = (ProgressBar)findViewById(R.id.pbItemDetails);
 	}
 
 	public void onCameraClicked(View v) {
@@ -87,43 +93,41 @@ public class DonateActivity extends Activity {
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (resultCode == Activity.RESULT_OK) {
 			if (requestCode == TAKE_PHOTO_CODE) {
-				// Call the method below to trigger the cropping
-				cropPhoto(photoUri);
+				startProgressBar();
+				//photoBitmap = BitmapFactory.decodeFile(photoUri.getPath());
+				photoBitmap = PhotoScalerHelper.rotateBitmapOrientation(photoUri.getPath());
+				if(photoBitmap == null) {
+					Toast.makeText(this, "Failed to rotate the image", Toast.LENGTH_LONG).show();
+				}else{
+					processPhoto();
+				}
+				
+				//startPreviewPhotoActivity();
 			} else if (requestCode == PICK_PHOTO_CODE) {
 				if(data != null) {
+					startProgressBar();
 					// Extract the photo that was just picked from the gallery
 					photoUri = data.getData();
-					//Call the method below to trigger the cropping
-					cropPhoto(photoUri);
+					try {
+						photoBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), photoUri);
+						processPhoto();
+					} catch (FileNotFoundException e) {
+						Toast.makeText(this, "Error retrieving photo: "+e.getMessage(), Toast.LENGTH_LONG).show();
+						e.printStackTrace();
+					} catch (IOException e) {
+						Toast.makeText(this, "Error retrieving photo: "+e.getMessage(), Toast.LENGTH_LONG).show();
+						e.printStackTrace();
+					}
+					//startPreviewPhotoActivity();
 				}
 			} else if (requestCode == CROP_PHOTO_CODE) {
+				// cropping can be called like this cropPhoto(photoUri);
 				photoBitmap = data.getParcelableExtra("data");
 				startPreviewPhotoActivity();
 			} else if (requestCode == POST_PHOTO_CODE) {
-				
+				startProgressBar();
 				photoBitmap = data.getParcelableExtra("processedPhoto");
-				//Todo: possibley rotate and resize 
-				
-				ByteArrayOutputStream bos = new ByteArrayOutputStream();
-				photoBitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
-				byte[] photoData = bos.toByteArray();
-				String fileName = photoUri.getLastPathSegment();
-				parsePhotoFile = new ParseFile(fileName, photoData);
-				parsePhotoFile.saveInBackground(new SaveCallback() {
-					
-					@Override
-					public void done(ParseException e) {
-						if (e != null) {
-							Toast.makeText(DonateActivity.this,
-									"Error saving: " + e.getMessage(),
-									Toast.LENGTH_LONG).show();
-						} else {
-							//display in the imageview of the items detail
-							ivItemPhoto.setImageBitmap(photoBitmap);
-							ivItemPhoto.setVisibility(View.VISIBLE);
-						}
-					}
-				});
+				processPhoto();
 			}
 		}
 	}
@@ -139,6 +143,7 @@ public class DonateActivity extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		int id = item.getItemId();
 		if(id == R.id.action_done) {
+			startProgressBar();
 			Item donateItem = new Item();
 			donateItem.setDescription(etItemDescription.getText().toString());
 			donateItem.setPhotoFile(parsePhotoFile);
@@ -146,16 +151,26 @@ public class DonateActivity extends Activity {
 				
 				@Override
 				public void done(ParseException e) {
+					stopProgressBar();
 					if(e != null) {
 						Toast.makeText(DonateActivity.this, "error saving: " + e.getMessage(), Toast.LENGTH_LONG).show();
 					}else{
 						Toast.makeText(DonateActivity.this, "item saved!", Toast.LENGTH_LONG).show();
+						Intent donorIntent = new Intent(DonateActivity.this, DonorActivity.class);
+						startActivity(donorIntent);
 					}
 				}
 			});
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	private void startPreviewPhotoActivity() {
+		Intent i = new Intent(this, PreviewPhotoActivity.class);
+        i.putExtra("photo_bitmap", photoBitmap);
+        i.putExtra("photo_uri", photoUri);
+        startActivityForResult(i, POST_PHOTO_CODE);
 	}
 	
 	private void cropPhoto(Uri photoUri) {
@@ -177,10 +192,43 @@ public class DonateActivity extends Activity {
 		startActivityForResult(cropIntent, CROP_PHOTO_CODE);
 	}
 	
-	private void startPreviewPhotoActivity() {
-		Intent i = new Intent(this, PreviewPhotoActivity.class);
-        i.putExtra("photo_bitmap", photoBitmap);
-        i.putExtra("photo_uri", photoUri);
-        startActivityForResult(i, POST_PHOTO_CODE);
+	public void startProgressBar() {
+		pbPhoto.setVisibility(View.VISIBLE);
 	}
+	
+	public void stopProgressBar() {
+		pbPhoto.setVisibility(View.GONE);
+	}
+	
+	private void processPhoto() {
+		int screenWidth = PhotoScalerHelper.getDisplayWidth(this);
+		int imageViewWidth = screenWidth - 20;
+		photoBitmap = PhotoScalerHelper.scaleToFitWidth(photoBitmap, imageViewWidth);
+		
+		ByteArrayOutputStream bos = new ByteArrayOutputStream();
+		Log.d("DonateActivity", "Starting compression");
+		photoBitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
+		Log.d("DonateActivity", "Finished compression");
+		byte[] photoData = bos.toByteArray();
+		String fileName = photoUri.getLastPathSegment();
+		parsePhotoFile = new ParseFile(fileName, photoData);
+		Log.d("DonateActivity", "Starting save In Background");
+		parsePhotoFile.saveInBackground(new SaveCallback() {
+			
+			@Override
+			public void done(ParseException e) {
+				stopProgressBar();
+				if (e != null) {
+					Toast.makeText(DonateActivity.this,
+							"Error saving: " + e.getMessage(),
+							Toast.LENGTH_LONG).show();
+				} else {
+					//display in the imageview of the items detail
+					ivItemPhoto.setImageBitmap(photoBitmap);
+					ivItemPhoto.setVisibility(View.VISIBLE);
+				}
+			}
+		});
+	}
+	
 }

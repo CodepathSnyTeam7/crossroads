@@ -40,12 +40,23 @@
 
     <ImageView
         android:id="@+id/ivItemPicture"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-         android:visibility="gone"
-        android:layout_alignLeft="@+id/ivCamera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_alignParentLeft="true"
         android:layout_below="@+id/ivMedia"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="30dp"
         android:src="@drawable/ic_launcher" />
+
+    <ProgressBar
+        android:id="@+id/pbItemDetails"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ivItemPicture"
+        android:layout_alignTop="@+id/ivItemPicture"
+        android:layout_marginLeft="50dp"
+        android:visibility="gone"
+        android:layout_marginTop="20dp" />
 
 </RelativeLayout>
