@@ -15,9 +15,8 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.codepath.snyteam7.crossroads.R;
-import com.codepath.snyteam7.crossroads.activities.ReceiverItemDetailsActivity;
+import com.codepath.snyteam7.crossroads.activities.DonorItemDetailsActivity;
 import com.codepath.snyteam7.crossroads.adapters.DonorHomeListAdapter;
-import com.codepath.snyteam7.crossroads.adapters.ReviewerHomeListAdapter;
 import com.codepath.snyteam7.crossroads.listeners.EndlessScrollListener;
 import com.codepath.snyteam7.crossroads.model.Item;
 
@@ -90,7 +89,7 @@ public class DonorHomeFragment extends Fragment {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				// Launch the item display activity
-				Intent i = new Intent(getActivity(), ReceiverItemDetailsActivity.class);
+				Intent i = new Intent(getActivity(), DonorItemDetailsActivity.class);
 				Item item = aItems.getItem(position);
 				i.putExtra("item_objid", item.getObjectId());
 				startActivity(i);

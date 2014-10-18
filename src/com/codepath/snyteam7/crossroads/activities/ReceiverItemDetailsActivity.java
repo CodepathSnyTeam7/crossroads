@@ -6,6 +6,8 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
@@ -18,17 +20,16 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.codepath.snyteam7.crossroads.R;
+import com.codepath.snyteam7.crossroads.fragments.ChatRoomFragment;
 import com.codepath.snyteam7.crossroads.fragments.ItemDetailFragment;
 import com.codepath.snyteam7.crossroads.model.Item;
 import com.parse.GetCallback;
 import com.parse.ParseException;
+import com.parse.ParseInstallation;
+import com.parse.ParsePush;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
-import com.parse.ParseFile;
-import com.parse.ParseImageView;
-import com.parse.ParseInstallation;
-import com.parse.ParsePush;
 
 public class ReceiverItemDetailsActivity extends FragmentActivity {
 	
@@ -96,10 +97,25 @@ public class ReceiverItemDetailsActivity extends FragmentActivity {
 					});
 				}
 			});
+			return true;
 		} else if (id == R.id.action_viewmessages) {
-			
+			showChatRoomDialog();
+			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	private void showChatRoomDialog() {
+		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+		Fragment prev = getSupportFragmentManager().findFragmentByTag("dialog");
+		if(prev != null) {
+			ft.remove(prev);
+		}
+		ft.addToBackStack(null);
+		
+		ParseUser loggedInUser = ParseUser.getCurrentUser();
+		DialogFragment chatFragment = ChatRoomFragment.getInstance(loggedInUser.getObjectId(), itemObjIdStr, loggedInUser.getUsername());
+		chatFragment.show(ft, "dialog");
 	}
 
 	private void openAcceptFormDialog() {

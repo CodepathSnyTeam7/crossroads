@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+    <LinearLayout
+    android:id="@+id/llOtherUser"
+    android:layout_width="64dp"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+	    <TextView
+	        android:id="@+id/tvProfileLeftUserName"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textSize="14sp"
+	        android:text="@string/username" />
+	    <TextView 
+	        android:id="@+id/tvMessageCratedAt"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textSize="11sp"
+	        android:text="@string/create_date" />
+    </LinearLayout>
+    <TextView
+        android:textSize="18sp"
+        android:id="@+id/tvBody"
+        android:padding="10dp"
+        android:lines="3"
+        android:inputType="textMultiLine"
+        android:layout_marginRight="64dp"
+        android:layout_width="match_parent"
+        android:layout_height="64dp">
+    </TextView>
+    <ImageView
+        android:id="@+id/ivProfileRight"
+        android:contentDescription="@string/profile_me"
+        android:layout_marginLeft="-64dp"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/ic_me" />
+</LinearLayout>

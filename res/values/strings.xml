@@ -22,9 +22,14 @@
     <string name="condition_label">Condition:</string>
     <string name="pickup_date_label">Pickup Date:</string>
     <string name="pickup_address_label">Pickup Address:</string>
-    <string name="view_messages">View Messages</string>
+    <string name="view_messages">Chat Room</string>
     <string name="pickup_date">10/30/2014 (enter pickup date)</string>
-
+	<string name="message_hint">Say something...</string>
+	<string name="profile_me">My Profile icon</string>
+	<string name="profile_other">Other profile icon</string>
+	<string name="username">username</string>
+	<string name="create_date">11/10/2014 8:00AM</string>
+	<string name="send">Send</string>
     <string-array name="item_category">
         <item>Books</item>
         <item>Clothing</item>
@@ -53,5 +58,6 @@
     <string name="cancel">Cancel</string>
     <string name="accept_label">Accept</string>
     <string name="title_activity_donor_item_details">DonorItemDetailsActivity</string>
+    <string name="close">Close</string>
 
 </resources>

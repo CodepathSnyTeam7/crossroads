@@ -4,6 +4,7 @@ import android.app.Application;
 import android.util.Log;
 
 import com.codepath.snyteam7.crossroads.model.Item;
+import com.codepath.snyteam7.crossroads.model.Message;
 import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseInstallation;
@@ -15,6 +16,7 @@ public class CrossroadsApplication extends Application {
 	@Override
 	public void onCreate() {
 		ParseObject.registerSubclass(Item.class);
+		ParseObject.registerSubclass(Message.class);
 		//ParseObject.registerSubclass(CrossroadsUser.class);
 		Parse.initialize(this, "wcoPa6w0bpaQuqUVkSlRe90K0TH8b8bXsBgBl7jl", "DpK6mli61BLXWvN02X6pqXGMrhV09U2FOP3UtmJ3");
 		ParseInstallation.getCurrentInstallation().saveInBackground();

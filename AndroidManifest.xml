@@ -95,7 +95,7 @@
             android:label="@string/title_activity_donor" >
         </activity>
         <activity
-            android:name=".DonorItemDetailsActivity"
+            android:name="com.codepath.snyteam7.crossroads.activities.DonorItemDetailsActivity"
             android:label="@string/title_activity_donor_item_details" >
         </activity>
         <meta-data android:name="com.parse.push.notification_icon"
