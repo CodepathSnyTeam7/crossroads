@@ -1,7 +1,10 @@
 package com.codepath.snyteam7.crossroads.activities;
 
+import java.util.Date;
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
@@ -10,14 +13,24 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.codepath.snyteam7.crossroads.R;
 import com.codepath.snyteam7.crossroads.fragments.ItemDetailFragment;
+import com.codepath.snyteam7.crossroads.model.Item;
+import com.parse.GetCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 public class ReceiverItemDetailsActivity extends FragmentActivity {
 	
 	ItemDetailFragment detailsFragment;
+	String itemObjIdStr;
+	ProgressBar pbReceiverDetails;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +38,11 @@ public class ReceiverItemDetailsActivity extends FragmentActivity {
 		setContentView(R.layout.activity_receiver_item_details);
 		getActionBar().setTitle("");
 		setupDetailsFragment();
-
+		pbReceiverDetails = (ProgressBar)findViewById(R.id.pbReceiverDetails);
 	}
 
 	private void setupDetailsFragment() {
-		String itemObjIdStr = getIntent().getStringExtra("item_objid");
+		itemObjIdStr = getIntent().getStringExtra("item_objid");
 		detailsFragment = ItemDetailFragment.newInstance(itemObjIdStr);
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 		ft.replace(R.id.detail_fragment_placeholder, detailsFragment);
@@ -54,7 +67,29 @@ public class ReceiverItemDetailsActivity extends FragmentActivity {
 			openAcceptFormDialog();
 			return true;
 		} else if (id == R.id.action_reject) {
-
+			ParseQuery<Item> query = ParseQuery.getQuery(Item.class);
+			query.setCachePolicy(ParseQuery.CachePolicy.CACHE_ELSE_NETWORK); // or
+																				// CACHE_ONLY
+			// Execute the query to find the object with ID
+			query.getInBackground(itemObjIdStr, new GetCallback<Item>() {
+				public void done(Item item0, ParseException e) {
+					startProgressBar();
+					item0.put("rejecteddate", new Date());
+					item0.setReviewer(ParseUser.getCurrentUser());
+					item0.saveInBackground(new SaveCallback() {
+						
+						@Override
+						public void done(ParseException arg0) {
+							stopProgressBar();
+							if(arg0 == null) {
+								Toast.makeText(ReceiverItemDetailsActivity.this, "Item Saved!", Toast.LENGTH_LONG).show();
+								startReviewerHomeActivity();
+							}
+							
+						}
+					});
+				}
+			});
 		} else if (id == R.id.action_viewmessages) {
 			
 		}
@@ -76,14 +111,40 @@ public class ReceiverItemDetailsActivity extends FragmentActivity {
 		alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Accept",
 				new DialogInterface.OnClickListener() {
 					@Override
-					public void onClick(DialogInterface dialog, int which) {						
+					public void onClick(DialogInterface dialog, int which) {	
+						startProgressBar();
 						// Extract content from alert dialog
 						String notes = ((EditText) alertDialog
 								.findViewById(R.id.etNotes)).getText()
 								.toString();
 						Spinner categorySpinner = (Spinner)alertDialog
 								.findViewById(R.id.spinnerCategory);
-						int selectedPosition = categorySpinner.getSelectedItemPosition();
+						final String category = (String)categorySpinner.getSelectedItem();
+						final ParseUser reviewer = ParseUser.getCurrentUser();
+						
+						ParseQuery<Item> query = ParseQuery.getQuery(Item.class);
+						query.setCachePolicy(ParseQuery.CachePolicy.CACHE_ELSE_NETWORK); // or CACHE_ONLY
+						// Execute the query to find the object with ID
+
+						query.getInBackground(itemObjIdStr, new GetCallback<Item>() {
+						  public void done(Item item0, ParseException e) {
+							  item0.put("accepteddate", new Date());
+							  item0.put("category", category);
+							  item0.setReviewer(reviewer);
+							  item0.saveInBackground(new SaveCallback(){
+
+								@Override
+								public void done(ParseException arg0) {
+									stopProgressBar();
+									if(arg0 == null) {
+										Toast.makeText(ReceiverItemDetailsActivity.this, "Item Saved!", Toast.LENGTH_LONG).show();
+										startReviewerHomeActivity();
+									}
+								}
+								
+							});
+						  }
+						});
 						
 					}
 				});
@@ -98,6 +159,19 @@ public class ReceiverItemDetailsActivity extends FragmentActivity {
 
 		// Display the dialog
 		alertDialog.show();
+	}
+	
+	public void startProgressBar() {
+		pbReceiverDetails.setVisibility(View.VISIBLE);
+	}
+	
+	public void stopProgressBar() {
+		pbReceiverDetails.setVisibility(View.GONE);
+	}
+	
+	public void startReviewerHomeActivity() {
+		Intent i = new Intent(this, ReviewerHomeActivity.class);
+		startActivity(i);
 	}
 
 }

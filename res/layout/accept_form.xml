@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvCategory"
         android:paddingTop="20dp"
-        android:text="Notes:" />
+        android:text="Message:" />
 
     <EditText
         android:id="@+id/etNotes"
