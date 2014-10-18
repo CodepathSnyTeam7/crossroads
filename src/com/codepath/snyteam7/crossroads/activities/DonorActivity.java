@@ -12,6 +12,7 @@ import com.codepath.snyteam7.crossroads.R;
 import com.codepath.snyteam7.crossroads.adapters.DonorHomeListAdapter;
 import com.codepath.snyteam7.crossroads.fragments.DonorHomeFragment;
 import com.codepath.snyteam7.crossroads.listeners.FragmentTabListener;
+import com.parse.ParseUser;
 
 public class DonorActivity extends FragmentActivity {
 	
@@ -100,6 +101,11 @@ public class DonorActivity extends FragmentActivity {
             case R.id.miDonate:
             	onDonate();
                 return true;
+            case R.id.action_signout:
+        		ParseUser.logOut();
+        		Intent i = new Intent(this, LoginActivity.class);
+        		startActivity(i);
+        		return true; 
             default:
                 return super.onOptionsItemSelected(item);
         }

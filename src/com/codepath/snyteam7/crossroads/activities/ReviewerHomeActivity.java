@@ -1,6 +1,7 @@
 package com.codepath.snyteam7.crossroads.activities;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
@@ -10,6 +11,7 @@ import com.codepath.snyteam7.crossroads.R;
 import com.codepath.snyteam7.crossroads.fragments.ReviewerHomeFragment;
 import com.codepath.snyteam7.crossroads.fragments.ReviewerViewsFragment;
 import com.codepath.snyteam7.crossroads.listeners.FragmentTabListener;
+import com.parse.ParseUser;
 
 public class ReviewerHomeActivity extends FragmentActivity {
 
@@ -67,6 +69,12 @@ public class ReviewerHomeActivity extends FragmentActivity {
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
+			return true;
+		}
+		if (id == R.id.action_signout) {
+			ParseUser.logOut();
+			Intent i = new Intent(this, LoginActivity.class);
+			startActivity(i);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);

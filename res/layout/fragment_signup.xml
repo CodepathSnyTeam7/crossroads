@@ -132,7 +132,7 @@
 			android:layout_centerHorizontal="true"
             android:layout_below="@+id/llSignupDistrict"
             android:layout_marginTop="16dp"
-            android:text="@string/lbl_singup"
+            android:text="@string/lbl_signup"
             android:textColor="@color/LightGray" />
 
     </RelativeLayout>
