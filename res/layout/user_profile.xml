@@ -22,15 +22,13 @@
        android:id="@+id/llProfileNames"
        android:layout_width="match_parent"
    	   android:layout_height="wrap_content"
-   	   android:orientation="horizontal" >
+   	   android:orientation="vertical" >
          
         <TextView
             android:id="@+id/tvProfileFirstname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:textSize="16sp"
-	        android:layout_marginLeft="2dp"
             android:hint="first name"
             android:textColor="@color/black" />
 
@@ -38,11 +36,8 @@
             android:id="@+id/tvProfileLastname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:hint="family name"
             android:textSize="16sp"
-	        android:layout_marginLeft="2dp"
-	        android:layout_marginRight="2dp"
             android:textColor="@color/black" />
      </LinearLayout>
         
@@ -50,14 +45,13 @@
        android:id="@+id/llProfileUsername"
        android:layout_width="match_parent"
    	   android:layout_height="wrap_content"
-   	   android:orientation="horizontal" 
+   	   android:orientation="vertical" 
    	   android:layout_below="@+id/llProfileNames" >
         
         <TextView
             android:id="@+id/tvProfileUsername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-			android:layout_weight="1"
             android:hint="username"
             android:textSize="16sp"
             android:textColor="@color/black" />
@@ -66,7 +60,6 @@
             android:id="@+id/etProfileDistrict"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-			android:layout_weight="1"
             android:hint="district"
             android:textSize="16sp"
             android:textColor="@color/black" />
@@ -76,27 +69,22 @@
        android:id="@+id/llProfilePhoneEmail"
        android:layout_width="match_parent"
    	   android:layout_height="wrap_content"
-   	   android:orientation="horizontal" 
+   	   android:orientation="vertical" 
    	   android:layout_below="@+id/llProfileUsername" >
         <TextView
             android:id="@+id/etProfilePhone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-			android:layout_weight="1"
             android:hint="Phone 408-111-2222"
             android:textSize="16sp"
-	        android:layout_marginLeft="2dp"
             android:textColor="@color/black" />
         
         <TextView
             android:id="@+id/etProfileEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-			android:layout_weight="1"
             android:hint="email"
             android:textSize="16sp"
-	        android:layout_marginLeft="2dp"
-	        android:layout_marginRight="2dp"
             android:textColor="@color/black" />
       </LinearLayout>
 

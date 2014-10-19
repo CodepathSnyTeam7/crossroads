@@ -51,41 +51,41 @@ public class profileFragment extends DialogFragment {
 		if ((ufirst == null) || ufirst.isEmpty()) {
 			ufirst = " ";
 		}
-		ProfileFirstname.setText(Html.fromHtml("<font color=\"#206199\"><b>" + "FirstName" +
-	                "<br>" + "</b></font>" + "<font color=\"#206199\">" + ufirst + "</font>"));
+		ProfileFirstname.setText(Html.fromHtml("<font color=\"#206199\"><b>" + "FirstName " +
+	                "</b></font>" + "<font color=\"#206199\">" + ufirst + "</font>"));
 	
 		String ulast = user.getString("lastname");
 		if ((ulast == null) || ulast.isEmpty()) {
 			ulast = " ";
 		}
-		ProfileLastname.setText(Html.fromHtml("<font color=\"#206199\"><b>" + "LastName" +
-	                "<br>" + "</b></font>" + "<font color=\"#206199\">" + ulast + "</font>"));
+		ProfileLastname.setText(Html.fromHtml("<font color=\"#206199\"><b>" + "LastName  " +
+	                "</b></font>" + "<font color=\"#206199\">" + ulast + "</font>"));
 	
 		
-		ProfileUsername.setText(Html.fromHtml("<font color=\"#206199\"><b>" + "UserName" +
-                "<br>" + "</b></font>" + "<font color=\"#206199\">" + user.getUsername() + "</font>"));
+		ProfileUsername.setText(Html.fromHtml("<font color=\"#206199\"><b>" + "UserName  " +
+                "</b></font>" + "<font color=\"#206199\">" + user.getUsername() + "</font>"));
 		
 		String udistrict = user.getString("district");
 		if ((udistrict == null) || udistrict.isEmpty()) {
 			udistrict = " ";
 		}
-		ProfileDistrict.setText(Html.fromHtml("<font color=\"#206199\"><b>" + "District" +
-	                "<br>" + "</b></font>" + "<font color=\"#206199\">" + udistrict + "</font>"));
+		ProfileDistrict.setText(Html.fromHtml("<font color=\"#206199\"><b>" + "District  " +
+	                "</b></font>" + "<font color=\"#206199\">" + udistrict + "</font>"));
 		
 		
 		String uemail = user.getEmail();
 		if ((uemail == null) || uemail.isEmpty()) {
 			uemail = " ";
 		}
-		ProfileEmail.setText(Html.fromHtml("<font color=\"#206199\"><b>" + "Email" +
-	                "<br>" + "</b></font>" + "<font color=\"#206199\">" + uemail + "</font>"));
+		ProfileEmail.setText(Html.fromHtml("<font color=\"#206199\"><b>" + "Email     " +
+	                "</b></font>" + "<font color=\"#206199\">" + uemail + "</font>"));
 		
 		String uphone = user.getString("phonenumber");
 		if ((uphone == null) || uphone.isEmpty()) {
 			uphone = " ";
 		}
-		ProfilePhone.setText(Html.fromHtml("<font color=\"#206199\"><b>" + "Phone" +
-	                "<br>" + "</b></font>" + "<font color=\"#206199\">" + uphone + "</font>"));
+		ProfilePhone.setText(Html.fromHtml("<font color=\"#206199\"><b>" + "Phone     " +
+	                "</b></font>" + "<font color=\"#206199\">" + uphone + "</font>"));
 
 		
         // Inflate and set the layout for the dialog
