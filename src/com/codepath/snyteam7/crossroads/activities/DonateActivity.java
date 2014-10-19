@@ -63,7 +63,7 @@ public class DonateActivity extends Activity {
 		pbPhoto = (ProgressBar)findViewById(R.id.pbItemDetails);
 		spCondition = (Spinner)findViewById(R.id.spCondition);
 		etPickupDate = (EditText)findViewById(R.id.etPickupDate);
-		etPickupDate.setInputType( InputType.TYPE_CLASS_DATETIME | InputType.TYPE_DATETIME_VARIATION_NORMAL);
+		//etPickupDate.setInputType( InputType.TYPE_CLASS_DATETIME | InputType.TYPE_DATETIME_VARIATION_NORMAL);
 		etPickupAddress = (EditText)findViewById(R.id.etPickupAddress);
 		etPickupAddress.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_POSTAL_ADDRESS | InputType.TYPE_TEXT_FLAG_MULTI_LINE);
 	}

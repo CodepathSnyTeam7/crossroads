@@ -23,6 +23,7 @@ import com.codepath.snyteam7.crossroads.R;
 import com.codepath.snyteam7.crossroads.fragments.ChatRoomFragment;
 import com.codepath.snyteam7.crossroads.fragments.ItemDetailFragment;
 import com.codepath.snyteam7.crossroads.model.Item;
+import com.codepath.snyteam7.crossroads.model.Message;
 import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseInstallation;
@@ -136,7 +137,7 @@ public class ReceiverItemDetailsActivity extends FragmentActivity {
 					public void onClick(DialogInterface dialog, int which) {	
 						startProgressBar();
 						// Extract content from alert dialog
-						String notes = ((EditText) alertDialog
+						final String notes = ((EditText) alertDialog
 								.findViewById(R.id.etNotes)).getText()
 								.toString();
 						Spinner categorySpinner = (Spinner)alertDialog
@@ -159,6 +160,7 @@ public class ReceiverItemDetailsActivity extends FragmentActivity {
 								public void done(ParseException arg0) {
 									stopProgressBar();
 									if(arg0 == null) {
+										saveMessageAsChat(notes);
 										// Send accept push
 										pushItemReviewResult("Item accepted");
 										Toast.makeText(ReceiverItemDetailsActivity.this, "Item Saved!", Toast.LENGTH_LONG).show();
@@ -208,5 +210,22 @@ public class ReceiverItemDetailsActivity extends FragmentActivity {
 		push.setMessage(result);
 		push.sendInBackground();
 		
+	}
+	
+	private void saveMessageAsChat(String body) {
+		Message message = new Message();
+		ParseUser reviewer = ParseUser.getCurrentUser();
+		message.setUserId(reviewer.getObjectId());
+		message.put("username", reviewer.getUsername());
+		message.setItemId(itemObjIdStr);
+		message.setBody(body);
+		message.saveInBackground(new SaveCallback() {
+			@Override
+			public void done(ParseException e) {
+				if(e != null) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 }
