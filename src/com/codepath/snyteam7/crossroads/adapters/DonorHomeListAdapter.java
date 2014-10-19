@@ -26,6 +26,7 @@ import com.parse.ParseFile;
 import com.parse.ParseImageView;
 import com.parse.ParseQuery;
 import com.parse.ParseQueryAdapter;
+import com.parse.ParseUser;
 
 public class DonorHomeListAdapter extends ParseQueryAdapter<Item> {
 
@@ -35,8 +36,9 @@ public class DonorHomeListAdapter extends ParseQueryAdapter<Item> {
 				// Here we can configure a ParseQuery to display
 				// items for review.
 				ParseQuery query = new ParseQuery("Item");
-				//TBD filter to get items not reviewed
-				//query.whereContainedIn("rating", Arrays.asList("5", "4"));
+				// Query Donor items
+				ParseUser loggedInUser = ParseUser.getCurrentUser();
+				query.whereContains("donorusername", loggedInUser.getUsername());
 				//query.orderByDescending("rating");
 				return query;
 			}
