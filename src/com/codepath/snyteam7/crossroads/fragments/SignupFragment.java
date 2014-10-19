@@ -169,11 +169,9 @@ public class SignupFragment extends Fragment {
 		      // to figure out what went wrong
 		    	e.printStackTrace();
 		    	Log.d("debug", "Sign up didn't succeed");
-		    	Toast.makeText(getActivity(), "signup didn't work", Toast.LENGTH_LONG).show();
+		    	Toast.makeText(getActivity(), "Signup didn't succeed. Please try again!", Toast.LENGTH_LONG).show();
 		    }
-	    	// TBD: VV Call the Donor Home Activity if successful
-	    	Intent intent = new Intent().setClass(getActivity(), LoginActivity.class);
-			startActivity(intent);
+
 		  }
 		});
 	}

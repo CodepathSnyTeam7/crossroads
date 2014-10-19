@@ -93,6 +93,7 @@ public class LoginFragment extends Fragment {
 			    } else {
 			      // Signup failed. Look at the ParseException to see what happened.
 			    	Log.d("debug", "Login failed!!");
+			    	Toast.makeText(getActivity(), "Login Failed. Please try again!", Toast.LENGTH_LONG).show();
 			    }
 			  }
 			});
