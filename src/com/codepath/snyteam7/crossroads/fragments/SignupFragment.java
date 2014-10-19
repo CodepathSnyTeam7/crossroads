@@ -25,6 +25,7 @@ import com.codepath.snyteam7.crossroads.R;
 import com.codepath.snyteam7.crossroads.activities.DonorActivity;
 import com.codepath.snyteam7.crossroads.activities.LoginActivity;
 import com.parse.ParseException;
+import com.parse.ParseInstallation;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
@@ -162,6 +163,14 @@ public class SignupFragment extends Fragment {
 		    if (e == null) {
 		    	// Hooray! Let them use the app now.
 		    	Log.d("debug", "Sign up Successful");
+		    	
+				// Store the username in the installation object for receiving push notifications
+				ParseInstallation installation = ParseInstallation.getCurrentInstallation();
+				ParseUser currentUser = ParseUser.getCurrentUser();
+				installation.put("username", currentUser.getUsername());
+				installation.saveInBackground();
+				
+				// Start the Donor activity
 		    	Intent i = new Intent(getActivity(), DonorActivity.class);
 		    	startActivity(i);
 		    } else {
