@@ -13,7 +13,6 @@
 
       <TextView
         android:id="@+id/tvRHomeUser"
-        style="@style/UserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -25,7 +24,6 @@
     
       <TextView
         android:id="@+id/tvRHomeUserDonateDate"
-        style="@style/DateFormat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -42,7 +40,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/rlRHomeHeader"
         android:layout_marginTop="4dp"
-        style="@style/DescriptionFormat"
         android:layout_marginLeft="8dp"
         android:ellipsize="end"
         android:maxLines="3"

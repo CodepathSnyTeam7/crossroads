@@ -30,7 +30,6 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/ivDonorHomeUserImg"
         android:layout_marginLeft="18dp"
-        style="@style/DescriptionFormat"
         android:layout_toRightOf="@+id/ivDonorHomeUserImg"
         android:ellipsize="end"
         android:maxLines="3"
@@ -39,7 +38,6 @@
 
     <TextView
         android:id="@+id/tvDonorHomeUserTime"
-        style="@style/DateFormat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/tvDonorHomeUserDesc"

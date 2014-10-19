@@ -9,7 +9,6 @@
     
     <TextView
         android:id="@+id/tvDescription"
-        style="@style/DescriptionFormat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -30,7 +29,6 @@
 
     <TextView
         android:id="@+id/tvDonorName"
-        style="@style/UserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -51,7 +49,6 @@
 
     <TextView
         android:id="@+id/tvDonateDate"
-        style="@style/DateFormat4DetialView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/tvDonatedLabel"
@@ -87,7 +84,6 @@
 
     <TextView
         android:id="@+id/tvPickupDate"
-        style="@style/DateFormat4DetialView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/tvPickupDateLabel"
