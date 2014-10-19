@@ -7,12 +7,14 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.codepath.snyteam7.crossroads.R;
 import com.codepath.snyteam7.crossroads.activities.DonorItemDetailsActivity;
@@ -37,7 +39,13 @@ public class DonorHomeFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater,
 			ViewGroup container, Bundle savedInstanceState) {
-
+		String str = this.getTag().toString();
+		//Log.d("Naveen" , str.toString());
+		if(str == "DonorHometab") {
+			//Log.d("Naveen" , "This is "+str.toString());
+		} else {
+			//Log.d("Naveen" , "This is "+str.toString());
+		}
 		// Inflate the layout not attach it yet
 		View v = inflater.inflate(R.layout.fragment_donor_list, container, false);
 		
