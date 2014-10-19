@@ -4,12 +4,14 @@ import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.codepath.snyteam7.crossroads.R;
 import com.codepath.snyteam7.crossroads.fragments.ReviewerHomeFragment;
 import com.codepath.snyteam7.crossroads.fragments.ReviewerReviewedItemsFragment;
+import com.codepath.snyteam7.crossroads.fragments.profileFragment;
 import com.codepath.snyteam7.crossroads.listeners.FragmentTabListener;
 import com.parse.ParseUser;
 
@@ -68,15 +70,24 @@ public class ReviewerHomeActivity extends FragmentActivity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		switch (item.getItemId()) {
+			case R.id.action_settings:
 			return true;
-		}
-		if (id == R.id.action_signout) {
-			ParseUser.logOut();
-			Intent i = new Intent(this, LoginActivity.class);
-			startActivity(i);
-			return true;
+			case R.id.action_signout:
+				ParseUser.logOut();
+				Intent i = new Intent(this, LoginActivity.class);
+				startActivity(i);
+				return true;
+			case R.id.miRProfile:
+				ProfileAction();
+				return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	public void ProfileAction () {
+		FragmentManager fm = getSupportFragmentManager();
+        profileFragment pFrag = new profileFragment();
+        pFrag.show(fm, "fragment_profile");
 	}
 }

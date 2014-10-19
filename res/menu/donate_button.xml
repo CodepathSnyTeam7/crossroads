@@ -19,5 +19,12 @@
         android:showAsAction="never"
         android:title="@string/action_settings"/>
     
+    <item
+        android:id="@+id/miDProfile"
+        android:icon="@drawable/ic_profile"
+        android:showAsAction="always"
+        android:title="Profile">
+    </item>
+    
 
 </menu>
