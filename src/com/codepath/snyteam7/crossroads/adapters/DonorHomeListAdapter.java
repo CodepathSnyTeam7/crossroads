@@ -1,24 +1,15 @@
 package com.codepath.snyteam7.crossroads.adapters;
 
-import com.codepath.snyteam7.crossroads.R;
+import java.util.Date;
 
 import android.content.Context;
 import android.text.format.DateFormat;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-
-import java.util.Arrays;
-
-import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.codepath.snyteam7.crossroads.R;
-import com.codepath.snyteam7.crossroads.activities.ReceiverItemDetailsActivity;
 import com.codepath.snyteam7.crossroads.model.Item;
 import com.parse.GetDataCallback;
 import com.parse.ParseException;
@@ -30,19 +21,8 @@ import com.parse.ParseUser;
 
 public class DonorHomeListAdapter extends ParseQueryAdapter<Item> {
 
-	public DonorHomeListAdapter(Context context) {
-		super(context, new ParseQueryAdapter.QueryFactory<Item>() {
-			public ParseQuery<Item> create() {
-				// Here we can configure a ParseQuery to display
-				// items for review.
-				ParseQuery query = new ParseQuery("Item");
-				// Query Donor items
-				ParseUser loggedInUser = ParseUser.getCurrentUser();
-				query.whereContains("donorusername", loggedInUser.getUsername());
-				//query.orderByDescending("rating");
-				return query;
-			}
-		});
+	public DonorHomeListAdapter(Context context, ParseQueryAdapter.QueryFactory<Item> queryFactory) {
+		super(context, queryFactory);
 	}
 
 	@Override
@@ -51,8 +31,6 @@ public class DonorHomeListAdapter extends ParseQueryAdapter<Item> {
 		if (v == null) {
 			v = View.inflate(getContext(), R.layout.donor_home_list_item, null);
 		}
-
-		super.getItemView(item, v, parent);
 
 		ParseImageView itemImage = (ParseImageView) v.findViewById(R.id.ivDonorHomeUserPhoto);
 		ParseFile photoFile = item.getPhotoFile();
@@ -83,6 +61,19 @@ public class DonorHomeListAdapter extends ParseQueryAdapter<Item> {
 		tvDonorHomeUserTime.setText(df.format("MM/dd/yyyy", item.getCreationDate()));
 		TextView tvItemDescription = (TextView) v.findViewById(R.id.tvDonorHomeUserDesc);
 		tvItemDescription.setText(item.getDescription());
+		
+		Date acceptedDate = item.getDate("accepteddate");
+		Date rejectedDate = item.getDate("rejecteddate");
+		TextView tvDonorHomeItemStatus = (TextView) v.findViewById(R.id.tvDonorHomeItemStatus);
+		if(acceptedDate != null) {
+			tvDonorHomeItemStatus.setText(getContext().getResources().getString(R.string.accepted));
+			tvDonorHomeItemStatus.setTextColor(getContext().getResources().getColor(android.R.color.holo_blue_dark));
+		}else if(rejectedDate != null) {
+			tvDonorHomeItemStatus.setText(getContext().getResources().getString(R.string.rejected));
+			tvDonorHomeItemStatus.setTextColor(getContext().getResources().getColor(android.R.color.holo_orange_dark));
+		}else{
+			tvDonorHomeItemStatus.setText("");
+		}
 		return v;
 	}
 

@@ -31,6 +31,8 @@
 	<string name="username">username</string>
 	<string name="create_date">11/10/2014 8:00AM</string>
 	<string name="send">Send</string>
+	<string name="accepted">Accepted</string>
+	<string name="rejected">Rejected</string>
     <string-array name="item_category">
         <item>Books</item>
         <item>Clothing</item>
@@ -58,7 +60,9 @@
 
     <string name="cancel">Cancel</string>
     <string name="accept_label">Accept</string>
-    <string name="title_activity_donor_item_details">DonorItemDetailsActivity</string>
+    <string name="title_activity_donor_item_details">Item Details</string>
     <string name="close">Close</string>
-
+    <string name="my_donations">My Donations</string>
+    <string name="donate_now">Donation now</string>
+	<string name="no_items">No items</string>
 </resources>
