@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.codepath.snyteam7.crossroads.R;
+import com.codepath.snyteam7.crossroads.fragments.DonorHomeFragment;
 import com.codepath.snyteam7.crossroads.fragments.ReviewerHomeFragment;
 import com.codepath.snyteam7.crossroads.fragments.ReviewerViewsFragment;
 import com.codepath.snyteam7.crossroads.listeners.FragmentTabListener;
@@ -33,7 +34,7 @@ public class ReviewerHomeActivity extends FragmentActivity {
 
 		ActionBar.Tab tab1 = actionBar
 			.newTab()
-			.setText("HOME")
+			.setText("Pending")
 			//.setIcon(R.drawable.ic_login)
 			.setTag("ReviewerHomeFragment")
 			.setTabListener(
@@ -45,14 +46,24 @@ public class ReviewerHomeActivity extends FragmentActivity {
 
 		ActionBar.Tab tab2 = actionBar
 			.newTab()
-			.setText("MY VIEW")
+			.setText("Accepted")
 			//.setIcon(R.drawable.ic_signup)
-			.setTag("ReviewerViewsFragment")
+			.setTag("ReviewerAcceptedFragment")
 			.setTabListener(
-			    new FragmentTabListener<ReviewerViewsFragment>(R.id.flReviewerContainer, this, "ReviewerViewstab",
-														ReviewerViewsFragment.class));
-
+			    new FragmentTabListener<ReviewerViewsFragment>(R.id.flReviewerContainer, this, "ReviewerAcceptedtab",
+			    		ReviewerViewsFragment.class));
 		actionBar.addTab(tab2);
+		
+		ActionBar.Tab tab3 = actionBar
+				.newTab()
+				.setText("Rejected")
+				//.setIcon(R.drawable.ic_signup)
+				.setTag("ReviewerRejectedFragment")
+				.setTabListener(
+				    new FragmentTabListener<ReviewerViewsFragment>(R.id.flReviewerContainer, this, "ReviewerRejectedtab",
+				    		ReviewerViewsFragment.class));
+
+			actionBar.addTab(tab3);
 	}
     
 	@Override

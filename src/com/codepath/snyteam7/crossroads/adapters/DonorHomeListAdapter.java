@@ -52,6 +52,7 @@ public class DonorHomeListAdapter extends ParseQueryAdapter<Item> {
 			v = View.inflate(getContext(), R.layout.donor_home_list_item, null);
 		}
 
+
 		super.getItemView(item, v, parent);
 
 		ParseImageView itemImage = (ParseImageView) v.findViewById(R.id.ivDonorHomeUserPhoto);
