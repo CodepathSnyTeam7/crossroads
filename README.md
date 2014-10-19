@@ -1,4 +1,4 @@
-
+![alt tag](https://github.com/CodepathSnyTeam7/crossroads/blob/master/crossroads2.gif)
 
 Group project: Mobile App for Non-profit organization "Crossroads"
 
