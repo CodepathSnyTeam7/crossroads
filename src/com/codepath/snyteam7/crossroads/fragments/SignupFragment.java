@@ -91,7 +91,7 @@ public class SignupFragment extends Fragment {
 	        	spinDistdataAdapter.clear();
 	        	spinDistdataAdapter.addAll(NTDistlist);
 	        	spinDistdataAdapter.notifyDataSetChanged();
-	        } else {
+	        } else if (statename.equalsIgnoreCase("All")) {
 	        	spinDistdataAdapter.clear();
 	        	spinDistdataAdapter.addAll(allDistlist);
 	        	spinDistdataAdapter.notifyDataSetChanged();
@@ -195,8 +195,16 @@ public class SignupFragment extends Fragment {
 	  // add items into spinner dynamically
 	  public void addItemsOnSpinnerDistrict(View v) {
 		spinDistrict = (Spinner) v.findViewById(R.id.spinnerSignupDistrict);
+		List<String> list = new ArrayList<String>();
+		  list = new ArrayList<String>();
+		  list.add("HKDist1");
+		  list.add("HKDist2");
+		  list.add("HKDist3");
+		  list.add("KLDist1");
+		  list.add("KLDist2");
+		  list.add("NTDist1");
 		spinDistdataAdapter = new ArrayAdapter<String>(getActivity(),
-			android.R.layout.simple_spinner_item, allDistlist);
+			android.R.layout.simple_spinner_item, list);
 		spinDistdataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinDistrict.setAdapter(spinDistdataAdapter);
 	  }
