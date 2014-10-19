@@ -15,9 +15,7 @@ import com.parse.GetDataCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseImageView;
-import com.parse.ParseQuery;
 import com.parse.ParseQueryAdapter;
-import com.parse.ParseUser;
 
 public class DonorHomeListAdapter extends ParseQueryAdapter<Item> {
 
@@ -27,11 +25,7 @@ public class DonorHomeListAdapter extends ParseQueryAdapter<Item> {
 
 	@Override
 	public View getItemView(Item item, View v, ViewGroup parent) {
-
-		if (v == null) {
-			v = View.inflate(getContext(), R.layout.donor_home_list_item, null);
-		}
-
+		v = View.inflate(getContext(), R.layout.donor_home_list_item, null);
 		ParseImageView itemImage = (ParseImageView) v.findViewById(R.id.ivDonorHomeUserPhoto);
 		ParseFile photoFile = item.getPhotoFile();
 		if (photoFile != null) {
