@@ -44,6 +44,12 @@ public class SignupFragment extends Fragment {
     ArrayAdapter<String> spinStatedataAdapter;
     ArrayAdapter<String> spinDistdataAdapter;
     
+    private OnSignupSuccessListener listener;
+    
+    public interface OnSignupSuccessListener {
+    	public void OnSignupSuccess();
+    }
+    
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -129,6 +135,11 @@ public class SignupFragment extends Fragment {
 	public void onAttach(Activity activity) {
 	    super.onAttach(activity);
 	    thisContext = activity;
+	    if(activity instanceof OnSignupSuccessListener) {
+	    	listener = (OnSignupSuccessListener)activity;
+	    }else{
+	    	throw new ClassCastException("Activity must implement OnSignupSuccessListener");
+	    }
 	}
 	
 	public void signupButtonClicked(View view) {
@@ -173,6 +184,7 @@ public class SignupFragment extends Fragment {
 				// Start the Donor activity
 		    	Intent i = new Intent(getActivity(), DonorActivity.class);
 		    	startActivity(i);
+		    	listener.OnSignupSuccess();
 		    } else {
 		      // Sign up didn't succeed. Look at the ParseException
 		      // to figure out what went wrong

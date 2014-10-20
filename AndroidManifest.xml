@@ -92,6 +92,7 @@
         </activity>
         <activity
             android:name=".activities.DonorActivity"
+            android:launchMode="singleTask"
             android:label="@string/title_activity_donor" >
         </activity>
         <activity

@@ -17,6 +17,9 @@ import com.parse.ParseUser;
 
 public class ReviewerHomeActivity extends FragmentActivity {
 
+	private FragmentTabListener<ReviewerHomeFragment> tab1Listener;
+	private FragmentTabListener<ReviewerReviewedItemsFragment> tab2Listener;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -25,6 +28,19 @@ public class ReviewerHomeActivity extends FragmentActivity {
 		// Setup reviewer tabs
 		setupReviewerTabs();
 	}
+	
+	@Override
+	protected void onNewIntent(Intent intent) {
+		super.onNewIntent(intent);
+		if(tab1Listener != null && tab1Listener.getFragment() != null) {
+			ReviewerHomeFragment tab1Frag = (ReviewerHomeFragment)tab1Listener.getFragment();
+			tab1Frag.fetchReviewerList();
+		}
+		if(tab2Listener != null && tab2Listener.getFragment() != null) {
+			ReviewerReviewedItemsFragment tab2Frag = (ReviewerReviewedItemsFragment)tab2Listener.getFragment();
+			tab2Frag.fetchDonorList();  //it's actually fetching list for reviewer
+		}
+	}
 
 	
     // Set up two tabs. One for Login and another for Sign up
@@ -32,27 +48,29 @@ public class ReviewerHomeActivity extends FragmentActivity {
 		ActionBar actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		actionBar.setDisplayShowTitleEnabled(true);
-
+		
+		tab1Listener = new FragmentTabListener<ReviewerHomeFragment>(R.id.flReviewerContainer, this, "ReviewerHomeFragment",
+				ReviewerHomeFragment.class);
+		
 		ActionBar.Tab tab1 = actionBar
 			.newTab()
 			.setText("Pending")
 			//.setIcon(R.drawable.ic_login)
 			.setTag("ReviewerHomeFragment")
-			.setTabListener(
-				new FragmentTabListener<ReviewerHomeFragment>(R.id.flReviewerContainer, this, "ReviewerHomeFragment",
-														ReviewerHomeFragment.class));
+			.setTabListener(tab1Listener);
 
 		actionBar.addTab(tab1);
 		actionBar.selectTab(tab1);
+		
+		tab2Listener = new FragmentTabListener<ReviewerReviewedItemsFragment>(R.id.flReviewerContainer, this, "ReviewerReviewedItemsFragment",
+				ReviewerReviewedItemsFragment.class);
 
 		ActionBar.Tab tab2 = actionBar
 			.newTab()
 			.setText("Reviewed")
 			//.setIcon(R.drawable.ic_signup)
 			.setTag("ReviewerReviewedItemsFragment")
-			.setTabListener(
-			    new FragmentTabListener<ReviewerReviewedItemsFragment>(R.id.flReviewerContainer, this, "ReviewerReviewedItemsFragment",
-														ReviewerReviewedItemsFragment.class));
+			.setTabListener(tab2Listener);
 
 		actionBar.addTab(tab2);
 	}
@@ -76,7 +94,10 @@ public class ReviewerHomeActivity extends FragmentActivity {
 			case R.id.action_signout:
 				ParseUser.logOut();
 				Intent i = new Intent(this, LoginActivity.class);
+        		i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        		i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				startActivity(i);
+				finish();
 				return true;
 			case R.id.miRProfile:
 				ProfileAction();

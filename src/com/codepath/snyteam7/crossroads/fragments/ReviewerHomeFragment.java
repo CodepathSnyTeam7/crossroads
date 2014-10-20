@@ -100,7 +100,7 @@ public class ReviewerHomeFragment extends Fragment {
 	}
 	
 	// Fetch the list items from Parse
-    private void fetchReviewerList() {
+    public void fetchReviewerList() {
     	// Fetch the list items from Parse with pagination
     	aItems.loadObjects();
     }

@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.codepath.snyteam7.crossroads.R;
 import com.codepath.snyteam7.crossroads.activities.DonorActivity;
 import com.codepath.snyteam7.crossroads.activities.ReviewerHomeActivity;
+import com.codepath.snyteam7.crossroads.fragments.SignupFragment.OnSignupSuccessListener;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseInstallation;
@@ -25,7 +26,13 @@ public class LoginFragment extends Fragment {
     public Context thisContext = null;
     private static EditText loginUsername;
     private static EditText loginPassword;
-	
+
+    private OnLoginSuccessListener listener;
+    
+    public interface OnLoginSuccessListener {
+    	public void OnLoginSuccess();
+    }    
+    
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -70,6 +77,11 @@ public class LoginFragment extends Fragment {
 	public void onAttach(Activity activity) {
 	    super.onAttach(activity);
 	    thisContext = activity;
+	    if(activity instanceof OnLoginSuccessListener) {
+	    	listener = (OnLoginSuccessListener)activity;
+	    }else{
+	    	throw new ClassCastException("Activity must implement OnLoginSuccessListener");
+	    }
 	}
 
 	public void loginButtonClicked(View view) {
@@ -124,7 +136,7 @@ public class LoginFragment extends Fragment {
 		}
 		
 		startActivity(intent);
-		return;
+		listener.OnLoginSuccess();
 	}
 
 }

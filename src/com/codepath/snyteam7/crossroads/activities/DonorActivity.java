@@ -32,6 +32,13 @@ public class DonorActivity extends FragmentActivity {
 		setupItemListFragment();
 	}
 	 
+	@Override
+	protected void onNewIntent(Intent intent) {
+		super.onNewIntent(intent);
+		if(itemsListFragment != null) {
+			itemsListFragment.fetchDonorList();
+		}
+	}
     
 	private void setupItemListFragment() {
 		itemsListFragment = DonorHomeFragment.getInstance();
@@ -50,7 +57,10 @@ public class DonorActivity extends FragmentActivity {
             case R.id.action_signout:
         		ParseUser.logOut();
         		Intent i = new Intent(this, LoginActivity.class);
+        		i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        		i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         		startActivity(i);
+        		finish();
         		return true; 
 			case R.id.miDProfile:
 				ProfileAction();

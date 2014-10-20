@@ -113,7 +113,7 @@ public class ItemListFragment extends Fragment {
 	}
 	
 	// Fetch the list items from Parse
-    private void fetchDonorList() {
+    public void fetchDonorList() {
     	// Fetch the list items from Parse with pagination
     	aItems.loadObjects();
     }

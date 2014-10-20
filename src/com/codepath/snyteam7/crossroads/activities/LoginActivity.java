@@ -13,11 +13,14 @@ import android.widget.Toast;
 import com.codepath.snyteam7.crossroads.R;
 import com.codepath.snyteam7.crossroads.fragments.HowitworksDialogFragment;
 import com.codepath.snyteam7.crossroads.fragments.LoginFragment;
+import com.codepath.snyteam7.crossroads.fragments.LoginFragment.OnLoginSuccessListener;
 import com.codepath.snyteam7.crossroads.fragments.SignupFragment;
+import com.codepath.snyteam7.crossroads.fragments.SignupFragment.OnSignupSuccessListener;
 import com.codepath.snyteam7.crossroads.listeners.FragmentTabListener;
 import com.parse.ParseUser;
 
-public class LoginActivity extends FragmentActivity {
+public class LoginActivity extends FragmentActivity 
+	implements OnSignupSuccessListener, OnLoginSuccessListener {
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,6 +123,16 @@ public class LoginActivity extends FragmentActivity {
         FragmentManager fm = getSupportFragmentManager();
         HowitworksDialogFragment filterItem = new HowitworksDialogFragment();
         filterItem.show(fm, "fragment_howitworks");
+	}
+
+	@Override
+	public void OnLoginSuccess() {
+		finish();		
+	}
+
+	@Override
+	public void OnSignupSuccess() {
+		finish();		
 	}
 
 }
