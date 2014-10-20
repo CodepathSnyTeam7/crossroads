@@ -1,15 +1,11 @@
 package com.codepath.snyteam7.crossroads.activities;
 
 import android.app.ActionBar;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.content.LocalBroadcastManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -19,7 +15,7 @@ import com.codepath.snyteam7.crossroads.fragments.HowitworksDialogFragment;
 import com.codepath.snyteam7.crossroads.fragments.LoginFragment;
 import com.codepath.snyteam7.crossroads.fragments.SignupFragment;
 import com.codepath.snyteam7.crossroads.listeners.FragmentTabListener;
-import com.parse.PushService;
+import com.parse.ParseUser;
 
 public class LoginActivity extends FragmentActivity {
 	
@@ -30,6 +26,32 @@ public class LoginActivity extends FragmentActivity {
         
         Drawable login_activity_background = getResources().getDrawable(R.drawable.hkstreet);
         login_activity_background.setAlpha(127);
+        
+        
+		// Check for Parse user
+        // Get current user data from Parse.com
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        if (currentUser != null) {
+    		String usertype = currentUser.getString("usertype");
+    		Intent intent;
+    		
+    		if (usertype == null) {
+    			Toast.makeText(this, "Login usertype unknown", Toast.LENGTH_LONG).show();
+    		} else {
+	            if (usertype.equalsIgnoreCase("reviewer")) {
+	    			intent = new Intent(LoginActivity.this, ReviewerHomeActivity.class);
+		            startActivity(intent);
+	    		} else if (usertype.equalsIgnoreCase("donor")) {
+	    			intent = new Intent(LoginActivity.this, DonorActivity.class);
+		            startActivity(intent);
+	    		}
+	            finish();
+    		}
+        } else {
+            // Send user to Login Signup Activity
+        	Toast.makeText(this, "Login or Sign up", Toast.LENGTH_LONG).show();
+        }
+        
         
 		// Set up login tabs
 		setupLoginTabs();

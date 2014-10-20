@@ -17,7 +17,7 @@ public class CrossroadsApplication extends Application {
 	public void onCreate() {
 		ParseObject.registerSubclass(Item.class);
 		ParseObject.registerSubclass(Message.class);
-		//ParseObject.registerSubclass(CrossroadsUser.class);
+
 		Parse.initialize(this, "wcoPa6w0bpaQuqUVkSlRe90K0TH8b8bXsBgBl7jl", "DpK6mli61BLXWvN02X6pqXGMrhV09U2FOP3UtmJ3");
 		ParseInstallation.getCurrentInstallation().saveInBackground();
 
