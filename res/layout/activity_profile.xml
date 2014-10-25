@@ -1,0 +1,81 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.codepath.snyteam7.crossroads.activities.ProfileActivity" >
+
+    <ImageView
+        android:id="@+id/ivProfBg"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/prof_bg_img" />
+
+    <TextView
+        android:id="@+id/tvProfNames"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivProfBg"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/ivProfPhoto"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/tvProfuname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvProfNames"
+        android:layout_below="@+id/tvProfNames"
+        android:text="TextView" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button1"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/ivProfPhoto"
+        android:layout_marginTop="63dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tvProfDist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/tvProfPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/tvProfEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ivProfPhoto"
+        android:layout_below="@+id/ivProfPhoto"
+        android:layout_marginTop="22dp"
+        android:onClick="onClickProfEdit"
+        android:background="@color/black_60"
+        android:text="Edit Profile" />
+
+    <ImageView
+        android:id="@+id/ivProfPhoto"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignBottom="@+id/tvProfuname"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="27dp"
+        android:src="@drawable/default_avatar" />
+
+</RelativeLayout>

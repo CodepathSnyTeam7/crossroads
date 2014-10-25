@@ -91,8 +91,9 @@ public class ReviewerHomeListAdapter extends ParseQueryAdapter<Item>  {
 		}
     	
 		TextView tvItemDescription = (TextView) v.findViewById(R.id.tvRHomeUserDesc);
-		String description = "<font color=\"#206199\">" + item.getDescription() + "  " + "</font>";
-		tvItemDescription.setText(Html.fromHtml(description));
+		//String description = "<font color=\"#206199\">" + item.getDescription() + "  " + "</font>";
+		//tvItemDescription.setText(Html.fromHtml(description));
+		tvItemDescription.setText(item.getDescription());
 		return v;
 	} 
 }

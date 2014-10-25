@@ -3,14 +3,12 @@ package com.codepath.snyteam7.crossroads.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.codepath.snyteam7.crossroads.R;
 import com.codepath.snyteam7.crossroads.fragments.DonorHomeFragment;
-import com.codepath.snyteam7.crossroads.fragments.profileFragment;
 import com.parse.ParseUser;
 
 public class DonorActivity extends FragmentActivity {
@@ -76,9 +74,8 @@ public class DonorActivity extends FragmentActivity {
 	}
 	
 	public void ProfileAction () {
-		FragmentManager fm = getSupportFragmentManager();
-        profileFragment pFrag = new profileFragment();
-        pFrag.show(fm, "fragment_profile");
+		Intent i = new Intent(this, ProfileActivity.class);
+		startActivity(i);
 	}
 
 }

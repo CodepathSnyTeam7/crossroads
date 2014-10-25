@@ -1,7 +1,6 @@
 package com.codepath.snyteam7.crossroads.fragments;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import android.app.Activity;
@@ -23,7 +22,6 @@ import android.widget.Toast;
 
 import com.codepath.snyteam7.crossroads.R;
 import com.codepath.snyteam7.crossroads.activities.DonorActivity;
-import com.codepath.snyteam7.crossroads.activities.LoginActivity;
 import com.parse.ParseException;
 import com.parse.ParseInstallation;
 import com.parse.ParseUser;

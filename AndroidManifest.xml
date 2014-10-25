@@ -23,9 +23,8 @@
   to match your app's package name + ".permission.C2D_MESSAGE".
     -->
     <permission
-        android:protectionLevel="signature" 
         android:name="com.codepath.snyteam7.crossroads.permission.C2D_MESSAGE"
-        />
+        android:protectionLevel="signature" />
 
     <uses-permission android:name="com.codepath.snyteam7.crossroads.permission.C2D_MESSAGE" />
 
@@ -58,7 +57,7 @@
             </intent-filter>
         </receiver>
         <receiver
-            android:name="com.codepath.snyteam7.crossroads.utils.Receiver"
+            android:name=".utils.Receiver"
             android:exported="false" >
             <intent-filter>
                 <action android:name="com.parse.push.intent.RECEIVE" />
@@ -92,18 +91,26 @@
         </activity>
         <activity
             android:name=".activities.DonorActivity"
-            android:launchMode="singleTask"
-            android:label="@string/title_activity_donor" >
+            android:label="@string/title_activity_donor"
+            android:launchMode="singleTask" >
         </activity>
         <activity
-            android:name="com.codepath.snyteam7.crossroads.activities.DonorItemDetailsActivity"
+            android:name=".activities.DonorItemDetailsActivity"
             android:label="@string/title_activity_donor_item_details" >
         </activity>
-        <meta-data android:name="com.parse.push.notification_icon"
-         android:resource="@drawable/push_icon"/>
 
+        <meta-data
+            android:name="com.parse.push.notification_icon"
+            android:resource="@drawable/ic_launcher" />
+
+        <activity
+            android:name=".activities.ProfileActivity"
+            android:label="@string/title_activity_profile" >
+        </activity>
+        <activity
+            android:name="com.codepath.snyteam7.crossroads.activities.HowtoActivity"
+            android:label="@string/title_activity_howto" >
+        </activity>
     </application>
-    
-    
 
 </manifest>

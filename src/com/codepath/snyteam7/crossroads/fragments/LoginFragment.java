@@ -16,7 +16,6 @@ import android.widget.Toast;
 import com.codepath.snyteam7.crossroads.R;
 import com.codepath.snyteam7.crossroads.activities.DonorActivity;
 import com.codepath.snyteam7.crossroads.activities.ReviewerHomeActivity;
-import com.codepath.snyteam7.crossroads.fragments.SignupFragment.OnSignupSuccessListener;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseInstallation;

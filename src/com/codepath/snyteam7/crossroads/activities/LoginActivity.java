@@ -5,13 +5,11 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.codepath.snyteam7.crossroads.R;
-import com.codepath.snyteam7.crossroads.fragments.HowitworksDialogFragment;
 import com.codepath.snyteam7.crossroads.fragments.LoginFragment;
 import com.codepath.snyteam7.crossroads.fragments.LoginFragment.OnLoginSuccessListener;
 import com.codepath.snyteam7.crossroads.fragments.SignupFragment;
@@ -120,9 +118,13 @@ public class LoginActivity extends FragmentActivity
 
 	// OnCLick HowitWorks action
 	public void onHowitworksAction() {
+		/*
         FragmentManager fm = getSupportFragmentManager();
         HowitworksDialogFragment filterItem = new HowitworksDialogFragment();
         filterItem.show(fm, "fragment_howitworks");
+        */
+		Intent i = new Intent(this, HowtoActivity.class);
+		startActivity(i);
 	}
 
 	@Override

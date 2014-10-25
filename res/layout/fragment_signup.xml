@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scaleType="centerCrop"
-    android:background="@drawable/hkstreet"
+    android:background="@drawable/hk_afp_1"
     tools:context="${relativePackage}.${activityClass}" >
 
     <RelativeLayout
@@ -15,7 +15,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="122dp"
-        android:background="@color/LightGray"
+        android:background="@color/black_70"
         android:alpha="10"
          >
          
@@ -32,7 +32,7 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="first name"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:inputType="textPersonName" />
 
         <EditText
@@ -42,7 +42,7 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="family name"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:inputType="textPersonName" />
      </LinearLayout>
         
@@ -60,7 +60,7 @@
 			android:layout_weight="1"
             android:ems="10"
             android:hint="username"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:inputType="text" />
 
         <EditText
@@ -70,7 +70,7 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="password"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:inputType="textPassword" />
      </LinearLayout>
      
@@ -87,7 +87,7 @@
 			android:layout_weight="1"
             android:ems="10"
             android:hint="Phone 408-111-2222"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:inputType="phone" />
         
         <EditText
@@ -97,7 +97,7 @@
 			android:layout_weight="1"
             android:ems="10"
             android:hint="email"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:inputType="textWebEmailAddress" />
       </LinearLayout>
         
@@ -112,16 +112,16 @@
              android:id="@+id/spinnerSignupState"
              android:layout_height="wrap_content"
              android:layout_width="wrap_content"
-             android:layout_centerHorizontal="true"
              android:layout_weight="1"
+             android:textColor="@color/LightGray"
               />
          
          <Spinner
              android:id="@+id/spinnerSignupDistrict"
              android:layout_height="wrap_content"
              android:layout_width="wrap_content"
-             android:layout_centerHorizontal="true"
              android:layout_weight="1"
+             android:textColor="@color/LightGray"
               />
       </LinearLayout>
       

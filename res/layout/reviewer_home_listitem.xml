@@ -1,63 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@color/bg_bl_wh_d1" >
     
-    <RelativeLayout 
-        android:id="@+id/rlRHomeHeader"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:background="@color/white">
+      <com.parse.ParseImageView
+         android:id="@+id/ivRHomeUserPhoto"
+         android:layout_width="match_parent"
+         android:layout_height="250dp"
+         android:layout_marginRight="10dp"
+         android:layout_marginLeft="10dp"
+         android:layout_marginTop="10dp"
+         android:adjustViewBounds="true"
+         android:scaleType="centerCrop"
+         android:src="@drawable/ic_launcher" />
+      
+    <RelativeLayout
+    	android:layout_width="match_parent"
+    	android:layout_height="match_parent"
+    	android:layout_below="@+id/ivRHomeUserPhoto"
+    	android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+		android:padding="15dp"
+	    android:background="@drawable/layer_card_bg" >
+      <TextView
+          android:id="@+id/tvRHomeUserDesc"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_alignParentRight="true"
+          android:layout_marginLeft="5dp"
+          android:layout_marginRight="5dp"
+          android:ellipsize="end"
+          android:maxLines="3"
+          android:text="default_description"
+          android:textSize="16sp" />
+
+      <ImageView
+          android:id="@+id/ivRHomeUserProfileImg"
+          android:layout_width="32dp"
+          android:layout_height="32dp"
+          android:layout_alignLeft="@+id/tvRHomeUserDesc"
+          android:layout_below="@+id/tvRHomeUserDesc"
+          android:layout_marginTop="10dp"
+          android:adjustViewBounds="true"
+          android:scaleType="centerCrop"
+          android:src="@drawable/ic_launcher" />
 
       <TextView
-        android:id="@+id/tvRHomeUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="8dp"
-        android:layout_marginLeft="8dp"
-        android:text="TextView" 
-        android:textSize="16sp" />
-    
+          android:id="@+id/tvRHomeUser"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignTop="@+id/ivRHomeUserProfileImg"
+          android:layout_marginLeft="5dp"
+          android:layout_toRightOf="@+id/ivRHomeUserProfileImg"
+          android:text="TextView"
+          android:textSize="12sp" />
+
       <TextView
-        android:id="@+id/tvRHomeUserDonateDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_gravity="right"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:text="TextView" 
-        android:textSize="16sp" />
+          android:id="@+id/tvRHomeUserDonateDate"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignLeft="@+id/tvRHomeUser"
+          android:layout_below="@+id/tvRHomeUser"
+          android:text="TextView"
+          android:textSize="12sp" />
     </RelativeLayout>
-    
-      <TextView
-        android:id="@+id/tvRHomeUserDesc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/rlRHomeHeader"
-        android:layout_marginTop="4dp"
-        android:layout_marginLeft="8dp"
-        android:ellipsize="end"
-        android:maxLines="3"
-        android:text="default_description" 
-        android:textSize="16sp" />
-        
-     <com.parse.ParseImageView
-        android:id="@+id/ivRHomeUserPhoto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/tvRHomeUserDesc"
-        android:layout_alignParentLeft="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:scaleType="fitXY"
-        android:adjustViewBounds="true"
-        android:src="@drawable/ic_launcher" />
-    
-
-    
 </RelativeLayout>

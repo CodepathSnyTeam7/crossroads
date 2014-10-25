@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scaleType="centerCrop"
-    android:background="@drawable/hkstreet"
+    android:background="@drawable/hk_afp_1"
+    android:alpha="200"
     tools:context="${relativePackage}.${activityClass}" >
 
     <RelativeLayout
@@ -14,21 +15,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="122dp"
+        android:layout_marginTop="137dp"
         android:alpha="10"
-        android:background="@color/LightGray"
-         >
+        android:background="@color/black_70" >
 
-        <EditText
-            android:id="@+id/etLoginUsername"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:ems="10"
-            android:hint="username"
-            android:textColor="@color/black"
-            android:inputType="text" />
-		<requestFocus />
         <EditText
             android:id="@+id/etLoginPassword"
             android:layout_width="wrap_content"
@@ -38,8 +28,8 @@
             android:layout_below="@+id/etLoginUsername"
             android:ems="10"
             android:hint="password"
-            android:textColor="@color/black"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/btLogin"
@@ -49,9 +39,19 @@
             android:layout_alignRight="@+id/etLoginUsername"
             android:layout_below="@+id/etLoginPassword"
             android:layout_marginTop="16dp"
-            android:textColor="@color/LightGray"
-            android:text="@string/login_button_lbl" />
+            android:text="@string/login_button_lbl"
+            android:textColor="@color/LightGray" />
+
+        <EditText
+            android:id="@+id/etLoginUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:ems="10"
+            android:hint="username"
+            android:inputType="text"
+            android:textColor="@color/white" />
     </RelativeLayout>
-    
 
 </RelativeLayout>

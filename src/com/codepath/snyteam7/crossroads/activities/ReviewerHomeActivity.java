@@ -4,14 +4,12 @@ import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.codepath.snyteam7.crossroads.R;
 import com.codepath.snyteam7.crossroads.fragments.ReviewerHomeFragment;
 import com.codepath.snyteam7.crossroads.fragments.ReviewerReviewedItemsFragment;
-import com.codepath.snyteam7.crossroads.fragments.profileFragment;
 import com.codepath.snyteam7.crossroads.listeners.FragmentTabListener;
 import com.parse.ParseUser;
 
@@ -87,7 +85,6 @@ public class ReviewerHomeActivity extends FragmentActivity {
 		// Handle action bar item clicks here. The action bar will
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
 		switch (item.getItemId()) {
 			case R.id.action_settings:
 			return true;
@@ -107,8 +104,7 @@ public class ReviewerHomeActivity extends FragmentActivity {
 	}
 	
 	public void ProfileAction () {
-		FragmentManager fm = getSupportFragmentManager();
-        profileFragment pFrag = new profileFragment();
-        pFrag.show(fm, "fragment_profile");
+		Intent i = new Intent(this, ProfileActivity.class);
+		startActivity(i);	
 	}
 }
