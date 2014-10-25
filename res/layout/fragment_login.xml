@@ -18,6 +18,19 @@
         android:layout_marginTop="137dp"
         android:alpha="10"
         android:background="@color/black_70" >
+        
+        
+        <EditText
+            android:id="@+id/etLoginUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:ems="10"
+            android:hint="username"
+            android:inputType="text"
+            android:textColor="@color/white" />
+        <requestFocus />
 
         <EditText
             android:id="@+id/etLoginPassword"
@@ -42,16 +55,6 @@
             android:text="@string/login_button_lbl"
             android:textColor="@color/LightGray" />
 
-        <EditText
-            android:id="@+id/etLoginUsername"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:ems="10"
-            android:hint="username"
-            android:inputType="text"
-            android:textColor="@color/white" />
     </RelativeLayout>
 
 </RelativeLayout>

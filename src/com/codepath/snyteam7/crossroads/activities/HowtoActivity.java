@@ -1,5 +1,6 @@
 package com.codepath.snyteam7.crossroads.activities;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -34,6 +35,9 @@ public class HowtoActivity extends FragmentActivity {
 	    protected void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
 	        setContentView(R.layout.activity_howto);
+	        
+			ActionBar bar = getActionBar();
+			bar.setTitle("How Donation Works?");
 
 	        // Instantiate a ViewPager and a PagerAdapter.
 	        mPager = (ViewPager) findViewById(R.id.pager);

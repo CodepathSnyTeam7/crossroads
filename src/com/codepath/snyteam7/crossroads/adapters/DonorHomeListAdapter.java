@@ -24,13 +24,25 @@ public class DonorHomeListAdapter extends ParseQueryAdapter<Item> {
 	}
 
 	@Override
-	public View getItemView(Item item, View v, ViewGroup parent) {
-		v = View.inflate(getContext(), R.layout.donor_home_list_item, null);
-		ParseImageView itemImage = (ParseImageView) v.findViewById(R.id.ivDonorHomeUserPhoto);
+	public View getItemView(Item item, View convertView, ViewGroup parent) {
+		ViewHolder holder = null;
+		if (convertView == null) {
+			convertView = View.inflate(getContext(), R.layout.donor_home_list_item, null);
+			holder = new ViewHolder();
+			holder.vh_itemImage = (ParseImageView) convertView.findViewById(R.id.ivDonorHomeUserPhoto);
+			holder.vh_tvDonorHomeUserTime = (TextView) convertView.findViewById(R.id.tvDonorHomeUserTime);
+			holder.vh_tvDonorHomeItemStatus = (TextView) convertView.findViewById(R.id.tvDonorHomeItemStatus);
+			holder.vh_tvItemDescription = (TextView) convertView.findViewById(R.id.tvDonorHomeUserDesc);
+			convertView.setTag(holder);
+		} else {
+	    	holder = (ViewHolder) convertView.getTag();
+	    }
+			
+
 		ParseFile photoFile = item.getPhotoFile();
 		if (photoFile != null) {
-			itemImage.setParseFile(photoFile);
-			itemImage.loadInBackground(new GetDataCallback() {
+			holder.vh_itemImage.setParseFile(photoFile);
+			holder.vh_itemImage.loadInBackground(new GetDataCallback() {
 				@Override
 				public void done(byte[] data, ParseException e) {
 					// nothing to do
@@ -50,25 +62,30 @@ public class DonorHomeListAdapter extends ParseQueryAdapter<Item> {
 		//TextView tvDonor = (TextView) v.findViewById(R.id.tvDonorHomeUser);
 		// TBD: Get the username
 		//tvDonor.setText("donor");
-		TextView tvDonorHomeUserTime = (TextView) v.findViewById(R.id.tvDonorHomeUserTime);
+		
 		DateFormat df = new DateFormat();
-		tvDonorHomeUserTime.setText(df.format("MM/dd/yyyy", item.getCreationDate()));
-		TextView tvItemDescription = (TextView) v.findViewById(R.id.tvDonorHomeUserDesc);
-		tvItemDescription.setText(item.getDescription());
+		holder.vh_tvDonorHomeUserTime.setText(df.format("MM/dd/yyyy", item.getCreationDate()));
+		holder.vh_tvItemDescription.setText(item.getDescription());
 		
 		Date acceptedDate = item.getDate("accepteddate");
 		Date rejectedDate = item.getDate("rejecteddate");
-		TextView tvDonorHomeItemStatus = (TextView) v.findViewById(R.id.tvDonorHomeItemStatus);
+		
 		if(acceptedDate != null) {
-			tvDonorHomeItemStatus.setText(getContext().getResources().getString(R.string.accepted));
-			tvDonorHomeItemStatus.setTextColor(getContext().getResources().getColor(android.R.color.holo_blue_dark));
+			holder.vh_tvDonorHomeItemStatus.setText(getContext().getResources().getString(R.string.accepted));
+			holder.vh_tvDonorHomeItemStatus.setTextColor(getContext().getResources().getColor(android.R.color.holo_blue_dark));
 		}else if(rejectedDate != null) {
-			tvDonorHomeItemStatus.setText(getContext().getResources().getString(R.string.rejected));
-			tvDonorHomeItemStatus.setTextColor(getContext().getResources().getColor(android.R.color.holo_orange_dark));
+			holder.vh_tvDonorHomeItemStatus.setText(getContext().getResources().getString(R.string.rejected));
+			holder.vh_tvDonorHomeItemStatus.setTextColor(getContext().getResources().getColor(android.R.color.holo_orange_dark));
 		}else{
-			tvDonorHomeItemStatus.setText("");
+			holder.vh_tvDonorHomeItemStatus.setText("");
 		}
-		return v;
+		return convertView;
 	}
 
+	static class ViewHolder {
+		ParseImageView vh_itemImage;
+		TextView vh_tvItemDescription;
+		TextView vh_tvDonorHomeUserTime;
+		TextView vh_tvDonorHomeItemStatus;
+	}
 }

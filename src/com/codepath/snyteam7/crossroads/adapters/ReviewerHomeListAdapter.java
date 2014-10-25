@@ -4,7 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import android.content.Context;
-import android.text.Html;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -40,19 +39,27 @@ public class ReviewerHomeListAdapter extends ParseQueryAdapter<Item>  {
 	}
 
 	@Override
-	public View getItemView(Item item, View v, ViewGroup parent) {
+	public View getItemView(Item item, View convertView, ViewGroup parent) {
+		ViewHolder holder = null;
+		
+		if (convertView == null) {
+			convertView = View.inflate(getContext(), R.layout.reviewer_home_listitem, null);
+			holder = new ViewHolder();
+			holder.vh_itemImage = (ParseImageView) convertView.findViewById(R.id.ivRHomeUserPhoto);
+			holder.vh_tvDonor = (TextView) convertView.findViewById(R.id.tvRHomeUser);
+			holder.vh_tvDonateDate = (TextView) convertView.findViewById(R.id.tvRHomeUserDonateDate);
+			holder.vh_tvItemDescription = (TextView) convertView.findViewById(R.id.tvRHomeUserDesc);
+			convertView.setTag(holder);
+		} else {
+	    	holder = (ViewHolder) convertView.getTag();
+	    }
 
-		if (v == null) {
-			v = View.inflate(getContext(), R.layout.reviewer_home_listitem, null);
-		}
+		super.getItemView(item, convertView, parent);
 
-		super.getItemView(item, v, parent);
-
-		ParseImageView itemImage = (ParseImageView) v.findViewById(R.id.ivRHomeUserPhoto);
 		ParseFile photoFile = item.getPhotoFile();
 		if (photoFile != null) {
-			itemImage.setParseFile(photoFile);
-			itemImage.loadInBackground(new GetDataCallback() {
+			holder.vh_itemImage.setParseFile(photoFile);
+			holder.vh_itemImage.loadInBackground(new GetDataCallback() {
 				@Override
 				public void done(byte[] data, ParseException e) {
 					// nothing to do
@@ -70,31 +77,33 @@ public class ReviewerHomeListAdapter extends ParseQueryAdapter<Item>  {
 		}
 
 		// Get the username
-		TextView tvDonor = (TextView) v.findViewById(R.id.tvRHomeUser);
     	ParseUser donor = item.getDonor();
     	if (donor != null) {
-    		tvDonor.setText(item.getString("donorusername"));
-    		//tvDonor.setText("DonorTBD");
+    		holder.vh_tvDonor.setText(item.getString("donorusername"));
     	} else {
-    		tvDonor.setText("Donor");
+    		holder.vh_tvDonor.setText("Donor");
     	}
 		
 		// Get the donation date
-		TextView tvDonateDate = (TextView) v.findViewById(R.id.tvRHomeUserDonateDate);
 		Date donateDate = item.getDate("donationdate");
 		if (donateDate != null) {
 	    	SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
 	    	String donateDateStr = formatter.format(donateDate);
-	    	tvDonateDate.setText(donateDateStr);
+	    	holder.vh_tvDonateDate.setText(donateDateStr);
 		} else {
-			tvDonateDate.setText("Date");
+			holder.vh_tvDonateDate.setText("Date");
 		}
     	
-		TextView tvItemDescription = (TextView) v.findViewById(R.id.tvRHomeUserDesc);
-		//String description = "<font color=\"#206199\">" + item.getDescription() + "  " + "</font>";
-		//tvItemDescription.setText(Html.fromHtml(description));
-		tvItemDescription.setText(item.getDescription());
-		return v;
-	} 
+		// Item description
+		holder.vh_tvItemDescription.setText(item.getDescription());
+		return convertView;
+	}
+	
+	static class ViewHolder {
+		ParseImageView vh_itemImage;
+		TextView vh_tvDonor;
+		TextView vh_tvDonateDate;
+		TextView vh_tvItemDescription;
+	}
 }
 
