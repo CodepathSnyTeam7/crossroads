@@ -33,7 +33,7 @@
 		    android:padding="15dp"
             android:adjustViewBounds="true"
        		android:scaleType="centerCrop"
-            android:src="@drawable/ic_camera" />
+            android:src="@drawable/cr_camera" />
         
          <TextView
             android:layout_width="match_parent"
@@ -54,7 +54,7 @@
 		    android:padding="15dp"
             android:adjustViewBounds="true"
        		android:scaleType="centerCrop"
-            android:src="@drawable/ic_me" />
+            android:src="@drawable/cr_describe" />
         
          <TextView
             android:layout_width="match_parent"
@@ -75,7 +75,7 @@
 		    android:padding="15dp"
             android:adjustViewBounds="true"
        		android:scaleType="centerCrop"
-            android:src="@drawable/ic_launcher" />
+            android:src="@drawable/cr_repeat" />
         
          <TextView
             android:layout_width="match_parent"

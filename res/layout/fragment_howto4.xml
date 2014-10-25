@@ -42,7 +42,7 @@
 		    android:padding="15dp"
             android:adjustViewBounds="true"
        		android:scaleType="centerCrop"
-            android:src="@drawable/ic_launcher" />
+            android:src="@drawable/cr_check" />
         
          <TextView
             android:layout_width="match_parent"
@@ -63,7 +63,7 @@
 		    android:padding="15dp"
             android:adjustViewBounds="true"
        		android:scaleType="centerCrop"
-            android:src="@drawable/ic_launcher" />
+            android:src="@drawable/cr_check" />
         
          <TextView
             android:layout_width="match_parent"
@@ -84,7 +84,7 @@
 		    android:padding="15dp"
             android:adjustViewBounds="true"
        		android:scaleType="centerCrop"
-            android:src="@drawable/ic_launcher" />
+            android:src="@drawable/cr_check" />
         
          <TextView
             android:layout_width="match_parent"

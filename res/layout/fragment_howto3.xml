@@ -33,7 +33,7 @@
 		    android:padding="15dp"
             android:adjustViewBounds="true"
        		android:scaleType="centerCrop"
-            android:src="@drawable/ic_camera" />
+            android:src="@drawable/cr_truck" />
         
          <TextView
             android:layout_width="match_parent"
@@ -49,16 +49,17 @@
         android:padding="16dp"> 
         
         <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
 		    android:padding="15dp"
             android:adjustViewBounds="true"
        		android:scaleType="centerCrop"
-            android:src="@drawable/ic_me" />
+            android:src="@drawable/cr_car" />
         
          <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:text="Drop off" />
   
         </LinearLayout>
