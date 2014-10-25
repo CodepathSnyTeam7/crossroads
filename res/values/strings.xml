@@ -18,6 +18,7 @@
     <string name="accept">Accept</string>
     <string name="reject">Reject</string>
     <string name="title_activity_donor">DonorActivity</string>
+    <string name="title_activity_map">MapActivity</string>
     <string name="pickup_address">Enter pickup address</string>
     <string name="item_condition">Item Condition</string>
     <string name="condition_label">Condition:</string>

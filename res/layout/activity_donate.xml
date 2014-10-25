@@ -66,6 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/etPickupDate"
             android:layout_alignLeft="@+id/spCondition"
+            android:onClick="OnPickLocation"
             android:hint="@string/pickup_address"
             android:ems="10"
             android:inputType="textPostalAddress" />

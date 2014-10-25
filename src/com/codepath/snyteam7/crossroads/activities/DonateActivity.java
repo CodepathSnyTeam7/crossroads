@@ -29,6 +29,7 @@ import android.widget.Toast;
 import com.codepath.snyteam7.crossroads.R;
 import com.codepath.snyteam7.crossroads.helper.PhotoScalerHelper;
 import com.codepath.snyteam7.crossroads.model.Item;
+import com.codepath.snyteam7.crossroads.model.MapData;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
@@ -52,6 +53,7 @@ public class DonateActivity extends Activity {
 	private static final int PICK_PHOTO_CODE = 2;
 	private static final int CROP_PHOTO_CODE = 3;
 	private static final int POST_PHOTO_CODE = 4;
+	private static final int DROPOFF_LOCATION_CODE = 5;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -139,6 +141,19 @@ public class DonateActivity extends Activity {
 				startProgressBar();
 				photoBitmap = data.getParcelableExtra("processedPhoto");
 				processPhoto();
+			}else if (requestCode == DROPOFF_LOCATION_CODE) {
+				//startProgressBar();
+				//photoBitmap = data.getParcelableExtra("processedPhoto");
+				//processPhoto();
+				
+				//MapData mLocation = (MapData)getSerializableExtra("LatLng");
+				//Toast.makeText(getApplicationContext(), "Main Acitiity" + mLocation.toString();
+				double latitude = data.getExtras().getDouble("latitude");
+				double longitude = data.getExtras().getDouble("longitude");
+				//Toast.makeText(this, "Main Activity: lat = "+ latitude + ";Long = " + longitude, Toast.LENGTH_LONG).show();
+				String address = data.getExtras().getString("Address");
+				Toast.makeText(this, "Main Activity: Address = " + address, Toast.LENGTH_LONG).show();
+				etPickupAddress.setText(address);
 			}
 		}
 	}
@@ -216,6 +231,10 @@ public class DonateActivity extends Activity {
 		}
 
 		return result;
+	}
+	public void OnPickLocation(View v) {
+		Intent intent = new Intent(this, MapActivity.class);
+		startActivityForResult(intent, DROPOFF_LOCATION_CODE);
 	}
 
 	private void startPreviewPhotoActivity() {

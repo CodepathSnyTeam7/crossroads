@@ -1,7 +1,5 @@
 package com.codepath.snyteam7.crossroads.model;
 
-import java.util.Date;
-
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
 

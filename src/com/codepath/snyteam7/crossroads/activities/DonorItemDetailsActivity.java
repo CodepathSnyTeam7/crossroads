@@ -9,9 +9,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.codepath.snyteam7.crossroads.R;
-import com.codepath.snyteam7.crossroads.R.id;
-import com.codepath.snyteam7.crossroads.R.layout;
-import com.codepath.snyteam7.crossroads.R.menu;
 import com.codepath.snyteam7.crossroads.fragments.ChatRoomFragment;
 import com.codepath.snyteam7.crossroads.fragments.ItemDetailFragment;
 import com.parse.ParseUser;

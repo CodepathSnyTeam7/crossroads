@@ -1,7 +1,5 @@
 package com.codepath.snyteam7.crossroads.activities;
 
-import java.io.ByteArrayOutputStream;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -10,14 +8,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.codepath.libraries.androidviewhelpers.SimpleProgressDialog;
 import com.codepath.snyteam7.crossroads.ImageFilterProcessor;
 import com.codepath.snyteam7.crossroads.R;
-import com.parse.ParseException;
 import com.parse.ParseFile;
-import com.parse.SaveCallback;
 
 public class PreviewPhotoActivity extends Activity {
 	private Bitmap photoBitmap;
