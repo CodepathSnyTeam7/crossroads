@@ -152,7 +152,7 @@ public class DonateActivity extends Activity {
 				double longitude = data.getExtras().getDouble("longitude");
 				//Toast.makeText(this, "Main Activity: lat = "+ latitude + ";Long = " + longitude, Toast.LENGTH_LONG).show();
 				String address = data.getExtras().getString("Address");
-				Toast.makeText(this, "Main Activity: Address = " + address, Toast.LENGTH_LONG).show();
+				//Toast.makeText(this, "Main Activity: Address = " + address, Toast.LENGTH_LONG).show();
 				etPickupAddress.setText(address);
 			}
 		}

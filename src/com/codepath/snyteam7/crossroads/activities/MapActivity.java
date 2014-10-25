@@ -78,17 +78,17 @@ public class MapActivity extends FragmentActivity implements
 	              Marker marker = map.addMarker(new MarkerOptions()
 	                .position(Donation_centre_1)
 	                .title("Home")
-	                .snippet("155 evening star ct")       
+	                .snippet("155 evening star ct, Miliptas, CA")       
 	                .icon(defaultMarker));
 	              Marker marker1 = map.addMarker(new MarkerOptions()
 	                .position(Donation_centre_2)
 	                .title("Yahoo Building F")
-	                .snippet("Yahoo Building F")       
+	                .snippet("155 evening star ct, Miliptas, CA")       
 	                .icon(defaultMarker));
 	              Marker marker2 = map.addMarker(new MarkerOptions()
 	                .position(Donation_centre_5)
 	                .title("Home")
-	                .snippet("Donation_centre_5")       
+	                .snippet("155 evening star ct, Miliptas, CA")       
 	                .icon(defaultMarker));
 	              dropPinEffect(marker);
 	              dropPinEffect(marker1);
@@ -111,7 +111,7 @@ public class MapActivity extends FragmentActivity implements
 	        public void onInfoWindowClick(Marker marker) 
 	        {
 	        	dropPinEffect(marker);
-	            Toast.makeText(getApplicationContext(), "Clicked a window with title..." + marker.getSnippet(), Toast.LENGTH_SHORT).show();
+	            //Toast.makeText(getApplicationContext(), "Clicked a window with title..." + marker.getSnippet(), Toast.LENGTH_SHORT).show();
 	            Intent data = new Intent();
 	            MapData mLocation = new MapData(marker.getPosition());
 	            data.putExtra("latitude", marker.getPosition().latitude);
