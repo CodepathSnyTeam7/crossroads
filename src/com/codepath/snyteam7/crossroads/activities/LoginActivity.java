@@ -118,11 +118,6 @@ public class LoginActivity extends FragmentActivity
 
 	// OnCLick HowitWorks action
 	public void onHowitworksAction() {
-		/*
-        FragmentManager fm = getSupportFragmentManager();
-        HowitworksDialogFragment filterItem = new HowitworksDialogFragment();
-        filterItem.show(fm, "fragment_howitworks");
-        */
 		Intent i = new Intent(this, HowtoActivity.class);
 		startActivity(i);
 	}
