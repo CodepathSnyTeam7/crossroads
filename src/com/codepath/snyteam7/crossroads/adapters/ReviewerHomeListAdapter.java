@@ -33,9 +33,11 @@ public class ReviewerHomeListAdapter extends ParseQueryAdapter<Item>  {
 				// filter to get items not reviewed
 				query.whereDoesNotExist("accepteddate");
 				query.whereDoesNotExist("rejecteddate");
+				query.orderByDescending("updatedAt");
 				return query;
 			}
 		});
+
 	}
 
 	@Override
