@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="40dp"
+    android:paddingBottom="40dp"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/btNew"
+        android:layout_margin="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_air2"
+        android:text="@string/item_new" />
+
+    <Button
+        android:id="@+id/btLightlyUsed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_air2"
+        android:text="@string/item_lightly_used" />
+
+    <Button
+        android:id="@+id/btHeavilyUsed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_air2"
+        android:text="@string/item_heavily_used" />
+
+    <Button
+        android:id="@+id/btBroken"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_air2"
+        android:text="@string/item_broken" />
+
+</LinearLayout>

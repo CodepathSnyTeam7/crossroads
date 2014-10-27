@@ -106,16 +106,6 @@ public class LoginActivity extends FragmentActivity
         return false;
     }
 
-	private void onViewDetailsTest() {
-		Intent i = new Intent(this, ReceiverItemDetailsActivity.class);
-		startActivity(i);
-	}
-
-	private void onDonateTest() {
-		Intent i = new Intent(this, DonateActivity.class);
-		startActivity(i);		
-	}
-
 	// OnCLick HowitWorks action
 	public void onHowitworksAction() {
 		Intent i = new Intent(this, HowtoActivity.class);

@@ -34,6 +34,11 @@
     <string name="send">Send</string>
     <string name="accepted">Accepted</string>
     <string name="rejected">Rejected</string>
+    <string name="take_pic">Take a Picture</string>
+    <string name="pick_gallery">Pick from Gallery</string>
+    <string name="max_num">140</string>
+    <string name="description_hint">Write item description...</string>
+    <string name="error_notext">Please enter text with 140 characters or less.</string>
 
     <string-array name="item_category">
         <item>Books</item>
@@ -59,7 +64,10 @@
         <item>Heavily Used</item>
         <item>Broken</item>
     </string-array>
-
+	<string name="item_new">New</string>
+	<string name="item_lightly_used">Lightly Used</string>
+	<string name="item_heavily_used">Heavily Used</string>
+	<string name="item_broken">Broken</string>
     <string name="cancel">Cancel</string>
     <string name="accept_label">Accept</string>
     <string name="title_activity_donor_item_details">Item Details</string>
@@ -72,5 +80,12 @@
     <string name="action_previous">Previous</string>
     <string name="action_next">Next</string>
     <string name="action_finish">Finish</string>
+    <string name="title_activity_donation_flow">DonationFlowActivity</string>
+    <string name="add_photo">Add a Photo</string>
+    <string name="write_desc">Write Description</string>
+    <string name="pick_condition">Pick Item Condition</string>
+    <string name="plan_delivery">Plan Delivery</string>
+    <string name="send_to_crossroads">Send to Crossroads</string>
+    <string name="make_donation">Make a Donation</string>
 
 </resources>

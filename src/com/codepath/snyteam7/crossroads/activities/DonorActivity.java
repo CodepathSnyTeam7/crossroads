@@ -69,7 +69,7 @@ public class DonorActivity extends FragmentActivity {
     }
 	
 	public void onDonate() {
-		Intent i = new Intent(this, DonateActivity.class);
+		Intent i = new Intent(this, DonationFlowActivity.class);
 		startActivity(i);
 	}
 	

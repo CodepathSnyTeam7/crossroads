@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:padding="20dp"
+    android:layout_height="wrap_content" >
+    
+  <EditText
+        android:id="@+id/etText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:textColor="#000"
+        android:hint="@string/description_hint"
+        android:textSize="20sp"
+        android:inputType="textMultiLine">
+
+   </EditText>
+
+   <Button
+       android:id="@+id/btnDescriptionDone"
+       style="?android:attr/buttonStyleSmall"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentRight="true"
+       android:layout_below="@+id/etText"
+       android:layout_marginTop="10dp"
+       android:background="@android:color/transparent"
+       android:textColor="#666"
+       android:drawableLeft="@drawable/ic_checkmark_small"
+       android:text="@string/action_done" />
+    <View
+        android:id="@+id/vertical_line"
+        android:layout_width="1dp"
+        android:layout_height="wrap_content" 
+        android:layout_alignTop="@+id/btnDescriptionDone"
+        android:layout_alignBottom="@+id/btnDescriptionDone"
+        android:layout_toLeftOf="@+id/btnDescriptionDone"
+        android:layout_marginRight="5dp"
+        android:background="#888" />
+   <TextView
+       android:id="@+id/tvCharCount"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignBaseline="@+id/btnDescriptionDone"
+       android:layout_alignBottom="@+id/btnDescriptionDone"
+       android:layout_marginRight="20dp"
+       android:layout_toLeftOf="@+id/btnDescriptionDone"
+       android:textColor= "#888"
+       android:text="@string/max_num" />
+
+</RelativeLayout>

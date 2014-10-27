@@ -1,0 +1,152 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <ImageView
+        android:id="@+id/ivDonatePhoto"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:onClick="onDonatePhotoClicked"
+        android:src="@drawable/donationhand" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/cbDonatePhoto"
+        android:layout_alignTop="@+id/cbDonatePhoto"        
+        android:layout_alignParentLeft="true"        
+        android:layout_marginLeft="20dp"
+        android:text="@string/add_photo"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/white" />
+
+    <CheckBox
+        android:id="@+id/cbDonatePhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@+id/ivDonatePhoto"       
+        android:button="@drawable/donation_checkbox"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:enabled="false"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/tvItemDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+		android:layout_alignBottom="@+id/cbDescription"
+		android:layout_alignTop="@+id/cbDescription"       
+        android:text="@string/write_desc"
+        android:textColor="#F2506B"
+        android:onClick="onItemDescriptionClicked"
+        android:clickable="true"
+        android:maxLines="2"
+        android:maxWidth="220dp"
+        android:ellipsize="end"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    <CheckBox
+        android:id="@+id/cbDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/ivDonatePhoto" 
+        android:layout_marginTop="30dp"      
+        android:button="@drawable/donation_checkbox"
+        android:enabled="false"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:onClick="onItemDescriptionClicked"
+        android:text="" />
+    
+    <TextView
+        android:id="@+id/tvPlanDelivery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+		android:layout_alignBottom="@+id/cbDelivery"
+		android:layout_alignTop="@+id/cbDelivery"       
+        android:text="@string/plan_delivery"
+        android:textColor="#F2506B"
+        android:clickable="true"
+        android:onClick="onPlanDeliveryClicked"
+        android:maxLines="1"
+        android:maxWidth="220dp"
+        android:ellipsize="end"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    <CheckBox
+        android:id="@+id/cbDelivery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/cbDescription" 
+        android:layout_marginTop="20dp"      
+        android:button="@drawable/donation_checkbox"
+        android:onClick="onPlanDeliveryClicked"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:enabled="false"
+        android:text="" />
+    
+    
+    <TextView
+        android:id="@+id/tvPickCondition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+		android:layout_alignBottom="@+id/cbCondition"
+		android:layout_alignTop="@+id/cbCondition"       
+        android:text="@string/pick_condition"
+        android:textColor="#F2506B"
+        android:clickable="true"
+        android:onClick="onPickConditionClicked"
+        android:maxLines="1"
+        android:maxWidth="220dp"
+        android:ellipsize="end"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    <CheckBox
+        android:id="@+id/cbCondition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/cbDelivery" 
+        android:layout_marginTop="20dp"      
+        android:button="@drawable/donation_checkbox"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:enabled="false"
+        android:onClick="onPickConditionClicked"
+        android:text="" />
+
+    <Button
+        android:id="@+id/btSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:background="@android:color/holo_red_light"
+        android:layout_margin="0dp"
+        android:visibility="gone"
+        android:onClick="onSendDonationClicked"
+        android:text="@string/send_to_crossroads" />
+
+    <ProgressBar
+        android:id="@+id/pbItemPhoto"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"
+        android:layout_marginBottom="30dp" />
+
+</RelativeLayout>

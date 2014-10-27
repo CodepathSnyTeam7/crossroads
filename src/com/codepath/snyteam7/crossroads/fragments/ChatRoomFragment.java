@@ -75,7 +75,7 @@ public class ChatRoomFragment extends DialogFragment {
 	
 	@Override
 	public void onResume() {
-		super.onStart();
+		super.onResume();
 		handler.postDelayed(runnable, 5000);
 	}
 	

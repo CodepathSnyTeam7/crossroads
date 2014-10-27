@@ -100,16 +100,6 @@ public class ItemListFragment extends Fragment {
 				
 			}		
 		});
-	    /*
-	    emptyListButton.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Intent i = new Intent(getActivity(), DonateActivity.class);
-				startActivity(i);
-			}
-		});
-		*/
 	}
 	
 	// Fetch the list items from Parse
