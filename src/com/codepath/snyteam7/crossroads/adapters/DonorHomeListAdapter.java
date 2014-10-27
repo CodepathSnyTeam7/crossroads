@@ -77,7 +77,7 @@ public class DonorHomeListAdapter extends ParseQueryAdapter<Item> {
 			holder.vh_tvDonorHomeItemStatus.setText(getContext().getResources().getString(R.string.rejected));
 			holder.vh_tvDonorHomeItemStatus.setTextColor(getContext().getResources().getColor(android.R.color.holo_orange_dark));
 		}else{
-			holder.vh_tvDonorHomeItemStatus.setText("");
+			holder.vh_tvDonorHomeItemStatus.setText(getContext().getResources().getString(R.string.pending));
 		}
 		return convertView;
 	}

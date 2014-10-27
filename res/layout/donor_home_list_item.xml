@@ -2,35 +2,29 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp" >
+    android:layout_marginRight="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginBottom="10dp"
+	android:background="@drawable/layer_card_bg" >
     
-      <ImageView
-        android:id="@+id/ivDonorHomeUserImg"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_margin="1dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" />
-
     <com.parse.ParseImageView
         android:id="@+id/ivDonorHomeUserPhoto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignBottom="@+id/tvDonorHomeUserTime"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/tvDonorHomeUserTime"
         android:adjustViewBounds="true"
-        android:scaleType="fitStart"
+        android:scaleType="centerCrop"
         android:src="@drawable/ic_launcher" />
 
     <TextView
         android:id="@+id/tvDonorHomeUserDesc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/ivDonorHomeUserImg"
-        android:layout_marginLeft="18dp"
-        android:layout_toRightOf="@+id/ivDonorHomeUserImg"
+        android:layout_alignTop="@+id/ivDonorHomeUserPhoto"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/ivDonorHomeUserPhoto"
         android:ellipsize="end"
         android:maxLines="3"
         android:text="default_description"
@@ -41,22 +35,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/tvDonorHomeUserDesc"
-        android:layout_below="@+id/tvDonorHomeUserDesc"
+        android:layout_alignBottom="@+id/ivDonorHomeUserPhoto"
+        android:layout_marginBottom="5dp"
         android:text="Time"
-        android:textSize="10sp" />
+        android:textSize="12sp" />
 
     <TextView
         android:id="@+id/tvDonorHomeItemStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/tvDonorHomeUserTime"
-        android:layout_alignBottom="@+id/tvDonorHomeUserTime"
+        android:layout_alignBottom="@+id/ivDonorHomeUserPhoto"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="24dp"
-        android:text=""
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="10dp"
+        android:text="Status"
         android:textColor="@android:color/holo_blue_dark"
         android:textSize="15sp" />
-
-   
     
 </RelativeLayout>

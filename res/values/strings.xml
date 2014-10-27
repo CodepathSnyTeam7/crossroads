@@ -39,6 +39,7 @@
     <string name="max_num">140</string>
     <string name="description_hint">Write item description...</string>
     <string name="error_notext">Please enter text with 140 characters or less.</string>
+    <string name="pending">Pending</string>
 
     <string-array name="item_category">
         <item>Books</item>

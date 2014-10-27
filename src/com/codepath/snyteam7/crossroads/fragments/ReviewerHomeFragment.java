@@ -49,7 +49,7 @@ public class ReviewerHomeFragment extends Fragment {
 		
 		//Set up view listeners
 		setupViewListeners(v);
-		
+
 		// Return layout view
 		return v;
 	}

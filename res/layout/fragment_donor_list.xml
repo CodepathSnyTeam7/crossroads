@@ -13,7 +13,10 @@
 	      <ListView
 	        android:id="@+id/lvDonorList"
 	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content" >
+	        android:layout_height="wrap_content" 
+	        android:padding="10dp"
+	        android:divider="@android:color/transparent"
+  			android:dividerHeight="10.0sp" >
 	      </ListView>	    
 	</android.support.v4.widget.SwipeRefreshLayout>
 	<ImageView 
