@@ -13,7 +13,7 @@
          android:layout_marginTop="10dp"
          android:adjustViewBounds="true"
          android:scaleType="centerCrop"
-         android:src="@drawable/ic_launcher" />
+         android:src="@drawable/default_avatar" />
       
     <RelativeLayout
     	android:layout_width="match_parent"

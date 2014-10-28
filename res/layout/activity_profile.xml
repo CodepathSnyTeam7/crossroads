@@ -32,42 +32,97 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button1"
+        android:layout_alignLeft="@+id/llEditBtnProfile"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/ivProfPhoto"
-        android:layout_marginTop="63dp"
+        android:layout_below="@+id/llEditBtnProfile"
         android:orientation="vertical" >
 
+      <LinearLayout 
+       android:layout_width="match_parent"
+   	   android:layout_height="wrap_content"
+   	   android:background="@drawable/layer_card_bg"
+   	   android:padding="10dp"
+   	   android:orientation="horizontal" >
+   	   
+        <ImageView
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:src="@drawable/cr_location" /> 
+        
         <TextView
             android:id="@+id/tvProfDist"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
             android:text="TextView" />
+       </LinearLayout>
 
+       <LinearLayout 
+       android:layout_width="match_parent"
+   	   android:layout_height="wrap_content"
+   	   android:background="@drawable/layer_card_bg"
+   	   android:padding="10dp"
+   	   android:orientation="horizontal" >
+   	   
+        <ImageView
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:src="@drawable/cr_phone" />
+        
         <TextView
             android:id="@+id/tvProfPhone"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
             android:text="TextView" />
+       
+       </LinearLayout>        
+        
+     <LinearLayout 
+       android:layout_width="match_parent"
+   	   android:layout_height="wrap_content"
+   	   android:background="@drawable/layer_card_bg"
+   	   android:padding="10dp"
+   	   android:orientation="horizontal" >
+   	   
+        <ImageView
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:src="@drawable/cr_email" /> 
 
         <TextView
             android:id="@+id/tvProfEmail"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
             android:text="TextView" />
+               
+       </LinearLayout>
     </LinearLayout>
 
+   <LinearLayout 
+       android:id="@+id/llEditBtnProfile"
+       android:layout_width="match_parent"
+   	   android:layout_height="wrap_content"
+       android:layout_below="@+id/ivProfPhoto"
+   	   android:background="@drawable/layer_card_bg"
+   	   android:padding="10dp"
+   	   android:orientation="vertical" >
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/ivProfPhoto"
-        android:layout_below="@+id/ivProfPhoto"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="10dp"
         android:onClick="onClickProfEdit"
-        android:background="@color/black_60"
+        android:background="@drawable/button_gradient_sh"
         android:text="Edit Profile" />
+   </LinearLayout> 
 
     <ImageView
         android:id="@+id/ivProfPhoto"
@@ -76,6 +131,7 @@
         android:layout_alignBottom="@+id/tvProfuname"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="27dp"
-        android:src="@drawable/default_avatar" />
+        android:src="@drawable/default_avatar"
+        android:background="@drawable/button_gradient_sh" />
 
 </RelativeLayout>
