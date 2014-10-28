@@ -15,14 +15,12 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.codepath.snyteam7.crossroads.R;
 import com.codepath.snyteam7.crossroads.activities.ReceiverItemDetailsActivity;
 import com.codepath.snyteam7.crossroads.adapters.ReviewerHomeListAdapter;
 import com.codepath.snyteam7.crossroads.listeners.EndlessScrollListener;
 import com.codepath.snyteam7.crossroads.model.Item;
-import com.parse.ParseException;
 import com.parse.ParseQueryAdapter.OnQueryLoadListener;
 
 public class ReviewerHomeFragment extends Fragment {

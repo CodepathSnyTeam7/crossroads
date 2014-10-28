@@ -1,76 +1,49 @@
 package com.codepath.snyteam7.crossroads.activities;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.util.SparseArray;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 
 import com.codepath.snyteam7.crossroads.R;
 import com.codepath.snyteam7.crossroads.fragments.ReviewerHomeFragment;
 import com.codepath.snyteam7.crossroads.fragments.ReviewerReviewedItemsFragment;
-import com.codepath.snyteam7.crossroads.listeners.FragmentTabListener;
 import com.parse.ParseUser;
 
 public class ReviewerHomeActivity extends FragmentActivity {
-
-	private FragmentTabListener<ReviewerHomeFragment> tab1Listener;
-	private FragmentTabListener<ReviewerReviewedItemsFragment> tab2Listener;
+	ViewPager vpPager;
+	MyPagerAdapter adapterViewPager;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_reviewer_home);
 		getActionBar().setTitle("");
-		// Setup reviewer tabs
-		setupReviewerTabs();
+
+		// Setup Viewpager
+		setupViewpager();
 	}
 	
 	@Override
 	protected void onNewIntent(Intent intent) {
 		super.onNewIntent(intent);
-		if(tab1Listener != null && tab1Listener.getFragment() != null) {
-			ReviewerHomeFragment tab1Frag = (ReviewerHomeFragment)tab1Listener.getFragment();
+		
+		// Check for pager items
+		if (vpPager.getCurrentItem() == 0) {
+			ReviewerHomeFragment tab1Frag = (ReviewerHomeFragment)adapterViewPager.getRegisteredFragment(vpPager.getCurrentItem());
 			tab1Frag.fetchReviewerList();
 		}
-		if(tab2Listener != null && tab2Listener.getFragment() != null) {
-			ReviewerReviewedItemsFragment tab2Frag = (ReviewerReviewedItemsFragment)tab2Listener.getFragment();
-			tab2Frag.fetchDonorList();  //it's actually fetching list for reviewer
+		if (vpPager.getCurrentItem() == 1) {
+			ReviewerReviewedItemsFragment tab2Frag = (ReviewerReviewedItemsFragment)adapterViewPager.getRegisteredFragment(vpPager.getCurrentItem());
+			tab2Frag.fetchDonorList();
 		}
-	}
-
-	
-    // Set up two tabs. One for Login and another for Sign up
-	private void setupReviewerTabs() {
-		ActionBar actionBar = getActionBar();
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-		actionBar.setDisplayShowTitleEnabled(true);
-		
-		tab1Listener = new FragmentTabListener<ReviewerHomeFragment>(R.id.flReviewerContainer, this, "ReviewerHomeFragment",
-				ReviewerHomeFragment.class);
-		
-		ActionBar.Tab tab1 = actionBar
-			.newTab()
-			.setText("Pending")
-			//.setIcon(R.drawable.ic_login)
-			.setTag("ReviewerHomeFragment")
-			.setTabListener(tab1Listener);
-
-		actionBar.addTab(tab1);
-		actionBar.selectTab(tab1);
-		
-		tab2Listener = new FragmentTabListener<ReviewerReviewedItemsFragment>(R.id.flReviewerContainer, this, "ReviewerReviewedItemsFragment",
-				ReviewerReviewedItemsFragment.class);
-
-		ActionBar.Tab tab2 = actionBar
-			.newTab()
-			.setText("Reviewed")
-			//.setIcon(R.drawable.ic_signup)
-			.setTag("ReviewerReviewedItemsFragment")
-			.setTabListener(tab2Listener);
-
-		actionBar.addTab(tab2);
 	}
     
 	@Override
@@ -107,4 +80,73 @@ public class ReviewerHomeActivity extends FragmentActivity {
 		Intent i = new Intent(this, ProfileActivity.class);
 		startActivity(i);	
 	}
+	
+	// Setup viewpager adapter
+	private void setupViewpager() {
+		vpPager = (ViewPager) findViewById(R.id.vpPager);
+		adapterViewPager = new MyPagerAdapter(getSupportFragmentManager());
+		vpPager.setAdapter(adapterViewPager);
+	}
+	
+	// Viewpager adapter
+    public static class MyPagerAdapter extends FragmentPagerAdapter {
+    	private static int NUM_ITEMS = 2;
+    	SparseArray<Fragment> registeredFragments = new SparseArray<Fragment>();
+		
+        public MyPagerAdapter(FragmentManager fragmentManager) {
+            super(fragmentManager);
+        }
+        
+        // Returns total number of pages
+        @Override
+        public int getCount() {
+            return NUM_ITEMS;
+        }
+ 
+        // Returns the fragment to display for that page
+        @Override
+        public Fragment getItem(int position) {
+            switch (position) {
+            case 0: // Fragment # 0 - This will show FirstFragment
+                return new ReviewerHomeFragment();
+            case 1: // Fragment # 0 - This will show FirstFragment different title
+                return new ReviewerReviewedItemsFragment();
+            default:
+            	return null;
+            }
+        }
+        
+        // Returns the page title for the top indicator
+        @Override
+        public CharSequence getPageTitle(int position) {
+        	switch (position) {
+            case 0:
+            	return "Pending";
+            case 1:
+            	return "Reviewed";
+            default:
+            	return null;
+            }	
+            	
+        }
+        
+        @Override
+        public Object instantiateItem(ViewGroup container, int position) {
+            Fragment fragment = (Fragment) super.instantiateItem(container, position);
+            registeredFragments.put(position, fragment);
+            return fragment;
+        }
+
+        @Override
+        public void destroyItem(ViewGroup container, int position, Object object) {
+            registeredFragments.remove(position);
+            super.destroyItem(container, position, object);
+        }
+
+        public Fragment getRegisteredFragment(int position) {
+            return registeredFragments.get(position);
+        }
+        
+    }
+
 }
