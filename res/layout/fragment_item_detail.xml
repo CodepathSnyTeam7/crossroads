@@ -2,120 +2,100 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-
 <RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" >
-    
-    <TextView
-        android:id="@+id/tvDescription"
+    android:layout_height="wrap_content" 
+    android:background="@color/LightGray"
+    android:padding="10dp">
+
+    <ProgressBar
+        android:id="@+id/pbItemDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/tvDonorName"
-        android:layout_marginTop="10dp"
-        android:text="@string/description"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-    
-    <com.parse.ParseImageView
-        android:id="@+id/ivItemPhoto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/ivDonorPic"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/tvDescription"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="10dp"
         android:src="@drawable/ic_launcher" />
 
     <TextView
         android:id="@+id/tvDonorName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/ivItemPhoto"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
+        android:layout_alignTop="@+id/ivDonorPic"
+        android:layout_toRightOf="@+id/ivDonorPic"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:gravity="top"
         android:text="Donor Name" />
-
-
-    <TextView
-        android:id="@+id/tvDonatedLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvDonorName"
-        android:layout_below="@+id/tvDonorName"
-        android:layout_marginTop="20dp"
-        android:text="@string/donate_date" />
 
     <TextView
         android:id="@+id/tvDonateDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/tvDonatedLabel"
-        android:layout_marginLeft="20dp"
-        android:layout_toRightOf="@+id/tvDonatedLabel"
-        android:text="@string/donate_date" />
-    
-    <TextView
-        android:id="@+id/tvConditionLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/tvDonorName"
-        android:layout_below="@+id/tvDonatedLabel"
+        android:layout_below="@+id/tvDonorName"
+        android:layout_alignBottom="@+id/ivDonorPic"
+        android:text="11/02/2014"
+        android:gravity="bottom"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+    
+    <LinearLayout 
+        android:id="@+id/llItemDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivDonorPic"
         android:layout_marginTop="20dp"
-        android:text="@string/condition_label" />
-
-    <TextView
-        android:id="@+id/tvItemCondition"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/tvConditionLabel"
-        android:layout_marginLeft="20dp"
-        android:layout_toRightOf="@+id/tvConditionLabel"
-        android:text="@string/item_condition" />
-    <TextView
-        android:id="@+id/tvPickupDateLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvDonorName"
-        android:layout_below="@+id/tvConditionLabel"
-        android:layout_marginTop="20dp"
-        android:text="@string/pickup_date_label" />
-
-    <TextView
-        android:id="@+id/tvPickupDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/tvPickupDateLabel"
-        android:layout_marginLeft="20dp"
-        android:layout_toRightOf="@+id/tvPickupDateLabel"
-        android:text="@string/pickup_date_label" />
+        android:padding="10dp"
+        android:background="@drawable/layer_card_bg"
+        android:orientation="vertical"
+        >
+	    <TextView
+	        android:id="@+id/tvDescription"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"        
+	        android:text="@string/description"
+	        android:padding="5dp"
+	        android:textColor="#F2506B"
+	        android:textAppearance="?android:attr/textAppearanceLarge" />
+	
+	    <TextView
+	        android:id="@+id/tvItemCondition"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:paddingLeft="5dp"
+	        android:paddingTop="5dp"
+	        android:paddingRight="5dp"
+	        android:paddingBottom="0dp"
+	        android:text="@string/condition_label" />
+	
+	    <TextView
+	        android:id="@+id/tvPickupAddress"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:paddingLeft="5dp"
+	        android:paddingTop="2dp"
+	        android:paddingRight="5dp"
+	        android:paddingBottom="5dp"
+	        android:text="@string/pickup_address_label" />	        
+	    
+    </LinearLayout>   
     
-    <TextView
-        android:id="@+id/tvPickupAddressLabel"
-        android:layout_width="wrap_content"
+    <com.parse.ParseImageView
+        android:id="@+id/ivItemPhoto"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvDonorName"
-        android:layout_below="@+id/tvPickupDateLabel"
-        android:layout_marginTop="20dp"
-        android:text="@string/pickup_address_label" />
+        android:layout_below="@+id/llItemDetails"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="50dp"
+        android:src="@drawable/placeholder" />   
 
-    <TextView
-        android:id="@+id/tvPickupAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvPickupAddressLabel"
-        android:layout_alignLeft="@+id/tvDonorName"
-        android:text="@string/pickup_address_label" />
-    
-    <ProgressBar
-        android:id="@+id/pbItemDetails"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:layout_centerInParent="true" />
-    
 </RelativeLayout>
-    
 
 </ScrollView>

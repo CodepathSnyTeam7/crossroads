@@ -84,8 +84,13 @@
     <style name="action_bar_dark" parent="android:Widget.Holo.ActionBar">
         <item name="android:background">#367588</item>
         <item name="android:titleTextStyle">@style/action_bar_dark_titletext</item>
+        <item name="android:actionBarTabStyle">@style/action_bar_dark_tab_style</item>
     </style>
     <style name="action_bar_dark_titletext" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
     	<item name="android:textColor">@color/white</item>
-  	</style>    
+  	</style> 
+  	<style name="action_bar_dark_tab_style" parent="@android:style/Widget.Holo.ActionBar.TabView">
+        <!-- tab indicator -->
+        <item name="android:background">#367588</item>
+    </style>   
 </resources>

@@ -30,7 +30,6 @@ public class ItemDetailFragment extends Fragment {
 	private TextView tvDescription;
 	private TextView tvDonateDate;
 	private TextView tvItemCondition;
-	private TextView tvPickupDate;
 	private TextView tvPickupAddress;
 	private ProgressBar pbItemDetails;
 	
@@ -54,7 +53,6 @@ public class ItemDetailFragment extends Fragment {
 		tvDescription = (TextView) v.findViewById(R.id.tvDescription);
 		tvDonateDate = (TextView) v.findViewById(R.id.tvDonateDate);
 		tvItemCondition = (TextView) v.findViewById(R.id.tvItemCondition);
-		tvPickupDate = (TextView) v.findViewById(R.id.tvPickupDate);
 		tvPickupAddress = (TextView) v.findViewById(R.id.tvPickupAddress);
 		pbItemDetails = (ProgressBar)v.findViewById(R.id.pbItemDetails);
 		return v;
@@ -94,11 +92,10 @@ public class ItemDetailFragment extends Fragment {
 		    	SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
 		    	String donateDateStr = formatter.format(donateDate);
 		    	tvDonateDate.setText(donateDateStr);
-		    	tvItemCondition.setText(item0.getString("condition"));
-		    	//Date pickupDate = item0.getDate("pickupdate");
-		    	//String pickupDateStr = formatter.format(pickupDate);
-		    	//tvPickupDate.setText(pickupDateStr);
-		    	tvPickupAddress.setText(item0.getString("pickupaddress"));
+		    	String itemCondition = getResources().getString(R.string.condition_label) + " ";
+		    	tvItemCondition.setText(itemCondition + item0.getString("condition"));
+		    	String dropOff = getResources().getString(R.string.pickup_address_label) + " ";
+		    	tvPickupAddress.setText(dropOff + item0.getString("pickupaddress"));
 		    	
 				ParseFile photoFile = item0.getPhotoFile();
 				if (photoFile != null) {

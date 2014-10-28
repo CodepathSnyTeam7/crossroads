@@ -22,9 +22,9 @@
     <string name="title_activity_map">MapActivity</string>
     <string name="pickup_address">Enter pickup address</string>
     <string name="item_condition">Item Condition</string>
-    <string name="condition_label">Condition:</string>
+    <string name="condition_label">Item Condition: </string>
     <string name="pickup_date_label">Pickup Date:</string>
-    <string name="pickup_address_label">Pickup Address:</string>
+    <string name="pickup_address_label">Drop-off: </string>
     <string name="view_messages">Chat Room</string>
     <string name="pickup_date">10/30/2014 (enter pickup date)</string>
     <string name="message_hint">Say something...</string>
