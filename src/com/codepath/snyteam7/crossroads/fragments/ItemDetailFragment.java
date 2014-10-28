@@ -95,9 +95,9 @@ public class ItemDetailFragment extends Fragment {
 		    	String donateDateStr = formatter.format(donateDate);
 		    	tvDonateDate.setText(donateDateStr);
 		    	tvItemCondition.setText(item0.getString("condition"));
-		    	Date pickupDate = item0.getDate("pickupdate");
-		    	String pickupDateStr = formatter.format(pickupDate);
-		    	tvPickupDate.setText(pickupDateStr);
+		    	//Date pickupDate = item0.getDate("pickupdate");
+		    	//String pickupDateStr = formatter.format(pickupDate);
+		    	//tvPickupDate.setText(pickupDateStr);
 		    	tvPickupAddress.setText(item0.getString("pickupaddress"));
 		    	
 				ParseFile photoFile = item0.getPhotoFile();
