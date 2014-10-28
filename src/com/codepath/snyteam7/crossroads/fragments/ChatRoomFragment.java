@@ -3,15 +3,20 @@ package com.codepath.snyteam7.crossroads.fragments;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -19,6 +24,7 @@ import android.widget.Toast;
 
 import com.codepath.snyteam7.crossroads.R;
 import com.codepath.snyteam7.crossroads.adapters.ChatListAdapter;
+import com.codepath.snyteam7.crossroads.helper.PhotoScalerHelper;
 import com.codepath.snyteam7.crossroads.model.Message;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -46,12 +52,23 @@ public class ChatRoomFragment extends DialogFragment {
 		loggedInUserId = getArguments().getString("loggedInUserId");
 		loggedInUsername = getArguments().getString("loggedInUsername");
 		itemId = getArguments().getString("itemId");
-		setStyle(STYLE_NO_TITLE, android.R.style.Theme_Holo_Light_Dialog);
+		//setStyle(STYLE_NO_TITLE, android.R.style.Theme_Holo_Light_Dialog);
 	}
+
+	@Override
+	public Dialog onCreateDialog(Bundle savedInstanceState) {
+		Dialog dialog = super.onCreateDialog(savedInstanceState);
+		dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+		WindowManager.LayoutParams wLayoutParams = dialog.getWindow().getAttributes();
+		wLayoutParams.gravity = Gravity.BOTTOM;
+		dialog.getWindow().setAttributes(wLayoutParams);
+		return dialog;
+	}	
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater,
-			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {	
+		
 		View view = inflater.inflate(R.layout.fragment_chat_room, container, false);
     	etMessage = (EditText) view.findViewById(R.id.etMessage);
     	btSend = (Button) view.findViewById(R.id.btSend);
@@ -76,7 +93,7 @@ public class ChatRoomFragment extends DialogFragment {
 	@Override
 	public void onResume() {
 		super.onResume();
-		handler.postDelayed(runnable, 5000);
+		handler.postDelayed(runnable, 2000);
 	}
 	
 	@Override
@@ -84,13 +101,27 @@ public class ChatRoomFragment extends DialogFragment {
 		super.onPause();
 		handler.removeCallbacksAndMessages(null);
 	}
+
+	@Override
+	public void onStart() {
+	  super.onStart();
+	  // safety check
+	  if (getDialog() == null) {
+	    return;
+	  }
+	  
+	  int dialogWidth = PhotoScalerHelper.getDisplayWidth(getActivity()) - 20;
+	  int dialogHeight = PhotoScalerHelper.getDisplayHeight(getActivity())/2 + 80;
+
+	  getDialog().getWindow().setLayout(dialogWidth, dialogHeight);
+	}	
 	
 	private Runnable runnable = new Runnable() {
 		
 		@Override
 		public void run() {
 			refreshMessages();
-			handler.postDelayed(this, 5000);			
+			handler.postDelayed(this, 2000);			
 		}
 	};
 	
