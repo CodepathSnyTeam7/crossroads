@@ -22,7 +22,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginRight="10dp"
-        android:src="@drawable/ic_launcher" />
+        android:src="@drawable/default_avatar" />
 
     <TextView
         android:id="@+id/tvDonorName"

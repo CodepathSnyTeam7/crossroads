@@ -37,14 +37,14 @@
 
       <ImageView
           android:id="@+id/ivRHomeUserProfileImg"
-          android:layout_width="32dp"
-          android:layout_height="32dp"
+          android:layout_width="42dp"
+          android:layout_height="42dp"
           android:layout_alignLeft="@+id/tvRHomeUserDesc"
           android:layout_below="@+id/tvRHomeUserDesc"
           android:layout_marginTop="10dp"
           android:adjustViewBounds="true"
           android:scaleType="centerCrop"
-          android:src="@drawable/ic_launcher" />
+          android:src="@drawable/default_avatar" />
 
       <TextView
           android:id="@+id/tvRHomeUser"
