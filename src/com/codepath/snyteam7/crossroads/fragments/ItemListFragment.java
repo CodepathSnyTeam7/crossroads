@@ -1,6 +1,7 @@
 package com.codepath.snyteam7.crossroads.fragments;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ import com.codepath.snyteam7.crossroads.activities.DonorItemDetailsActivity;
 import com.codepath.snyteam7.crossroads.adapters.DonorHomeListAdapter;
 import com.codepath.snyteam7.crossroads.listeners.EndlessScrollListener;
 import com.codepath.snyteam7.crossroads.model.Item;
+import com.parse.ParseQueryAdapter.OnQueryLoadListener;
 
 public class ItemListFragment extends Fragment {
     private SwipeRefreshLayout donorSwipeContainer;
@@ -51,6 +53,9 @@ public class ItemListFragment extends Fragment {
 		lvItems.setAdapter(aItems);
 		//emptyListButton = (Button) v.findViewById(android.R.id.empty);
 		lvItems.setEmptyView((ImageView)v.findViewById(android.R.id.empty));
+		
+		//Get the progressbar view
+		pbItemList = (ProgressBar)v.findViewById(R.id.pbItemList);
 		//Set up view listeners
 		setupViewListeners(v);
 		
@@ -100,6 +105,20 @@ public class ItemListFragment extends Fragment {
 				
 			}		
 		});
+	    
+		// Set a callback to be fired upon successful loading of a new set of ParseObjects.
+		 aItems.addOnQueryLoadListener(new OnQueryLoadListener<Item>() {
+			 @Override
+			 public void onLoading() {
+		     // Trigger any "loading" UI
+				 startProgressBar();
+		   }
+
+			@Override
+			public void onLoaded(List<Item> arg0, Exception arg1) {
+				stopProgressBar();
+			}
+		 });
 	}
 	
 	// Fetch the list items from Parse

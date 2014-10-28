@@ -1,6 +1,7 @@
 package com.codepath.snyteam7.crossroads.fragments;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,12 +14,16 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.codepath.snyteam7.crossroads.R;
 import com.codepath.snyteam7.crossroads.activities.ReceiverItemDetailsActivity;
 import com.codepath.snyteam7.crossroads.adapters.ReviewerHomeListAdapter;
 import com.codepath.snyteam7.crossroads.listeners.EndlessScrollListener;
 import com.codepath.snyteam7.crossroads.model.Item;
+import com.parse.ParseException;
+import com.parse.ParseQueryAdapter.OnQueryLoadListener;
 
 public class ReviewerHomeFragment extends Fragment {
     private SwipeRefreshLayout reviewerSwipeContainer;
@@ -26,6 +31,7 @@ public class ReviewerHomeFragment extends Fragment {
 	public ReviewerHomeListAdapter aItems;
 	private ListView lvItems;
 	private int itemsTotalCount = 0;
+	private ProgressBar pbReviewerHomeList;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -46,6 +52,8 @@ public class ReviewerHomeFragment extends Fragment {
 		lvItems = (ListView) v.findViewById(R.id.lvReviewerHome);
 		lvItems.setClickable(true);
 		lvItems.setAdapter(aItems);
+		
+		pbReviewerHomeList = (ProgressBar)v.findViewById(R.id.pbReviewerHomeList);
 		
 		//Set up view listeners
 		setupViewListeners(v);
@@ -96,6 +104,20 @@ public class ReviewerHomeFragment extends Fragment {
 				
 			}		
 		});
+	    
+		// Set a callback to be fired upon successful loading of a new set of ParseObjects.
+		 aItems.addOnQueryLoadListener(new OnQueryLoadListener<Item>() {
+			 @Override
+			 public void onLoading() {
+		     // Trigger any "loading" UI
+				 startProgressBar();
+		   }
+
+			@Override
+			public void onLoaded(List<Item> arg0, Exception arg1) {
+				stopProgressBar();
+			}
+		 });
 
 	}
 	
@@ -104,5 +126,14 @@ public class ReviewerHomeFragment extends Fragment {
     	// Fetch the list items from Parse with pagination
     	aItems.loadObjects();
     }
+    
+    private void startProgressBar() {
+    	pbReviewerHomeList.setVisibility(View.VISIBLE);
+    }
+    
+    private void stopProgressBar() {
+    	pbReviewerHomeList.setVisibility(View.GONE);
+    }
+
 
 }
