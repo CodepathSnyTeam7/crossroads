@@ -9,4 +9,5 @@
     <item name="bg_bl_wh_d1" type="color">#cfd8dc</item>
     <item name="indigo_500" type="color">#3f51b5</item>
     <item name="indigo_700" type="color">#303f9f</item>
+    <item name="actiobar_cl" type="color">#367588</item>
 </resources>
