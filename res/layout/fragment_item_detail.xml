@@ -86,7 +86,7 @@
 	    
     </LinearLayout>   
     
-    <com.parse.ParseImageView
+    <com.codepath.snyteam7.crossroads.helper.TouchImageView
         android:id="@+id/ivItemPhoto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

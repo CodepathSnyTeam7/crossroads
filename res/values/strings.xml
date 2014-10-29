@@ -89,5 +89,8 @@
     <string name="plan_delivery">Plan Delivery</string>
     <string name="send_to_crossroads">Send to Crossroads</string>
     <string name="make_donation">Make a Donation</string>
+    <string name="alert_dialog_ok">Ok</string>
+    <string name="alert_dialog_cancel">Cancel</string>
+    <string name="reject_confirm">Reject this item?</string>
 
 </resources>

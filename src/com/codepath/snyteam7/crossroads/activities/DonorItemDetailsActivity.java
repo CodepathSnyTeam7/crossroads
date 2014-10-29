@@ -11,9 +11,10 @@ import android.view.MenuItem;
 import com.codepath.snyteam7.crossroads.R;
 import com.codepath.snyteam7.crossroads.fragments.ChatRoomFragment;
 import com.codepath.snyteam7.crossroads.fragments.ItemDetailFragment;
+import com.codepath.snyteam7.crossroads.fragments.ItemDetailFragment.OnItemDetailsFragmentListener;
 import com.parse.ParseUser;
 
-public class DonorItemDetailsActivity extends FragmentActivity {
+public class DonorItemDetailsActivity extends FragmentActivity implements OnItemDetailsFragmentListener {
 	ItemDetailFragment detailsFragment;
 	String itemObjIdStr;
 	
@@ -60,5 +61,15 @@ public class DonorItemDetailsActivity extends FragmentActivity {
 		ParseUser loggedInUser = ParseUser.getCurrentUser();
 		DialogFragment chatFragment = ChatRoomFragment.getInstance(loggedInUser.getObjectId(), itemObjIdStr, loggedInUser.getUsername());
 		chatFragment.show(ft, "dialog");
+	}
+
+	@Override
+	public void onPhotoSwipeLeft() {
+		//do nothing		
+	}
+
+	@Override
+	public void onPhotoSwipeRight() {
+		//do nothing		
 	}
 }

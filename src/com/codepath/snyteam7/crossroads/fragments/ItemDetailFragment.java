@@ -3,6 +3,7 @@ package com.codepath.snyteam7.crossroads.fragments;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.codepath.snyteam7.crossroads.R;
+import com.codepath.snyteam7.crossroads.fragments.LoginFragment.OnLoginSuccessListener;
+import com.codepath.snyteam7.crossroads.helper.OnSwipeTouchListener;
+import com.codepath.snyteam7.crossroads.helper.TouchImageView;
 import com.codepath.snyteam7.crossroads.model.Item;
 import com.parse.GetCallback;
 import com.parse.GetDataCallback;
@@ -25,7 +29,7 @@ import com.parse.ParseUser;
 
 public class ItemDetailFragment extends Fragment {
 	
-	private ParseImageView ivPhoto;
+	private TouchImageView ivPhoto;
 	private TextView tvDonorName;
 	private TextView tvDescription;
 	private TextView tvDonateDate;
@@ -34,7 +38,13 @@ public class ItemDetailFragment extends Fragment {
 	private ProgressBar pbItemDetails;
 	
 	private String itemObjectId;
-	
+
+    private OnItemDetailsFragmentListener listener;
+    
+    public interface OnItemDetailsFragmentListener {
+    	public void onPhotoSwipeLeft();
+    	public void onPhotoSwipeRight();
+    }	
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {	
@@ -48,13 +58,24 @@ public class ItemDetailFragment extends Fragment {
 		
 		View v = inflater.inflate(R.layout.fragment_item_detail, container, false);
 
-		ivPhoto = (ParseImageView) v.findViewById(R.id.ivItemPhoto);
+		ivPhoto = (TouchImageView) v.findViewById(R.id.ivItemPhoto);
 		tvDonorName = (TextView) v.findViewById(R.id.tvDonorName);
 		tvDescription = (TextView) v.findViewById(R.id.tvDescription);
 		tvDonateDate = (TextView) v.findViewById(R.id.tvDonateDate);
 		tvItemCondition = (TextView) v.findViewById(R.id.tvItemCondition);
 		tvPickupAddress = (TextView) v.findViewById(R.id.tvPickupAddress);
 		pbItemDetails = (ProgressBar)v.findViewById(R.id.pbItemDetails);
+		ivPhoto.setOnTouchListener(new OnSwipeTouchListener(getActivity()){
+			@Override
+			public void onSwipeRight() {
+				listener.onPhotoSwipeRight();
+			}
+			
+			@Override
+			public void onSwipeLeft() {
+				listener.onPhotoSwipeLeft();
+			}
+		});
 		return v;
 	}
 	
@@ -62,6 +83,12 @@ public class ItemDetailFragment extends Fragment {
 	public void onActivityCreated(@Nullable Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		queryPopulateItemViews(itemObjectId);
+	}
+	
+	@Override
+	public void onAttach(Activity activity) {
+		super.onAttach(activity);
+		listener = (OnItemDetailsFragmentListener)activity;
 	}
 	
 	public static ItemDetailFragment newInstance(String itemObjId) {

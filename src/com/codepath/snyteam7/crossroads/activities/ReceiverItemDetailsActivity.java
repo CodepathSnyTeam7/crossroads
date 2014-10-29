@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -21,7 +22,10 @@ import android.widget.Toast;
 
 import com.codepath.snyteam7.crossroads.R;
 import com.codepath.snyteam7.crossroads.fragments.ChatRoomFragment;
+import com.codepath.snyteam7.crossroads.fragments.ConfirmationDialog;
+import com.codepath.snyteam7.crossroads.fragments.ConfirmationDialog.ConfirmationDialogListener;
 import com.codepath.snyteam7.crossroads.fragments.ItemDetailFragment;
+import com.codepath.snyteam7.crossroads.fragments.ItemDetailFragment.OnItemDetailsFragmentListener;
 import com.codepath.snyteam7.crossroads.model.Item;
 import com.codepath.snyteam7.crossroads.model.Message;
 import com.parse.GetCallback;
@@ -32,7 +36,8 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
-public class ReceiverItemDetailsActivity extends FragmentActivity {
+public class ReceiverItemDetailsActivity extends FragmentActivity 
+	implements OnItemDetailsFragmentListener, ConfirmationDialogListener {
 	
 	ItemDetailFragment detailsFragment;
 	String itemObjIdStr;
@@ -73,31 +78,7 @@ public class ReceiverItemDetailsActivity extends FragmentActivity {
 			openAcceptFormDialog();
 			return true;
 		} else if (id == R.id.action_reject) {
-			ParseQuery<Item> query = ParseQuery.getQuery(Item.class);
-			query.setCachePolicy(ParseQuery.CachePolicy.CACHE_ELSE_NETWORK); // or
-																				// CACHE_ONLY
-			// Execute the query to find the object with ID
-			query.getInBackground(itemObjIdStr, new GetCallback<Item>() {
-				public void done(Item item0, ParseException e) {
-					startProgressBar();
-					item0.put("rejecteddate", new Date());
-					item0.setReviewer(ParseUser.getCurrentUser());
-					item0.saveInBackground(new SaveCallback() {
-						
-						@Override
-						public void done(ParseException arg0) {
-							stopProgressBar();
-							if(arg0 == null) {
-								// Send reject push
-								pushItemReviewResult("Item not accepted");
-								Toast.makeText(ReceiverItemDetailsActivity.this, "Item Saved!", Toast.LENGTH_LONG).show();
-								startReviewerHomeActivity();
-							}
-							
-						}
-					});
-				}
-			});
+			showRejectConfirmationDialog();
 			return true;
 		} else if (id == R.id.action_viewmessages) {
 			showChatRoomDialog();
@@ -227,5 +208,53 @@ public class ReceiverItemDetailsActivity extends FragmentActivity {
 				}
 			}
 		});
+	}
+
+	@Override
+	public void onPhotoSwipeLeft() {
+		//reject the item
+		showRejectConfirmationDialog();
+	}
+
+	@Override
+	public void onPhotoSwipeRight() {
+		//accept the item
+		openAcceptFormDialog();
+	}
+	
+	public void showRejectConfirmationDialog() {
+		FragmentManager fm = getSupportFragmentManager();
+	  	ConfirmationDialog alertDialog = ConfirmationDialog.newInstance(getResources().getString(R.string.reject_confirm));
+	  	alertDialog.show(fm, "fragment_alert");		
+	}
+
+	@Override
+	public void onOk() {
+		//reject the item
+		ParseQuery<Item> query = ParseQuery.getQuery(Item.class);
+		query.setCachePolicy(ParseQuery.CachePolicy.CACHE_ELSE_NETWORK);
+		// Execute the query to find the object with ID
+		query.getInBackground(itemObjIdStr, new GetCallback<Item>() {
+			public void done(Item item0, ParseException e) {
+				startProgressBar();
+				item0.put("rejecteddate", new Date());
+				item0.setReviewer(ParseUser.getCurrentUser());
+				item0.saveInBackground(new SaveCallback() {
+					
+					@Override
+					public void done(ParseException arg0) {
+						stopProgressBar();
+						if(arg0 == null) {
+							// Send reject push
+							pushItemReviewResult("Item not accepted");
+							Toast.makeText(ReceiverItemDetailsActivity.this, "Item Saved!", Toast.LENGTH_LONG).show();
+							startReviewerHomeActivity();
+						}
+						
+					}
+				});
+			}
+		});
+		
 	}
 }

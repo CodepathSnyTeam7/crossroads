@@ -197,11 +197,17 @@ public class DonationFlowActivity extends FragmentActivity
 		
 		@Override
 		protected Void doInBackground(String... params) {
-			if(PickPhotoSourceFragment.SOURCE_TYPE_CAMERA.equalsIgnoreCase(params[0])) {
-				photoBitmap = PhotoScalerHelper.rotateBitmapOrientation(photoUri.getPath());
-			}
-			if(photoBitmap != null) {
-				processPhoto();
+			try {
+				if(PickPhotoSourceFragment.SOURCE_TYPE_CAMERA.equalsIgnoreCase(params[0])) {
+					if(photoUri != null) {
+						photoBitmap = PhotoScalerHelper.rotateBitmapOrientation(photoUri.getPath());
+					}
+				}
+				if(photoBitmap != null) {
+					processPhoto();
+				}
+			}catch(Exception e) {
+				Toast.makeText(DonationFlowActivity.this, "error while processing photo", Toast.LENGTH_SHORT).show();
 			}
 			return null;
 		}
