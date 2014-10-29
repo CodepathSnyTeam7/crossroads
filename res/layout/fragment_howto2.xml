@@ -18,7 +18,9 @@
 		    android:gravity="center"
 		    android:layout_margin="15dp"
 		    android:padding="15dp"
-            android:text="Step 2: Add Items" />
+            android:text="Step 2: Add Items"
+            android:textColor="@color/actiobar_cl"
+            android:textAppearance="?android:attr/textAppearanceLarge"  />
         
       <LinearLayout android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,8 +30,8 @@
         android:padding="16dp"> 
         
         <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
 		    android:padding="15dp"
             android:adjustViewBounds="true"
        		android:scaleType="centerCrop"
@@ -38,7 +40,8 @@
          <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Photograph an item" />
+            android:text="Photograph an item"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
   
         </LinearLayout> 
         
@@ -49,8 +52,8 @@
         android:padding="16dp"> 
         
         <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
 		    android:padding="15dp"
             android:adjustViewBounds="true"
        		android:scaleType="centerCrop"
@@ -59,7 +62,8 @@
          <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Describe an item" />
+            android:text="Describe an item"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
   
         </LinearLayout>
         
@@ -70,8 +74,8 @@
         android:padding="16dp"> 
         
         <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
 		    android:padding="15dp"
             android:adjustViewBounds="true"
        		android:scaleType="centerCrop"
@@ -80,7 +84,8 @@
          <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Repeat for each item you wish to donate" />
+            android:text="Repeat for each item you wish to donate"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
   
         </LinearLayout>
 

@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <LinearLayout android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:orientation="vertical" >
 
         <TextView
             android:id="@+id/tvHowtoStep1"
@@ -18,7 +18,9 @@
 		    android:gravity="center"
 		    android:layout_margin="15dp"
 		    android:padding="15dp"
-            android:text="Step 1: Regsiter" />
+            android:text="Step 1: Regsiter"
+            android:textColor="@color/actiobar_cl"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
             android:layout_width="match_parent"
@@ -27,17 +29,14 @@
 		    android:gravity="center"
 		    android:layout_margin="15dp"
 		    android:padding="15dp"
-            android:text="Connecting People In a World of Need" />
+            android:text="Connecting People In a World of Need"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
         
         <ImageView
-            android:layout_width="160dp"
-            android:layout_height="160dp"
-            android:layout_gravity="center"
-		    android:gravity="center"
-		    android:layout_margin="15dp"
-		    android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="303dp"
             android:adjustViewBounds="true"
-       		android:scaleType="centerCrop"
+            android:scaleType="centerCrop"
             android:src="@drawable/crossroads_bg_foundation2" />
 
     </LinearLayout>
