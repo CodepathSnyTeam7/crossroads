@@ -20,7 +20,7 @@ import com.codepath.snyteam7.crossroads.fragments.HowtoPage3Fragment;
 import com.codepath.snyteam7.crossroads.fragments.HowtoPage4Fragment;
 
 public class HowtoActivity extends FragmentActivity {
-	    private static final int NUM_PAGES = 4;
+	    private static final int NUM_PAGES = 3;
 
 	    /*
 	     * The pager widget, which handles animation and allows swiping horizontally to access previous
@@ -37,7 +37,7 @@ public class HowtoActivity extends FragmentActivity {
 	        setContentView(R.layout.activity_howto);
 	        
 			ActionBar bar = getActionBar();
-			bar.setTitle("How Donation Works?");
+			bar.setTitle("Steps");
 
 	        // Instantiate a ViewPager and a PagerAdapter.
 	        mPager = (ViewPager) findViewById(R.id.pager);
@@ -117,12 +117,16 @@ public class HowtoActivity extends FragmentActivity {
 	                f = HowtoPage2Fragment.create(position);
 	                break;
 	            case 2:
-	                f = HowtoPage3Fragment.create(position);
+	                //f = HowtoPage3Fragment.create(position);
+	            	f = HowtoPage4Fragment.create(position);
 	                break;
+	                /*
 	            case 3:
 	                f = HowtoPage4Fragment.create(position);
 	                break;   
+	                */
 	            }
+	            
 	            return f;
 	        }
 

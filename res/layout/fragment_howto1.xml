@@ -4,41 +4,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
-
+        android:background="#323E5F"
+        android:layout_height="wrap_content" >
+		<ImageView 
+        android:layout_width="match_parent"
+        android:src="@drawable/crossroadscover"
+        android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"	
+            android:layout_alignParentBottom="true"	    
+		    />
         <TextView
             android:id="@+id/tvHowtoStep1"
-            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-		    android:gravity="center"
-		    android:layout_margin="15dp"
-		    android:padding="15dp"
-            android:text="Step 1: Regsiter"
-            android:textColor="@color/actiobar_cl"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:gravity="center_horizontal"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="50dp"
+            android:padding="15dp"
+            android:text="Step 1: Register or Login"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-		    android:gravity="center"
-		    android:layout_margin="15dp"
-		    android:padding="15dp"
-            android:text="Connecting People In a World of Need"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-        
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="303dp"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/crossroads_bg_foundation2" />
-
-    </LinearLayout>
+    </RelativeLayout>
 
 </ScrollView>

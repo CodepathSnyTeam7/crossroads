@@ -2,25 +2,35 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/howtocontent2"
     android:layout_width="match_parent"
+    android:background="#323E5F"
     android:layout_height="match_parent" >
 
-    <LinearLayout android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp" >
 
         <TextView
             android:id="@+id/tvHowtoStep2"
-            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-		    android:gravity="center"
-		    android:layout_margin="15dp"
-		    android:padding="15dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:padding="15dp"
+            android:layout_marginBottom="10dp"
             android:text="Step 2: Add Items"
-            android:textColor="@color/actiobar_cl"
-            android:textAppearance="?android:attr/textAppearanceLarge"  />
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+        
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/tvHowtoStep2"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/layer_card_blue_bg" >   
         
       <LinearLayout android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -62,7 +72,7 @@
          <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Describe an item"
+            android:text="Write description"
             android:textAppearance="?android:attr/textAppearanceMedium" />
   
         </LinearLayout>
@@ -71,24 +81,25 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
+        android:layout_marginBottom="15dp"
         android:padding="16dp"> 
         
         <ImageView
             android:layout_width="80dp"
             android:layout_height="80dp"
-		    android:padding="15dp"
+		    android:padding="10dp"
             android:adjustViewBounds="true"
-       		android:scaleType="centerCrop"
-            android:src="@drawable/cr_repeat" />
+       		android:scaleType="fitCenter"
+            android:src="@drawable/cr_car" />
         
          <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Repeat for each item you wish to donate"
+            android:text="Pick drop off location"
             android:textAppearance="?android:attr/textAppearanceMedium" />
   
         </LinearLayout>
-
-    </LinearLayout>
+	</LinearLayout> 
+    </RelativeLayout>
 
 </ScrollView>
