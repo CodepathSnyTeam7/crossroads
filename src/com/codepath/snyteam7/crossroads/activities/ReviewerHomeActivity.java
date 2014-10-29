@@ -1,11 +1,13 @@
 package com.codepath.snyteam7.crossroads.activities;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.util.SparseArray;
 import android.view.Menu;
@@ -26,7 +28,9 @@ public class ReviewerHomeActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_reviewer_home);
 		getActionBar().setTitle("");
-
+		PagerTabStrip pagerTabStrip = (PagerTabStrip)findViewById(R.id.pager_header);
+		pagerTabStrip.setDrawFullUnderline(true);
+		pagerTabStrip.setTabIndicatorColor(Color.parseColor("#367588"));
 		// Setup Viewpager
 		setupViewpager();
 	}
@@ -121,9 +125,9 @@ public class ReviewerHomeActivity extends FragmentActivity {
         public CharSequence getPageTitle(int position) {
         	switch (position) {
             case 0:
-            	return "Pending";
+            	return "PENDING";
             case 1:
-            	return "Reviewed";
+            	return "REVIEWED";
             default:
             	return null;
             }	

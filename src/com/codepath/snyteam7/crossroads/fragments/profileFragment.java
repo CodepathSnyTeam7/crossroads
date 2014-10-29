@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -33,6 +34,7 @@ public class profileFragment extends DialogFragment {
     private static TextView ProfileUsername;
     private static EditText ProfilePhone;
     private static EditText ProfileEmail;
+    private static ImageView ivDonorpic;
     private Spinner spinState;
     private Spinner spinDistrict;
     List<String> allDistlist;
@@ -63,6 +65,7 @@ public class profileFragment extends DialogFragment {
 		spinState = (Spinner) customView.findViewById(R.id.spinnerProfileState);
 		spinDistrict = (Spinner) customView.findViewById(R.id.spinnerProfileDistrict);
 		pbProfileEdit = (ProgressBar)customView.findViewById(R.id.pbProfileEdit);
+		ivDonorpic = (ImageView) customView.findViewById(R.id.ivProfileIcon);
 
 		// Create the ParseUser
 		ParseUser user = ParseUser.getCurrentUser();
@@ -82,6 +85,13 @@ public class profileFragment extends DialogFragment {
 		
 		// Set username
 		ProfileUsername.setText("@" + user.getUsername());
+		
+		if (user.getUsername().equalsIgnoreCase("v1")) {
+			ivDonorpic.setImageDrawable(getResources().getDrawable(R.drawable.cr_d3));
+		}
+		if (user.getUsername().equalsIgnoreCase("jean")) {
+			ivDonorpic.setImageDrawable(getResources().getDrawable(R.drawable.cr_d4));
+		}
 		
 		// Set district spinner
 		setupDistlists();

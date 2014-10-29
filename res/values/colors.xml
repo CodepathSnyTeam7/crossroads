@@ -3,6 +3,7 @@
     <item name="LightGray" type="color">#e1e8ed</item>
     <item name="white" type="color">#ffffff</item>
     <item name="black" type="color">#000000</item>
+    <item name="black_55" type="color">#8C000000</item>
     <item name="black_60" type="color">#99000000</item>
     <item name="black_70" type="color">#b3000000</item>
     <item name="bg_bl_wh" type="color">#eceff1</item>

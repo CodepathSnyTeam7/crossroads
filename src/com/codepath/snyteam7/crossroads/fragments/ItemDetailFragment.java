@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,6 +37,7 @@ public class ItemDetailFragment extends Fragment {
 	private TextView tvItemCondition;
 	private TextView tvPickupAddress;
 	private ProgressBar pbItemDetails;
+	private ImageView ivDonorpic;
 	
 	private String itemObjectId;
 
@@ -76,6 +78,8 @@ public class ItemDetailFragment extends Fragment {
 				listener.onPhotoSwipeLeft();
 			}
 		});
+		ivDonorpic = (ImageView)v.findViewById(R.id.ivDonorPic);
+
 		return v;
 	}
 	
@@ -115,6 +119,12 @@ public class ItemDetailFragment extends Fragment {
 		    	tvDescription.setText(item0.getDescription());
 		    	ParseUser donor = item0.getDonor();
 		    	tvDonorName.setText(donor.getUsername());
+	    		if (donor.getUsername().equalsIgnoreCase("v1")) {
+	    			ivDonorpic.setImageDrawable(getResources().getDrawable(R.drawable.cr_d3));
+	    		}
+	    		if (donor.getUsername().equalsIgnoreCase("jean")) {
+	    			ivDonorpic.setImageDrawable(getResources().getDrawable(R.drawable.cr_d4));
+	    		}
 		    	Date donateDate = item0.getDate("donationdate");
 		    	SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
 		    	String donateDateStr = formatter.format(donateDate);

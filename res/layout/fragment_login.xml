@@ -11,36 +11,42 @@
 
     <RelativeLayout
         android:id="@+id/rlLogin"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="137dp"
         android:alpha="10"
-        android:background="@color/black_70" >
+        android:background="@color/black_55" >
         
         
         <EditText
             android:id="@+id/etLoginUsername"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="15dp"
             android:ems="10"
             android:hint="username"
             android:inputType="text"
+            android:textSize="22sp"
             android:textColor="@color/white" />
         <requestFocus />
 
         <EditText
             android:id="@+id/etLoginPassword"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/etLoginUsername"
             android:layout_alignRight="@+id/etLoginUsername"
             android:layout_below="@+id/etLoginUsername"
+            android:layout_marginTop="15dp"
             android:ems="10"
             android:hint="password"
+            android:textSize="22sp"
             android:inputType="textPassword"
             android:textColor="@color/white" />
 
@@ -51,9 +57,12 @@
             android:layout_alignLeft="@+id/etLoginUsername"
             android:layout_alignRight="@+id/etLoginUsername"
             android:layout_below="@+id/etLoginPassword"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="15dp"
             android:text="@string/login_button_lbl"
-            android:textColor="@color/LightGray" />
+            android:background="@color/actiobar_cl"
+            android:textColor="@color/LightGray"
+            android:textSize="22sp"
+            android:layout_margin="10dp"  />
 
     </RelativeLayout>
 

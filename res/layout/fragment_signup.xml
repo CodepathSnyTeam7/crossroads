@@ -15,14 +15,14 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="122dp"
-        android:background="@color/black_70"
         android:alpha="10"
-         >
+        android:background="@color/black_55" >
          
      <LinearLayout 
        android:id="@+id/llSignupNames"
        android:layout_width="match_parent"
    	   android:layout_height="wrap_content"
+   	   android:layout_marginTop="15dp"
    	   android:orientation="horizontal" >
          
         <EditText
@@ -32,6 +32,7 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="first name"
+            android:textSize="22sp"
             android:textColor="@color/white"
             android:inputType="textPersonName" />
 
@@ -42,6 +43,7 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="family name"
+            android:textSize="22sp"
             android:textColor="@color/white"
             android:inputType="textPersonName" />
      </LinearLayout>
@@ -51,6 +53,7 @@
        android:layout_width="match_parent"
    	   android:layout_height="wrap_content"
    	   android:orientation="horizontal" 
+   	   android:layout_marginTop="15dp"
    	   android:layout_below="@+id/llSignupNames" >
         
         <EditText
@@ -60,6 +63,7 @@
 			android:layout_weight="1"
             android:ems="10"
             android:hint="username"
+            android:textSize="22sp"
             android:textColor="@color/white"
             android:inputType="text" />
 
@@ -70,6 +74,7 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="password"
+            android:textSize="22sp"
             android:textColor="@color/white"
             android:inputType="textPassword" />
      </LinearLayout>
@@ -79,6 +84,7 @@
        android:layout_width="match_parent"
    	   android:layout_height="wrap_content"
    	   android:orientation="horizontal" 
+   	   android:layout_marginTop="15dp"
    	   android:layout_below="@+id/llSignupUserpasswd" >
         <EditText
             android:id="@+id/etSignupPhone"
@@ -86,7 +92,8 @@
             android:layout_height="wrap_content"
 			android:layout_weight="1"
             android:ems="10"
-            android:hint="Phone 408-111-2222"
+            android:hint="Phone"
+            android:textSize="22sp"
             android:textColor="@color/white"
             android:inputType="phone" />
         
@@ -97,6 +104,7 @@
 			android:layout_weight="1"
             android:ems="10"
             android:hint="email"
+            android:textSize="22sp"
             android:textColor="@color/white"
             android:inputType="textWebEmailAddress" />
       </LinearLayout>
@@ -106,6 +114,7 @@
        android:layout_width="match_parent"
    	   android:layout_height="wrap_content"
    	   android:orientation="horizontal" 
+   	   android:layout_marginTop="15dp"
    	   android:layout_below="@+id/llSignupPhoneEmail" >
 
          <Spinner
@@ -113,6 +122,7 @@
              android:layout_height="wrap_content"
              android:layout_width="wrap_content"
              android:layout_weight="1"
+             android:popupBackground="@color/actiobar_cl"
              android:textColor="@color/LightGray"
               />
          
@@ -121,19 +131,24 @@
              android:layout_height="wrap_content"
              android:layout_width="wrap_content"
              android:layout_weight="1"
+             android:popupBackground="@color/actiobar_cl"
              android:textColor="@color/LightGray"
               />
       </LinearLayout>
       
         <Button
             android:id="@+id/btSignup"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
 			android:layout_centerHorizontal="true"
             android:layout_below="@+id/llSignupDistrict"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="15dp"
+            android:background="@color/actiobar_cl"
             android:text="@string/lbl_signup"
-            android:textColor="@color/LightGray" />
+            android:textColor="@color/LightGray"
+            android:textSize="22sp"
+            android:padding="15dp"
+            android:layout_margin="10dp" />
 
     </RelativeLayout>
     

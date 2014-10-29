@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
@@ -53,6 +54,7 @@ public class SignupFragment extends Fragment {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setupDistlists();
+		getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 	}
 	
 	@Override
@@ -105,7 +107,6 @@ public class SignupFragment extends Fragment {
 
 	    @Override
 	    public void onNothingSelected(AdapterView<?> arg0) {
-	        // TODO Auto-generated method stub
 
 	    }
 	};
@@ -204,8 +205,10 @@ public class SignupFragment extends Fragment {
 		list.add("Kowloon");
 		list.add("NT");
 		spinStatedataAdapter = new ArrayAdapter<String>(getActivity(),
-			android.R.layout.simple_spinner_item, list);
+			//android.R.layout.simple_spinner_item, list);
+				R.layout.spinner_item, list);
 		spinStatedataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		
 		spinState.setAdapter(spinStatedataAdapter);
 	  }
 	  
@@ -221,7 +224,8 @@ public class SignupFragment extends Fragment {
 		  list.add("KLDist2");
 		  list.add("NTDist1");
 		spinDistdataAdapter = new ArrayAdapter<String>(getActivity(),
-			android.R.layout.simple_spinner_item, list);
+			//android.R.layout.simple_spinner_item, list);
+				R.layout.spinner_item, list);
 		spinDistdataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinDistrict.setAdapter(spinDistdataAdapter);
 	  }

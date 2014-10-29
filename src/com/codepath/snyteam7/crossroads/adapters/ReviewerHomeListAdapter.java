@@ -6,6 +6,7 @@ import java.util.Date;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,6 +52,7 @@ public class ReviewerHomeListAdapter extends ParseQueryAdapter<Item>  {
 			holder.vh_tvDonor = (TextView) convertView.findViewById(R.id.tvRHomeUser);
 			holder.vh_tvDonateDate = (TextView) convertView.findViewById(R.id.tvRHomeUserDonateDate);
 			holder.vh_tvItemDescription = (TextView) convertView.findViewById(R.id.tvRHomeUserDesc);
+			holder.vh_profImage = (ImageView) convertView.findViewById(R.id.ivRHomeUserProfileImg);
 			convertView.setTag(holder);
 		} else {
 	    	holder = (ViewHolder) convertView.getTag();
@@ -82,6 +84,12 @@ public class ReviewerHomeListAdapter extends ParseQueryAdapter<Item>  {
     	ParseUser donor = item.getDonor();
     	if (donor != null) {
     		holder.vh_tvDonor.setText(item.getString("donorusername"));
+    		if (item.getString("donorusername").equalsIgnoreCase("v1")) {
+    			holder.vh_profImage.setImageDrawable(getContext().getResources().getDrawable(R.drawable.cr_d3));
+    		}
+    		if (item.getString("donorusername").equalsIgnoreCase("jean")) {
+    			holder.vh_profImage.setImageDrawable(getContext().getResources().getDrawable(R.drawable.cr_d4));
+    		}
     	} else {
     		holder.vh_tvDonor.setText("Donor");
     	}
@@ -106,6 +114,7 @@ public class ReviewerHomeListAdapter extends ParseQueryAdapter<Item>  {
 		TextView vh_tvDonor;
 		TextView vh_tvDonateDate;
 		TextView vh_tvItemDescription;
+		ImageView vh_profImage;
 	}
 }
 

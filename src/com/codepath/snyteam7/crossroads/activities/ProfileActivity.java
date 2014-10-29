@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.codepath.snyteam7.crossroads.R;
@@ -20,6 +21,7 @@ public class ProfileActivity extends FragmentActivity {
     private static TextView ProfilePhone;
     private static TextView ProfileEmail;
     private static TextView ProfileDistrict;
+	private ImageView ivDonorpic;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,7 @@ public class ProfileActivity extends FragmentActivity {
 		ProfilePhone = (TextView)findViewById(R.id.tvProfPhone);
 		ProfileEmail = (TextView)findViewById(R.id.tvProfEmail);
 		ProfileDistrict = (TextView) findViewById(R.id.tvProfDist);
+		ivDonorpic = (ImageView)findViewById(R.id.ivProfPhoto);
 
 		// Create the ParseUser
 		ParseUser user = ParseUser.getCurrentUser();
@@ -78,7 +81,12 @@ public class ProfileActivity extends FragmentActivity {
 	    
 	    //ImageLoader imageLoader = ImageLoader.getInstance();
 	    //imageLoader.displayImage(user.getProfileImageUrl(), ivProfileImage);
-		
+		if (user.getUsername().equalsIgnoreCase("v1")) {
+			ivDonorpic.setImageDrawable(getResources().getDrawable(R.drawable.cr_d3));
+		}
+		if (user.getUsername().equalsIgnoreCase("jean")) {
+			ivDonorpic.setImageDrawable(getResources().getDrawable(R.drawable.cr_d4));
+		}
 		
 	}
 	
