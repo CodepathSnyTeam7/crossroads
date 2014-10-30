@@ -70,7 +70,7 @@ public class MapActivity extends FragmentActivity implements
 		if (mapFragment != null) {
 			map = mapFragment.getMap();
 			if (map != null) {
-				Toast.makeText(this, "Map Fragment was loaded properly!", Toast.LENGTH_SHORT).show();
+				//Toast.makeText(this, "Map Fragment was loaded properly!", Toast.LENGTH_SHORT).show();
 				map.setMyLocationEnabled(true);
 				map.setOnMapLongClickListener(this);
 
@@ -218,7 +218,7 @@ public class MapActivity extends FragmentActivity implements
 		// Display the connection status
 		Location location = mLocationClient.getLastLocation();
 		if (location != null) {
-			Toast.makeText(this, "GPS location was found!", Toast.LENGTH_SHORT).show();
+			//Toast.makeText(this, "GPS location was found!", Toast.LENGTH_SHORT).show();
 			LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
 			CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 17);
 			map.animateCamera(cameraUpdate);
