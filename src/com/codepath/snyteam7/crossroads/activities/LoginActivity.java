@@ -20,14 +20,10 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.codepath.snyteam7.crossroads.R;
-import com.codepath.snyteam7.crossroads.activities.ReviewerHomeActivity.MyPagerAdapter;
 import com.codepath.snyteam7.crossroads.fragments.LoginFragment;
-import com.codepath.snyteam7.crossroads.fragments.ReviewerHomeFragment;
-import com.codepath.snyteam7.crossroads.fragments.ReviewerReviewedItemsFragment;
 import com.codepath.snyteam7.crossroads.fragments.LoginFragment.OnLoginSuccessListener;
 import com.codepath.snyteam7.crossroads.fragments.SignupFragment;
 import com.codepath.snyteam7.crossroads.fragments.SignupFragment.OnSignupSuccessListener;
-import com.codepath.snyteam7.crossroads.listeners.FragmentTabListener;
 import com.parse.ParseUser;
 
 public class LoginActivity extends FragmentActivity 
@@ -70,7 +66,7 @@ public class LoginActivity extends FragmentActivity
     		}
         } else {
             // Send user to Login Signup Activity
-        	Toast.makeText(this, "Login or Sign up", Toast.LENGTH_LONG).show();
+        	//Toast.makeText(this, "Login or Sign up", Toast.LENGTH_LONG).show();
         }
         
 		// Setup Viewpager
