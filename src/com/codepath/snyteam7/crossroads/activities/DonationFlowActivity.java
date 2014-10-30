@@ -8,6 +8,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import android.animation.AnimatorSet;
+import android.animation.ArgbEvaluator;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -358,6 +362,12 @@ public class DonationFlowActivity extends FragmentActivity
 	
 	private void showSendButton() {
 		btSend.setVisibility(View.VISIBLE);
+		ObjectAnimator scaleAnim = ObjectAnimator.ofObject(btSend, "backgroundColor", new ArgbEvaluator(), 
+				/*Red1*/0xFFEE193D, /*Red2*/0xFFF9ABB8);
+		scaleAnim.setDuration(2000);
+		scaleAnim.setRepeatCount(ValueAnimator.INFINITE);
+		scaleAnim.setRepeatMode(ValueAnimator.REVERSE);
+		scaleAnim.start();
 	}
 	
 }
